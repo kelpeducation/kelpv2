@@ -1,0 +1,358 @@
+import Link from 'next/link';
+import { ArrowRight, Play } from 'lucide-react';
+import { useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+import { Button } from '@/components/ui/button';
+import { useHeroAnimation } from '@/hooks/useGSAPAnimation';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// ── Floating badge wrapper ──────────────────────────────────────────────────
+const FloatingBadge = ({ children, style }) => (
+  <div
+    style={{
+      position: 'absolute',
+      background: 'white',
+      borderRadius: '16px',
+      padding: '10px 14px',
+      boxShadow: '0 8px 32px rgba(0,0,0,0.13)',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '10px',
+      zIndex: 20,
+      animation: 'floatBadge 3.5s ease-in-out infinite',
+      ...style,
+    }}
+  >
+    {children}
+  </div>
+);
+
+// ── Score gauge (left side top) ─────────────────────────────────────────────
+const ScoreGauge = () => (
+  <FloatingBadge
+    style={{
+      top: '28px',
+      left: '10px',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      minWidth: '165px',
+      animationDelay: '0s',
+    }}
+  >
+    <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
+      <span style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 600 }}>Course Progress</span>
+      <span style={{
+        background: '#22c55e', borderRadius: '50%', width: 20, height: 20,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+      }}>
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+          <path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </span>
+    </div>
+    <svg width="145" height="75" viewBox="0 0 145 75">
+      <defs>
+        <linearGradient id="gaugeG" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#1e3a5f" />
+          <stop offset="100%" stopColor="#f59e0b" />
+        </linearGradient>
+      </defs>
+      <path d="M12 72 A53 53 0 0 1 133 72" fill="none" stroke="#f1f5f9" strokeWidth="9" strokeLinecap="round" />
+      <path d="M12 72 A53 53 0 0 1 133 72" fill="none" stroke="url(#gaugeG)" strokeWidth="9"
+        strokeLinecap="round" strokeDasharray="166" strokeDashoffset="38" />
+      <text x="72" y="62" textAnchor="middle" fontSize="12" fontWeight="800" fill="#1e293b">Excellent</text>
+      <text x="72" y="74" textAnchor="middle" fontSize="9" fill="#94a3b8">Score</text>
+    </svg>
+  </FloatingBadge>
+);
+
+// ── Students badge (left side bottom) ──────────────────────────────────────
+const StudentsBadge = () => (
+  <FloatingBadge style={{ bottom: '52px', left: '8px', animationDelay: '0.8s' }}>
+    <div style={{
+      background: '#f59e0b', borderRadius: '10px',
+      width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px',
+    }}>🎓</div>
+    <div>
+      <div style={{ fontSize: '14px', fontWeight: 800, color: '#1e293b' }}>1,200+</div>
+      <div style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 500 }}>Active Students</div>
+    </div>
+  </FloatingBadge>
+);
+
+// ── Video lessons badge (right side top) ───────────────────────────────────
+const VideosBadge = () => (
+  <FloatingBadge style={{ top: '28px', right: '8px', animationDelay: '0.4s' }}>
+    <span style={{
+      background: '#ef4444', borderRadius: '50%', width: 28, height: 28,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+    }}>
+      <Play size={12} fill="white" color="white" />
+    </span>
+    <div>
+      <div style={{ fontSize: '14px', fontWeight: 800, color: '#1e293b' }}>350+</div>
+      <div style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 500 }}>Video Lessons</div>
+    </div>
+  </FloatingBadge>
+);
+
+// ── Mini analytics chart (right side bottom) ────────────────────────────────
+const AnalyticsChart = () => (
+  <FloatingBadge
+    style={{
+      bottom: '52px', right: '6px',
+      flexDirection: 'column', alignItems: 'flex-start',
+      width: '175px', animationDelay: '1.2s',
+    }}
+  >
+    <div style={{ display: 'flex', gap: '5px', marginBottom: '5px' }}>
+      {['Daily', 'Week', 'Month'].map((t, i) => (
+        <span key={t} style={{
+          fontSize: '10px', fontWeight: i === 1 ? 700 : 400,
+          color: i === 1 ? 'white' : '#94a3b8',
+          background: i === 1 ? '#ef4444' : 'transparent',
+          borderRadius: '5px', padding: '2px 6px',
+        }}>{t}</span>
+      ))}
+    </div>
+    <svg width="155" height="46" viewBox="0 0 155 46">
+      <defs>
+        <linearGradient id="chartFill" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#1e3a5f" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#1e3a5f" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <path d="M0 36 C24 27, 44 31, 68 17 S112 7, 155 11"
+        fill="none" stroke="#1e3a5f" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M0 36 C24 27, 44 31, 68 17 S112 7, 155 11 L155 46 L0 46 Z" fill="url(#chartFill)" />
+      <circle cx="110" cy="9" r="4" fill="#ef4444" />
+    </svg>
+  </FloatingBadge>
+);
+
+// ══════════════════════════════════════════════════════════════════════════════
+const HeroSection = () => {
+  const heroRef = useHeroAnimation();
+
+  useEffect(() => {
+    if (!heroRef.current) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        '.hero-fade',
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 1.2, stagger: 0.15, ease: 'power3.out' }
+      );
+      gsap.fromTo(
+        '.side-person',
+        { opacity: 0, scale: 0.93 },
+        { opacity: 1, scale: 1, duration: 1.1, stagger: 0.2, delay: 0.25, ease: 'power3.out' }
+      );
+    }, heroRef);
+    return () => ctx.revert();
+  }, [heroRef]);
+
+  return (
+    <>
+      <style>{`
+        @keyframes floatBadge {
+          0%, 100% { transform: translateY(0); }
+          50%       { transform: translateY(-7px); }
+        }
+        @keyframes bgPulse {
+          0%, 100% { opacity: .06; transform: scale(1); }
+          50%       { opacity: .1;  transform: scale(1.06); }
+        }
+      `}</style>
+
+      <section
+        ref={heroRef}
+        className="relative w-full overflow-hidden"
+        style={{
+          minHeight: 'calc(100vh - 80px)',
+          background: 'linear-gradient(135deg, #eef2ff 0%, #f0f9ff 55%, #fefce8 100%)',
+        }}
+      >
+        {/* ── decorative blobs ── */}
+        {[
+          { s: 400, top: '-80px', left: '-60px', color: '#1e3a5f', d: '0s' },
+          { s: 280, top: '55%', right: '-40px', color: '#f59e0b', d: '1s' },
+          { s: 180, bottom: '-30px', left: '42%', color: '#1e3a5f', d: '0.5s' },
+        ].map((b, i) => (
+          <div key={i} style={{
+            position: 'absolute', width: b.s, height: b.s, borderRadius: '50%',
+            background: b.color, opacity: 0.07,
+            top: b.top, left: b.left, right: b.right, bottom: b.bottom,
+            animation: `bgPulse 7s ease-in-out ${b.d} infinite`,
+            pointerEvents: 'none',
+          }} />
+        ))}
+
+        {/* ── dot field ── */}
+        {Array.from({ length: 16 }).map((_, i) => (
+          <div key={i} style={{
+            position: 'absolute',
+            width: i % 3 === 0 ? 7 : 4, height: i % 3 === 0 ? 7 : 4,
+            borderRadius: '50%',
+            background: i % 2 === 0 ? '#1e3a5f' : '#f59e0b',
+            opacity: 0.13,
+            top: `${7 + i * 5.8}%`,
+            left: `${2 + (i % 5) * 2.5}%`,
+            pointerEvents: 'none',
+          }} />
+        ))}
+
+        {/* ════════ 3-COLUMN LAYOUT ════════ */}
+        <div
+          className="mx-auto flex w-full max-w-[1380px] items-center gap-4 px-4 lg:px-8"
+          style={{ minHeight: 'calc(100vh - 80px)' }}
+        >
+
+          {/* ── LEFT — person + 2 cards ── */}
+          <div className="side-person hidden w-[270px] shrink-0 flex-col gap-3 lg:flex xl:w-[310px]">
+            {/* circle */}
+            <div style={{ position: 'relative', height: '330px' }}>
+              <div style={{
+                width: '250px', height: '250px', borderRadius: '50%',
+                background: 'linear-gradient(145deg, #c7d2fe, #818cf8)',
+                position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)',
+                overflow: 'hidden',
+                boxShadow: '0 20px 55px rgba(108,99,255,0.22)',
+              }}>
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80"
+                  alt="Student"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+                />
+              </div>
+              <ScoreGauge />
+              <StudentsBadge />
+            </div>
+          </div>
+
+          {/* ── CENTER — text + CTAs ── */}
+          <div className="hero-fade flex flex-1 flex-col items-center justify-center px-2 py-10 text-center lg:px-6">
+
+            {/* eyebrow */}
+            <div className="mb-5 flex items-center gap-3">
+              <span style={{ display: 'inline-block', width: 28, height: 2, background: '#f59e0b', borderRadius: 2 }} />
+              <span style={{
+                fontSize: '11px', fontWeight: 700, letterSpacing: '2.5px',
+                textTransform: 'uppercase', color: '#f59e0b',
+              }}>
+                Education Platform
+              </span>
+              <span style={{ display: 'inline-block', width: 28, height: 2, background: '#f59e0b', borderRadius: 2 }} />
+            </div>
+
+            {/* heading */}
+            <h1
+              className="mb-5 font-black leading-tight text-primary"
+              style={{
+                fontSize: 'clamp(36px, 5vw, 64px)',
+                letterSpacing: '-2px', lineHeight: 1.08,
+                fontFamily: "'Nunito', 'DM Sans', sans-serif",
+              }}
+            >
+              Learning that
+              <br />
+              <span className="text-secondary" style={{ fontStyle: 'italic' }}>adapts to life</span>
+            </h1>
+
+            {/* subtext */}
+            <p className="mb-8 max-w-[400px] text-sm leading-relaxed text-primary/60 lg:text-base">
+              We design modern education experiences that blend technology,
+              mentorship, and real-world relevance — built for how students
+              actually learn today.
+            </p>
+
+            {/* CTAs */}
+            <div className="mb-8 flex flex-col items-center gap-3 sm:flex-row sm:gap-5">
+              <Button size="lg" asChild
+                className="group rounded-full bg-primary px-8 font-bold text-white shadow-xl transition-all hover:-translate-y-1"
+                style={{ boxShadow: '0 8px 28px rgba(30,58,95,0.32)' }}>
+                <Link href="/services" className="flex items-center gap-2">
+                  Explore Programs
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:translate-x-1">
+                    <ArrowRight size={14} />
+                  </span>
+                </Link>
+              </Button>
+
+              <Link
+                href="/blog"
+                className="flex items-center gap-3 text-sm font-semibold uppercase tracking-widest text-primary/60 transition-colors hover:text-primary"
+                style={{ background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'none' }}
+              >
+                <span
+                  style={{
+                    width: 46, height: 46, borderRadius: '50%',
+                    border: '2px solid rgba(30,58,95,0.2)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'all 0.2s',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.borderColor = '#f59e0b';
+                    e.currentTarget.style.boxShadow = '0 0 0 4px rgba(245,158,11,0.15)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.borderColor = 'rgba(30,58,95,0.2)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  <Play size={13} className="text-primary" fill="currentColor" />
+                </span>
+                Our Approach
+              </Link>
+            </div>
+
+            {/* divider + partner logos */}
+            <div style={{ width: '100%', maxWidth: 420 }}>
+              <div style={{ borderTop: '1.5px dashed rgba(30,58,95,0.15)', marginBottom: '18px' }} />
+              <div className="flex flex-wrap items-center justify-center gap-6">
+                {[
+                  { icon: '🏫', name: 'SchoolPro' },
+                  { icon: '📚', name: 'EduLearn' },
+                  { icon: '🎯', name: 'SkillUp' },
+                  { icon: '🌍', name: 'GlobalEd' },
+                ].map((b) => (
+                  <div key={b.name} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <span style={{ fontSize: 17 }}>{b.icon}</span>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: 'rgba(30,58,95,0.38)' }}>{b.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ── RIGHT — person + 2 cards ── */}
+          <div className="side-person hidden w-[270px] shrink-0 flex-col gap-3 lg:flex xl:w-[310px]">
+            {/* circle */}
+            <div style={{ position: 'relative', height: '330px' }}>
+              <div style={{
+                width: '250px', height: '250px', borderRadius: '50%',
+                background: 'linear-gradient(145deg, #fde68a, #f59e0b)',
+                position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)',
+                overflow: 'hidden',
+                boxShadow: '0 20px 55px rgba(245,158,11,0.28)',
+              }}>
+                <img
+                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"
+                  alt="Teacher"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+                />
+              </div>
+              <VideosBadge />
+              <AnalyticsChart />
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </>
+  );
+};
+
+export default HeroSection;

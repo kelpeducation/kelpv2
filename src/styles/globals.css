@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 193 92% 20%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 8 74% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 41 100% 48%;
+    --accent-foreground: 0 0% 0%;
+    --highlight: 41 100% 48%;
+    --highlight-foreground: 0 0% 0%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 35%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 193 92% 20%;
+    --radius: 0.75rem;
+    --gradient-primary: linear-gradient(135deg, hsl(193, 92%, 20%) 0%, hsl(193, 85%, 28%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(41, 100%, 48%) 0%, hsl(31, 100%, 50%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0, 0%, 5%) 0%, hsl(0, 0%, 10%) 100%);
+    --shadow-soft: 0 4px 20px -4px hsl(193 92% 20% / 0.15);
+    --shadow-glow: 0 0 40px hsl(193 92% 20% / 0.3);
+    --shadow-gold: 0 4px 30px hsl(41 100% 48% / 0.4);
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 193 92% 20%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 8 74% 60%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 193 92% 20%;
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 193 92% 20%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 8 74% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 41 100% 48%;
+    --accent-foreground: 0 0% 0%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 65%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 193 92% 20%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-montserrat antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-gold);
+  }
+
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-gold {
+    background-image: var(--gradient-gold);
+  }
+
+  .bg-gradient-dark {
+    background-image: var(--gradient-dark);
+  }
+
+  .bg-footer-gradient {
+    background-image: linear-gradient(135deg, hsl(193, 92%, 12%) 0%, hsl(193, 92%, 20%) 100%);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .section-padding {
+    @apply px-6 md:px-12 lg:px-20 py-20 md:py-32;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .clip-diagonal {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+
+  .clip-diagonal-reverse {
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .animate-fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .animate-fade-in {
+    opacity: 0;
+  }
+
+  .animate-scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  .animate-slide-right {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+
+  .animate-slide-left {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}
