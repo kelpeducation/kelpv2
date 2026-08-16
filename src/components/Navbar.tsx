@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, ChevronRight, ChevronDown, Youtube, Users, GraduationCap, ArrowRight, BookOpen, Building2, Globe, FileText, Edit, Clock, Lightbulb, Languages } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import logo from '@/assets/logo 0.2.png';
 import { Button } from '@/components/ui/button';
 
@@ -143,9 +144,10 @@ const Navbar = () => {
 
             {/* Logo — big and prominent across all screen sizes */}
             <Link href="/" className="flex items-center group flex-shrink-0">
-              <img
-                src={typeof logo === 'string' ? logo : logo.src}
+              <Image
+                src={logo}
                 alt="Kelp Education Logo"
+                priority
                 className="h-20 sm:h-22 xl:h-26 2xl:h-32 w-auto object-contain transform transition-transform group-hover:scale-105"
               />
             </Link>

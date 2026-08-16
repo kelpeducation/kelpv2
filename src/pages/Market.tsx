@@ -6,6 +6,7 @@ import { BookOpen, Brain, GraduationCap, Monitor, ShoppingCart, ArrowRight, Star
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Head from 'next/head';
+import { DecorativeBackground } from '@/components/ui/decorative-background';
 
 /* ────────── Data ────────── */
 import { categories, allProducts } from '@/data/products';
@@ -290,7 +291,7 @@ const Market = () => {
 
         {/* ═══════════ CTA ═══════════ */}
         <section className="container-custom pb-16 pt-4 relative z-10">
-          <div className="bg-gradient-to-br from-primary to-[#0f2a4a] rounded-[2rem] p-10 md:p-14 text-center text-white relative overflow-hidden shadow-xl">
+          <div className="bg-gradient-to-br from-primary to-[hsl(193,92%,10%)] rounded-[2rem] p-10 md:p-14 text-center text-white relative overflow-hidden shadow-xl">
             {/* Background blurs */}
             <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
               <div className="absolute -top-1/4 -left-1/4 w-80 h-80 bg-secondary rounded-full blur-[100px]" />

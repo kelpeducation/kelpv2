@@ -38,7 +38,7 @@ export function DecorativeBackground({
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `linear-gradient(rgba(18,182,213,${gridOpacity}) 1px, transparent 1px), linear-gradient(90deg, rgba(18,182,213,${gridOpacity}) 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(rgba(4,79,99,${gridOpacity}) 1px, transparent 1px), linear-gradient(90deg, rgba(4,79,99,${gridOpacity}) 1px, transparent 1px)`,
             backgroundSize: `${gridSize}px ${gridSize}px`,
           }}
         />

@@ -28,28 +28,28 @@ const Footer = () => {
               <div className="flex gap-4">
                 <a
                   href="#facebook"
-                  className="w-10 h-10 rounded-full bg-slate-900/50 flex items-center justify-center border border-white/10 hover:bg-secondary hover:border-secondary hover:scale-110 hover:shadow-[0_0_15px_rgba(18,182,213,0.5)] transition-all duration-300 group"
+                  className="w-10 h-10 rounded-full bg-slate-900/50 flex items-center justify-center border border-white/10 hover:bg-secondary hover:border-secondary hover:scale-110 hover:shadow-[0_0_15px_rgba(228,99,80,0.5)] transition-all duration-300 group"
                   aria-label="Facebook"
                 >
                   <Facebook size={18} className="text-secondary group-hover:text-white transition-colors" />
                 </a>
                 <a
                   href="#twitter"
-                  className="w-10 h-10 rounded-full bg-slate-900/50 flex items-center justify-center border border-white/10 hover:bg-secondary hover:border-secondary hover:scale-110 hover:shadow-[0_0_15px_rgba(18,182,213,0.5)] transition-all duration-300 group"
+                  className="w-10 h-10 rounded-full bg-slate-900/50 flex items-center justify-center border border-white/10 hover:bg-secondary hover:border-secondary hover:scale-110 hover:shadow-[0_0_15px_rgba(228,99,80,0.5)] transition-all duration-300 group"
                   aria-label="Twitter"
                 >
                   <Twitter size={18} className="text-secondary group-hover:text-white transition-colors" />
                 </a>
                 <a
                   href="#linkedin"
-                  className="w-10 h-10 rounded-full bg-slate-900/50 flex items-center justify-center border border-white/10 hover:bg-secondary hover:border-secondary hover:scale-110 hover:shadow-[0_0_15px_rgba(18,182,213,0.5)] transition-all duration-300 group"
+                  className="w-10 h-10 rounded-full bg-slate-900/50 flex items-center justify-center border border-white/10 hover:bg-secondary hover:border-secondary hover:scale-110 hover:shadow-[0_0_15px_rgba(228,99,80,0.5)] transition-all duration-300 group"
                   aria-label="LinkedIn"
                 >
                   <Linkedin size={18} className="text-secondary group-hover:text-white transition-colors" />
                 </a>
                 <a
                   href="#instagram"
-                  className="w-10 h-10 rounded-full bg-slate-900/50 flex items-center justify-center border border-white/10 hover:bg-secondary hover:border-secondary hover:scale-110 hover:shadow-[0_0_15px_rgba(18,182,213,0.5)] transition-all duration-300 group"
+                  className="w-10 h-10 rounded-full bg-slate-900/50 flex items-center justify-center border border-white/10 hover:bg-secondary hover:border-secondary hover:scale-110 hover:shadow-[0_0_15px_rgba(228,99,80,0.5)] transition-all duration-300 group"
                   aria-label="Instagram"
                 >
                   <Instagram size={18} className="text-secondary group-hover:text-white transition-colors" />

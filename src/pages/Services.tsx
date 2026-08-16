@@ -190,7 +190,7 @@ const Services = () => {
         {/* CTA */}
         {/* CTA */}
         <section className="container-custom pb-16 relative z-10">
-          <div className="bg-gradient-to-br from-primary to-[#0f2a4a] rounded-[2rem] p-10 md:p-14 text-center text-white relative overflow-hidden shadow-xl">
+          <div className="bg-gradient-to-br from-primary to-[hsl(193,92%,10%)] rounded-[2rem] p-10 md:p-14 text-center text-white relative overflow-hidden shadow-xl">
             {/* Background Pattern */}
             <DecorativeBackground grid={false} blobs={2} blobColor="secondary" />
 

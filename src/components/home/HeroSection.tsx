@@ -45,7 +45,7 @@ const ScoreGauge = () => (
     <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
       <span style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 600 }}>Course Progress</span>
       <span style={{
-        background: '#22c55e', borderRadius: '50%', width: 20, height: 20,
+        background: '#044F63', borderRadius: '50%', width: 20, height: 20,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
         <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
@@ -56,8 +56,8 @@ const ScoreGauge = () => (
     <svg width="145" height="75" viewBox="0 0 145 75">
       <defs>
         <linearGradient id="gaugeG" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#1e3a5f" />
-          <stop offset="100%" stopColor="#f59e0b" />
+          <stop offset="0%" stopColor="#044F63" />
+          <stop offset="100%" stopColor="#F5A700" />
         </linearGradient>
       </defs>
       <path d="M12 72 A53 53 0 0 1 133 72" fill="none" stroke="#f1f5f9" strokeWidth="9" strokeLinecap="round" />
@@ -73,7 +73,7 @@ const ScoreGauge = () => (
 const StudentsBadge = () => (
   <FloatingBadge style={{ bottom: '52px', left: '8px', animationDelay: '0.8s' }}>
     <div style={{
-      background: '#f59e0b', borderRadius: '10px',
+      background: '#F5A700', borderRadius: '10px',
       width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px',
     }}>🎓</div>
     <div>
@@ -87,7 +87,7 @@ const StudentsBadge = () => (
 const VideosBadge = () => (
   <FloatingBadge style={{ top: '28px', right: '8px', animationDelay: '0.4s' }}>
     <span style={{
-      background: '#ef4444', borderRadius: '50%', width: 28, height: 28,
+      background: '#E46350', borderRadius: '50%', width: 28, height: 28,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
     }}>
       <Play size={12} fill="white" color="white" />
@@ -113,7 +113,7 @@ const AnalyticsChart = () => (
         <span key={t} style={{
           fontSize: '10px', fontWeight: i === 1 ? 700 : 400,
           color: i === 1 ? 'white' : '#94a3b8',
-          background: i === 1 ? '#ef4444' : 'transparent',
+          background: i === 1 ? '#E46350' : 'transparent',
           borderRadius: '5px', padding: '2px 6px',
         }}>{t}</span>
       ))}
@@ -121,14 +121,14 @@ const AnalyticsChart = () => (
     <svg width="155" height="46" viewBox="0 0 155 46">
       <defs>
         <linearGradient id="chartFill" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#1e3a5f" stopOpacity="0.22" />
-          <stop offset="100%" stopColor="#1e3a5f" stopOpacity="0" />
+          <stop offset="0%" stopColor="#044F63" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#044F63" stopOpacity="0" />
         </linearGradient>
       </defs>
       <path d="M0 36 C24 27, 44 31, 68 17 S112 7, 155 11"
-        fill="none" stroke="#1e3a5f" strokeWidth="2.5" strokeLinecap="round" />
+        fill="none" stroke="#044F63" strokeWidth="2.5" strokeLinecap="round" />
       <path d="M0 36 C24 27, 44 31, 68 17 S112 7, 155 11 L155 46 L0 46 Z" fill="url(#chartFill)" />
-      <circle cx="110" cy="9" r="4" fill="#ef4444" />
+      <circle cx="110" cy="9" r="4" fill="#E46350" />
     </svg>
   </FloatingBadge>
 );
@@ -172,14 +172,14 @@ const HeroSection = () => {
         className="relative w-full overflow-hidden"
         style={{
           minHeight: 'calc(100vh - 80px)',
-          background: 'linear-gradient(135deg, #eef2ff 0%, #f0f9ff 55%, #fefce8 100%)',
+          background: 'linear-gradient(135deg, #ffffff 0%, hsl(193, 60%, 97%) 55%, hsl(41, 60%, 96%) 100%)',
         }}
       >
         {/* ── decorative blobs ── */}
         {[
-          { s: 400, top: '-80px', left: '-60px', color: '#1e3a5f', d: '0s' },
-          { s: 280, top: '55%', right: '-40px', color: '#f59e0b', d: '1s' },
-          { s: 180, bottom: '-30px', left: '42%', color: '#1e3a5f', d: '0.5s' },
+          { s: 400, top: '-80px', left: '-60px', color: '#044F63', d: '0s' },
+          { s: 280, top: '55%', right: '-40px', color: '#F5A700', d: '1s' },
+          { s: 180, bottom: '-30px', left: '42%', color: '#044F63', d: '0.5s' },
         ].map((b, i) => (
           <div key={i} style={{
             position: 'absolute', width: b.s, height: b.s, borderRadius: '50%',
@@ -196,7 +196,7 @@ const HeroSection = () => {
             position: 'absolute',
             width: i % 3 === 0 ? 7 : 4, height: i % 3 === 0 ? 7 : 4,
             borderRadius: '50%',
-            background: i % 2 === 0 ? '#1e3a5f' : '#f59e0b',
+            background: i % 2 === 0 ? '#044F63' : '#F5A700',
             opacity: 0.13,
             top: `${7 + i * 5.8}%`,
             left: `${2 + (i % 5) * 2.5}%`,
@@ -216,10 +216,10 @@ const HeroSection = () => {
             <div style={{ position: 'relative', height: '330px' }}>
               <div style={{
                 width: '250px', height: '250px', borderRadius: '50%',
-                background: 'linear-gradient(145deg, #c7d2fe, #818cf8)',
+                background: 'linear-gradient(145deg, hsl(193, 85%, 35%), hsl(193, 92%, 20%))',
                 position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)',
                 overflow: 'hidden',
-                boxShadow: '0 20px 55px rgba(108,99,255,0.22)',
+                boxShadow: '0 20px 55px rgba(4,79,99,0.22)',
               }}>
                 <img
                   src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80"
@@ -237,14 +237,14 @@ const HeroSection = () => {
 
             {/* eyebrow */}
             <div className="mb-5 flex items-center gap-3">
-              <span style={{ display: 'inline-block', width: 28, height: 2, background: '#f59e0b', borderRadius: 2 }} />
+              <span style={{ display: 'inline-block', width: 28, height: 2, background: '#F5A700', borderRadius: 2 }} />
               <span style={{
                 fontSize: '11px', fontWeight: 700, letterSpacing: '2.5px',
-                textTransform: 'uppercase', color: '#f59e0b',
+                textTransform: 'uppercase', color: '#F5A700',
               }}>
                 Education Platform
               </span>
-              <span style={{ display: 'inline-block', width: 28, height: 2, background: '#f59e0b', borderRadius: 2 }} />
+              <span style={{ display: 'inline-block', width: 28, height: 2, background: '#F5A700', borderRadius: 2 }} />
             </div>
 
             {/* heading */}
@@ -271,7 +271,7 @@ const HeroSection = () => {
             <div className="mb-8 flex flex-col items-center gap-3 sm:flex-row sm:gap-5">
               <Button size="lg" asChild
                 className="group rounded-full bg-primary px-8 font-bold text-white shadow-xl transition-all hover:-translate-y-1"
-                style={{ boxShadow: '0 8px 28px rgba(30,58,95,0.32)' }}>
+                style={{ boxShadow: '0 8px 28px rgba(4,79,99,0.32)' }}>
                 <Link href="/services" className="flex items-center gap-2">
                   Explore Programs
                   <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:translate-x-1">
@@ -288,16 +288,16 @@ const HeroSection = () => {
                 <span
                   style={{
                     width: 46, height: 46, borderRadius: '50%',
-                    border: '2px solid rgba(30,58,95,0.2)',
+                    border: '2px solid rgba(4,79,99,0.2)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     transition: 'all 0.2s',
                   }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = '#f59e0b';
-                    e.currentTarget.style.boxShadow = '0 0 0 4px rgba(245,158,11,0.15)';
+                    e.currentTarget.style.borderColor = '#F5A700';
+                    e.currentTarget.style.boxShadow = '0 0 0 4px rgba(245,167,0,0.15)';
                   }}
                   onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = 'rgba(30,58,95,0.2)';
+                    e.currentTarget.style.borderColor = 'rgba(4,79,99,0.2)';
                     e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
@@ -309,7 +309,7 @@ const HeroSection = () => {
 
             {/* divider + partner logos */}
             <div style={{ width: '100%', maxWidth: 420 }}>
-              <div style={{ borderTop: '1.5px dashed rgba(30,58,95,0.15)', marginBottom: '18px' }} />
+              <div style={{ borderTop: '1.5px dashed rgba(4,79,99,0.15)', marginBottom: '18px' }} />
               <div className="flex flex-wrap items-center justify-center gap-6">
                 {[
                   { icon: '🏫', name: 'SchoolPro' },
@@ -319,7 +319,7 @@ const HeroSection = () => {
                 ].map((b) => (
                   <div key={b.name} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                     <span style={{ fontSize: 17 }}>{b.icon}</span>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: 'rgba(30,58,95,0.38)' }}>{b.name}</span>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: 'rgba(4,79,99,0.38)' }}>{b.name}</span>
                   </div>
                 ))}
               </div>
@@ -332,10 +332,10 @@ const HeroSection = () => {
             <div style={{ position: 'relative', height: '330px' }}>
               <div style={{
                 width: '250px', height: '250px', borderRadius: '50%',
-                background: 'linear-gradient(145deg, #fde68a, #f59e0b)',
+                background: 'linear-gradient(145deg, hsl(41, 100%, 70%), hsl(41, 100%, 48%))',
                 position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)',
                 overflow: 'hidden',
-                boxShadow: '0 20px 55px rgba(245,158,11,0.28)',
+                boxShadow: '0 20px 55px rgba(245,167,0,0.28)',
               }}>
                 <img
                   src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"

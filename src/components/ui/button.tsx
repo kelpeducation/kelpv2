@@ -20,9 +20,9 @@ const buttonVariants = cva(
         dark: "bg-foreground text-background hover:bg-foreground/90 hover:-translate-y-0.5",
       },
       size: {
-        default: "h-11 px-6 py-2",
-        sm: "h-9 rounded-md px-4",
-        lg: "h-14 rounded-xl px-10 text-base",
+        default: "h-11 px-7 py-2",
+        sm: "h-9 rounded-md px-5",
+        lg: "h-14 rounded-xl px-11 text-base",
         xl: "h-16 rounded-xl px-12 text-lg",
         icon: "h-10 w-10",
       },
