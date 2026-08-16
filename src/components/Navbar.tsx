@@ -3,6 +3,7 @@ import { Menu, X, ChevronRight, ChevronDown, Youtube, Users, GraduationCap, Arro
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import logo from '@/assets/logo 0.2.png';
+import { Button } from '@/components/ui/button';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -290,16 +291,16 @@ const Navbar = () => {
 
             {/* CTA Button */}
             <div className="hidden xl:flex items-center gap-4 flex-shrink-0">
-              <Link
-                href="/contact"
-                className="group relative px-3 xl:px-4 2xl:px-6 py-2 xl:py-2.5 2xl:py-3 font-semibold text-[11px] xl:text-xs 2xl:text-sm text-white bg-primary rounded-md overflow-hidden transition-all hover:shadow-lg hover:shadow-secondary/30 whitespace-nowrap"
+              <Button
+                asChild
+                shape="pill"
+                className="group px-4 xl:px-5 2xl:px-6 py-2 xl:py-2.5 2xl:py-3 h-auto text-[11px] xl:text-xs 2xl:text-sm whitespace-nowrap"
               >
-                <span className="relative z-10 flex items-center gap-1 xl:gap-2">
-                  Connect
+                <Link href="/contact">
+                  Enroll Now
                   <ChevronRight size={14} className="transition-transform group-hover:translate-x-1 flex-shrink-0" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
-              </Link>
+                </Link>
+              </Button>
             </div>
 
             {/* Mobile Toggle */}
@@ -392,14 +393,12 @@ const Navbar = () => {
               </div>
             ))}
 
-            <Link
-              href="/contact"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 mt-4 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold shadow-md"
-            >
-              Enroll Now
-              <ChevronRight size={18} />
-            </Link>
+            <Button asChild shape="pill" className="mt-4 w-full h-auto py-3">
+              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                Enroll Now
+                <ChevronRight size={18} />
+              </Link>
+            </Button>
           </div>
         </div>
       </header>

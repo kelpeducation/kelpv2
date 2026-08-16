@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useState } from 'react';
 import Head from 'next/head';
+import { DecorativeBackground } from '@/components/ui/decorative-background';
 const blogPosts = [
   {
     id: 1,
@@ -76,17 +77,17 @@ const Blog = () => {
       {test ? (
       <main ref={containerRef}>
         {/* Hero */}
-        <section className="pt-32 pb-20 section-padding bg-background relative overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(18,182,213,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(18,182,213,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
-          
+        <section className="pt-32 pb-20 section-padding bg-primary text-white relative overflow-hidden">
+          <DecorativeBackground gridOpacity={0.03} gridSize={60} />
+
           <div className="container-custom relative z-10">
             <div className="max-w-4xl animate-fade-up">
-              <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Blog</span>
+              <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Our Blog</span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6">
                 Insights &
-                <span className="text-gradient-primary block">Resources</span>
+                <span className="text-secondary block">Resources</span>
               </h1>
-              <p className="text-muted-foreground text-xl leading-relaxed">
+              <p className="text-slate-300 text-xl leading-relaxed">
                 Stay updated with the latest educational insights, tips, and resources from KELP. Knowledge shared is potential unlocked.
               </p>
             </div>

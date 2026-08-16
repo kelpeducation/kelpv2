@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -14,8 +14,8 @@
     --popover-foreground: 0 0% 0%;
     --primary: 193 92% 20%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 8 74% 60%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 193 82% 45%;
+    --secondary-foreground: 0 0% 8%;
     --accent: 41 100% 48%;
     --accent-foreground: 0 0% 0%;
     --highlight: 41 100% 48%;
@@ -38,8 +38,8 @@
     --sidebar-foreground: 0 0% 20%;
     --sidebar-primary: 193 92% 20%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 8 74% 60%;
-    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-accent: 193 82% 45%;
+    --sidebar-accent-foreground: 0 0% 8%;
     --sidebar-border: 0 0% 90%;
     --sidebar-ring: 193 92% 20%;
   }
@@ -53,8 +53,8 @@
     --popover-foreground: 0 0% 98%;
     --primary: 193 92% 20%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 8 74% 60%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 193 82% 45%;
+    --secondary-foreground: 0 0% 8%;
     --accent: 41 100% 48%;
     --accent-foreground: 0 0% 0%;
     --muted: 0 0% 20%;
@@ -77,7 +77,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-montserrat antialiased;
+    @apply bg-background text-foreground font-sans antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {

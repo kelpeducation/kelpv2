@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from "react";
 import Head from 'next/head';
+import { DecorativeBackground } from '@/components/ui/decorative-background';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -25,9 +26,7 @@ const NotFound = () => {
 
       <main ref={containerRef} className="flex-grow flex items-center justify-center relative overflow-hidden bg-primary pt-16 pb-32">
         {/* Background Patterns */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(18,182,213,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(18,182,213,0.05)_1px,transparent_1px)] bg-[size:60px_60px] opacity-20" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary rounded-full blur-[150px] opacity-10 animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary rounded-full blur-[150px] opacity-10 animate-pulse delay-700" />
+        <DecorativeBackground gridOpacity={0.03} gridSize={60} blobs={2} blobColor="secondary" />
 
         <div className="container-custom relative z-10 text-center px-4">
           <div className="animate-fade-up">
@@ -49,7 +48,7 @@ const NotFound = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                <Button size="lg" asChild className="bg-secondary hover:bg-secondary/90 text-white border-none text-base px-8 h-12 rounded-xl shadow-lg shadow-secondary/25 hover:scale-105 transition-all duration-300">
+                <Button size="lg" variant="secondary" asChild className="text-base px-8 h-12 hover:scale-105">
                   <Link href="/">
                     <Home size={18} className="mr-2" />
                     Back to Home

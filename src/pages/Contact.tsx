@@ -6,6 +6,7 @@ import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import Head from 'next/head';
+import { DecorativeBackground } from '@/components/ui/decorative-background';
 
 const Contact = () => {
   const containerRef = useGSAPAnimation();
@@ -79,17 +80,17 @@ const Contact = () => {
       {test ? (
       <main ref={containerRef}>
         {/* Hero */}
-        <section className="pt-32 pb-20 section-padding bg-background relative overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(18,182,213,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(18,182,213,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
-          
+        <section className="pt-32 pb-20 section-padding bg-primary text-white relative overflow-hidden">
+          <DecorativeBackground gridOpacity={0.03} gridSize={60} />
+
           <div className="container-custom relative z-10">
             <div className="max-w-4xl animate-fade-up">
-              <span className="text-primary font-semibold text-sm uppercase tracking-wider">Contact Us</span>
+              <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Contact Us</span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6">
                 Let's Start a
-                <span className="text-gradient-primary block">Conversation</span>
+                <span className="text-secondary block">Conversation</span>
               </h1>
-              <p className="text-muted-foreground text-xl leading-relaxed">
+              <p className="text-slate-300 text-xl leading-relaxed">
                 Ready to unlock your potential? Get in touch with our team and take the first step towards transformative education.
               </p>
             </div>

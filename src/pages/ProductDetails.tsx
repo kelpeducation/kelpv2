@@ -91,7 +91,7 @@ const ProductDetails = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   {product.badge && (
-                    <span className="absolute top-4 left-4 bg-secondary text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
+                    <span className="absolute top-4 left-4 bg-secondary text-secondary-foreground text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
                       {product.badge}
                     </span>
                   )}

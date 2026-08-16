@@ -33,16 +33,8 @@ const Market = () => {
       <main ref={containerRef}>
 
         {/* ═══════════ HERO ═══════════ */}
-        <section className="pt-24 pb-20 section-padding bg-slate-900 relative overflow-hidden text-white">
-          {/* Background layers */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-slate-900/80 to-slate-900" />
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(4,79,99,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(4,79,99,0.08)_1px,transparent_1px)] bg-[size:50px_50px]" />
-          </div>
-          {/* Floating orbs */}
-          <div className="absolute top-20 left-10 w-72 h-72 bg-secondary/20 rounded-full blur-[100px] animate-pulse" />
-          <div className="absolute bottom-10 right-20 w-96 h-96 bg-accent/15 rounded-full blur-[120px] animate-pulse" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[140px]" />
+        <section className="pt-24 pb-20 section-padding bg-primary text-white relative overflow-hidden">
+          <DecorativeBackground gridOpacity={0.03} gridSize={60} />
 
           <div className="container-custom relative z-10">
             <div className="max-w-4xl mx-auto text-center animate-fade-up">
@@ -59,8 +51,9 @@ const Market = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
+                  variant="secondary"
                   asChild
-                  className="bg-secondary hover:bg-secondary/90 text-white border-none text-base px-8 py-6 h-auto rounded-xl shadow-lg shadow-secondary/25 hover:scale-105 transition-all duration-300"
+                  className="text-base px-8 py-6 h-auto hover:scale-105"
                 >
                   <a href="#products">
                     Shop Now
@@ -153,7 +146,7 @@ const Market = () => {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     {product.badge && (
-                      <span className="absolute top-4 left-4 bg-secondary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                      <span className="absolute top-4 left-4 bg-secondary text-secondary-foreground text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
                         {product.badge}
                       </span>
                     )}
@@ -177,7 +170,7 @@ const Market = () => {
                       <Link href={`/product/${product.id}`}>
                         <Button
                           size="sm"
-                          className="bg-primary hover:bg-primary/90 text-white rounded-xl text-xs px-4 hover:scale-105 transition-all duration-300"
+                          className="rounded-xl text-xs px-4 hover:scale-105"
                         >
                           <ShoppingCart size={14} className="mr-1" />
                           Add to Cart
@@ -249,7 +242,7 @@ const Market = () => {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     {product.badge && (
-                      <span className="absolute top-3 left-3 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                      <span className="absolute top-3 left-3 bg-secondary text-secondary-foreground text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                         {product.badge}
                       </span>
                     )}
@@ -276,7 +269,7 @@ const Market = () => {
                       <Link href={`/product/${product.id}`}>
                         <Button
                           size="sm"
-                          className="bg-primary hover:bg-primary/90 text-white rounded-xl text-xs px-4 hover:scale-105 transition-all duration-300"
+                          className="rounded-xl text-xs px-4 hover:scale-105"
                         >
                           Buy Now
                         </Button>
@@ -300,8 +293,8 @@ const Market = () => {
           <div className="bg-gradient-to-br from-primary to-[#0f2a4a] rounded-[2rem] p-10 md:p-14 text-center text-white relative overflow-hidden shadow-xl">
             {/* Background blurs */}
             <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-              <div className="absolute top-[-50%] left-[-20%] w-[80%] h-[200%] bg-secondary rounded-full blur-[120px] mix-blend-overlay" />
-              <div className="absolute bottom-[-50%] right-[-20%] w-[80%] h-[200%] bg-accent rounded-full blur-[120px] mix-blend-overlay" />
+              <div className="absolute -top-1/4 -left-1/4 w-80 h-80 bg-secondary rounded-full blur-[100px]" />
+              <div className="absolute -bottom-1/4 -right-1/4 w-80 h-80 bg-accent rounded-full blur-[100px]" />
             </div>
 
             <div className="relative z-10 max-w-3xl mx-auto space-y-8 animate-fade-up">
@@ -315,8 +308,9 @@ const Market = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button
                   size="lg"
+                  variant="secondary"
                   asChild
-                  className="bg-secondary hover:bg-secondary/90 text-white border-none text-base px-8 py-6 h-auto rounded-xl shadow-lg shadow-secondary/25 hover:scale-105 transition-all duration-300"
+                  className="text-base px-8 py-6 h-auto hover:scale-105"
                 >
                   <a href="#products">
                     Start Shopping

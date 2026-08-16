@@ -5,6 +5,7 @@ import { Target, Eye, Heart, Shield, Users, BookOpen, Award, Globe, CheckCircle 
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Head from 'next/head';
+import { DecorativeBackground } from '@/components/ui/decorative-background';
 
 const About = () => {
   const containerRef = useGSAPAnimation();
@@ -52,7 +53,7 @@ const About = () => {
       <main ref={containerRef}>
         {/* Hero */}
         <section className="pt-32 pb-20 section-padding bg-primary text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(18,182,213,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(18,182,213,0.05)_1px,transparent_1px)] bg-[size:60px_60px] opacity-20" />
+          <DecorativeBackground gridOpacity={0.03} gridSize={60} />
 
           <div className="container-custom relative z-10 text-center animate-fade-up">
             <span className="text-secondary font-bold text-sm uppercase tracking-widest mb-4 block">Who We Are</span>
@@ -86,7 +87,7 @@ const About = () => {
               <div className="bg-slate-50 border border-slate-100 rounded-[2.5rem] p-10 md:p-14 hover:shadow-xl transition-shadow duration-500 group relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-150 duration-700"></div>
                 <div className="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-8 relative z-10 group-hover:-translate-y-2 transition-transform duration-300 shadow-lg shadow-secondary/20">
-                  <Eye size={32} className="text-white" />
+                  <Eye size={32} className="text-secondary-foreground" />
                 </div>
                 <h3 className="text-3xl font-bold mb-6 text-primary">Our Vision</h3>
                 <p className="text-slate-600 text-lg leading-relaxed relative z-10">
@@ -121,7 +122,7 @@ const About = () => {
                     className={`bg-white/5 border border-white/10 backdrop-blur-sm rounded-3xl p-10 text-center group hover:bg-white/10 transition-all duration-500 ${index >= 3 ? 'lg:col-span-1 lg:last:col-span-1 lg:last:col-start-auto' : ''}`}
                   >
                     <div className={`w-20 h-20 ${value.color === 'bg-secondary' ? 'bg-secondary shadow-secondary/30' : 'bg-white text-primary shadow-white/10'} rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon size={36} className={`${value.color === 'bg-secondary' ? 'text-white' : 'text-primary'}`} />
+                      <Icon size={36} className={`${value.color === 'bg-secondary' ? 'text-secondary-foreground' : 'text-primary'}`} />
                     </div>
                     <h3 className="text-2xl font-bold mb-4">{value.title}</h3>
                     <p className="text-slate-300 leading-relaxed text-lg">{value.description}</p>
@@ -141,7 +142,7 @@ const About = () => {
             <p className="text-slate-600 text-xl mb-10 leading-relaxed">
               Experience the KELP difference. Whether you are a student, parent, or institution, we have a path for you.
             </p>
-            <Button size="xl" asChild className="bg-primary hover:bg-primary/90 text-white text-lg px-10 py-6 h-auto rounded-full shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <Button size="xl" shape="pill" asChild className="text-lg px-10 py-6 h-auto shadow-xl hover:shadow-2xl hover:-translate-y-1">
               <Link href="/contact">Connect With Us</Link>
             </Button>
           </div>

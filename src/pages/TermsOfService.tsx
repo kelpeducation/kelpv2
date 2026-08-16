@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { FileCheck, BookOpen, AlertCircle, HelpCircle, Phone, Mail } from 'lucide-react';
 import Head from 'next/head';
+import { DecorativeBackground } from '@/components/ui/decorative-background';
 
 const TermsOfService = () => {
     const containerRef = useGSAPAnimation();
@@ -27,7 +28,7 @@ const TermsOfService = () => {
                         </p>
                     </div>
                     {/* Background Pattern */}
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(18,182,213,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(18,182,213,0.05)_1px,transparent_1px)] bg-[size:40px_40px] opacity-30" />
+                    <DecorativeBackground gridOpacity={0.03} gridSize={40} />
                 </section>
 
                 {/* Content Section */}

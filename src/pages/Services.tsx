@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { DecorativeBackground } from '@/components/ui/decorative-background';
 const services = [
   {
     id: 'global-language-mastery',
@@ -33,11 +34,12 @@ const services = [
     image:
       '/images/TeacherTrainingServices-Image.jfif',
     benefits: [
+      'School Consultancy: Strategic guidance to elevate institutional performance.',
       'Teacher Training: High-standard workshops on 21st-century methods.',
-      'Curriculum Architecture: Designing global-standard courses.',
-      'Resource Creation: Writing easy-to-read textbooks & digital tools.',
-      'Digital Media: Producing best educational videos',
-      'School Management: Systems for better student results.',
+      'Shaping School Culture: Building values-driven, high-performing environments.',
+      'Shaping School Leadership: Developing capable, visionary school leaders.',
+      'School Management: Systems and processes for better student results.',
+      'School Support: Ongoing partnership beyond initial consultancy.',
     ],
   },
   {
@@ -81,20 +83,12 @@ const Services = () => {
       <Navbar />
       <main ref={containerRef}>
         {/* Hero */}
-        <section className="pt-32 pb-20 section-padding bg-slate-900 relative overflow-hidden text-white">
-          <div className="absolute inset-0">
-            <img
-              src="/images/HeroSection-Image.jfif"
-              alt="Background"
-              className="w-full h-full object-cover opacity-20"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/80 to-slate-900" />
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(18,182,213,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(18,182,213,0.05)_1px,transparent_1px)] bg-[size:60px_60px]" />
-          </div>
+        <section className="pt-32 pb-20 section-padding bg-primary text-white relative overflow-hidden">
+          <DecorativeBackground gridOpacity={0.03} gridSize={60} />
 
           <div className="container-custom relative z-10">
             <div className="max-w-4xl animate-fade-up">
-              <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Services</span>
+              <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Our Services</span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6">
                 Comprehensive Education
                 <span className="text-secondary block">Programs & Services</span>
@@ -166,7 +160,7 @@ const Services = () => {
                           <span className="text-slate-700">
                             {benefit.includes(':') ? (
                               <>
-                                <strong className="font-semibold text-slate-900 leading-relaxed font-outfit">{benefit.split(':')[0]}:</strong>
+                                <strong className="font-semibold text-slate-900 leading-relaxed">{benefit.split(':')[0]}:</strong>
                                 {benefit.substring(benefit.indexOf(':') + 1)}
                               </>
                             ) : (
@@ -178,7 +172,7 @@ const Services = () => {
                     </ul>
 
                     <div className="mt-10">
-                      <Button size="lg" variant="hero" asChild className="bg-secondary hover:bg-secondary/90 text-white border-none">
+                      <Button size="lg" variant="secondary" asChild>
                         <Link href="/contact">
                           Inquire Now
                           <ArrowRight size={18} />
@@ -198,10 +192,7 @@ const Services = () => {
         <section className="container-custom pb-16 relative z-10">
           <div className="bg-gradient-to-br from-primary to-[#0f2a4a] rounded-[2rem] p-10 md:p-14 text-center text-white relative overflow-hidden shadow-xl">
             {/* Background Pattern */}
-            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-              <div className="absolute top-[-50%] left-[-20%] w-[80%] h-[200%] bg-secondary rounded-full blur-[120px] mix-blend-overlay"></div>
-              <div className="absolute bottom-[-50%] right-[-20%] w-[80%] h-[200%] bg-secondary rounded-full blur-[120px] mix-blend-overlay"></div>
-            </div>
+            <DecorativeBackground grid={false} blobs={2} blobColor="secondary" />
 
             <div className="relative z-10 max-w-3xl mx-auto space-y-8 animate-fade-up">
               <h2 className="text-2xl md:text-3xl font-bold leading-tight">
@@ -211,7 +202,7 @@ const Services = () => {
                 Unlock your full potential with a personalized learning path. Our team is here to guide you to the perfect educational solution.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button size="lg" asChild className="bg-secondary hover:bg-secondary/90 text-white border-none text-base px-8 py-6 h-auto rounded-xl shadow-lg shadow-secondary/25 hover:scale-105 transition-all duration-300">
+                <Button size="lg" variant="secondary" asChild className="text-base px-8 py-6 h-auto hover:scale-105">
                   <Link href="/contact">
                     Schedule a Consultation
                     <ArrowRight size={18} className="ml-2" />

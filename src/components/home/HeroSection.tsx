@@ -253,7 +253,6 @@ const HeroSection = () => {
               style={{
                 fontSize: 'clamp(36px, 5vw, 64px)',
                 letterSpacing: '-2px', lineHeight: 1.08,
-                fontFamily: "'Nunito', 'DM Sans', sans-serif",
               }}
             >
               Learning that

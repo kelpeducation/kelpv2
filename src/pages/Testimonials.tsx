@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useState } from 'react';
 import Head from 'next/head';
+import { DecorativeBackground } from '@/components/ui/decorative-background';
 const testimonials = [
   {
     quote: "KELP's English courses transformed my communication skills completely. Within six months, I gained the confidence to apply for international positions. The personalized approach and supportive instructors made all the difference in my learning journey.",
@@ -70,18 +71,17 @@ const Testimonials = () => {
       {test ? (
       <main ref={containerRef}>
         {/* Hero */}
-        <section className="pt-32 pb-20 section-padding bg-foreground text-background relative overflow-hidden">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-80 h-80 bg-secondary/20 rounded-full blur-3xl" />
-          
+        <section className="pt-32 pb-20 section-padding bg-primary text-white relative overflow-hidden">
+          <DecorativeBackground gridOpacity={0.03} gridSize={60} />
+
           <div className="container-custom relative z-10">
             <div className="max-w-4xl animate-fade-up">
-              <span className="text-primary font-semibold text-sm uppercase tracking-wider">Success Stories</span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 text-background">
+              <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Success Stories</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6">
                 Voices of
-                <span className="text-gradient-gold block">Transformation</span>
+                <span className="text-secondary block">Transformation</span>
               </h1>
-              <p className="text-background/70 text-xl leading-relaxed">
+              <p className="text-slate-300 text-xl leading-relaxed">
                 Real stories from real people whose lives have been transformed through KELP's educational programs. Their success is our greatest achievement.
               </p>
             </div>
