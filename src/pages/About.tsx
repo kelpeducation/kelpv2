@@ -55,13 +55,13 @@ const About = () => {
         <section className="pt-32 pb-20 section-padding bg-primary text-white relative overflow-hidden">
           <DecorativeBackground gridOpacity={0.03} gridSize={60} />
 
-          <div className="container-custom relative z-10 text-center animate-fade-up">
+          <div className="container-custom relative z-10 max-w-4xl mx-auto text-center animate-fade-up">
             <span className="text-secondary font-bold text-sm uppercase tracking-widest mb-4 block">Who We Are</span>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
               Unlocking Potential, <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-white">Empowering Futures</span>
             </h1>
-            <p className="text-slate-200 text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto font-light">
+            <p className="text-slate-300 text-xl leading-relaxed">
               KELP is dedicated to providing transformative, sustainable, and accessible educational solutions that foster holistic development and lifelong growth.
             </p>
           </div>

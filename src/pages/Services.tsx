@@ -87,7 +87,7 @@ const Services = () => {
           <DecorativeBackground gridOpacity={0.03} gridSize={60} />
 
           <div className="container-custom relative z-10">
-            <div className="max-w-4xl animate-fade-up">
+            <div className="max-w-4xl mx-auto text-center animate-fade-up">
               <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Our Services</span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6">
                 Comprehensive Education

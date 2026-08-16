@@ -45,7 +45,7 @@ const Market = () => {
                   Learning Journey
                 </span>
               </h1>
-              <p className="text-slate-300 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
+              <p className="text-slate-300 text-xl leading-relaxed mb-10">
                 Discover books and tools to boost your knowledge —{' '}
                 <em className="text-accent font-medium not-italic">wige neza, utere imbere.</em>
               </p>
