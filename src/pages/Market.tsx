@@ -304,7 +304,6 @@ const Market = () => {
                   size="lg"
                   variant="secondary"
                   asChild
-                  className="text-base px-8 py-6 h-auto hover:scale-105"
                 >
                   <a href="#products">
                     Start Shopping
@@ -315,7 +314,7 @@ const Market = () => {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="border-white/20 text-white hover:bg-white/10 hover:scale-105"
+                  className="border-white/20 text-white hover:bg-white/10"
                 >
                   <Link href="/contact">Contact Us</Link>
                 </Button>
