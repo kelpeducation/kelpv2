@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/about', label: 'About Us' },
   { href: '/services', label: 'Services & Programs', hasDropdown: true },
   { href: '/market', label: 'Market' },
+  { href: '/blog', label: 'Blog' },
   // Grow With Us hidden for now — re-add this entry (or manage via CMS) to bring it back.
   // { href: '/blog', label: 'Grow With Us', hasDropdown: true },
   // Success Stories hidden for now — re-add this entry (or manage via CMS) to bring it back.
