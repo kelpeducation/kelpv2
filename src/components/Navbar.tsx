@@ -15,7 +15,8 @@ const navLinks = [
   // { href: '/blog', label: 'Grow With Us', hasDropdown: true },
   // Success Stories hidden for now — re-add this entry (or manage via CMS) to bring it back.
   // { href: '/testimonials', label: 'Success Stories' },
-  { href: '/contact', label: 'Contact' },
+  // Contact moved to the CTA button — re-add this entry to bring it back into the nav links.
+  // { href: '/contact', label: 'Contact' },
 ];
 
 const growLinks = [
@@ -301,7 +302,7 @@ const Navbar = () => {
                 className="group px-5 xl:px-6 2xl:px-7 py-2.5 xl:py-3 2xl:py-3.5 h-auto text-xs xl:text-sm 2xl:text-base whitespace-nowrap"
               >
                 <Link href="/contact">
-                  Enroll Now
+                  Contact Us
                   <ChevronRight size={14} className="transition-transform group-hover:translate-x-1 flex-shrink-0" />
                 </Link>
               </Button>
@@ -399,7 +400,7 @@ const Navbar = () => {
 
             <Button asChild shape="pill" className="mt-4 w-full h-auto py-3">
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                Enroll Now
+                Contact Us
                 <ChevronRight size={18} />
               </Link>
             </Button>
