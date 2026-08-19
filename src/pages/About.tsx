@@ -1,11 +1,11 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PageHero from '@/components/PageHero';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { Target, Eye, Heart, Shield, Users, BookOpen, Award, Globe, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Head from 'next/head';
-import { DecorativeBackground } from '@/components/ui/decorative-background';
 
 const About = () => {
   const containerRef = useGSAPAnimation();
@@ -52,20 +52,12 @@ const About = () => {
       <Navbar />
       <main ref={containerRef}>
         {/* Hero */}
-        <section className="pt-32 pb-20 section-padding bg-primary text-white relative overflow-hidden">
-          <DecorativeBackground gridOpacity={0.03} gridSize={60} />
-
-          <div className="container-custom relative z-10 max-w-4xl mx-auto text-center animate-fade-up">
-            <span className="text-secondary font-bold text-sm uppercase tracking-widest mb-4 block">Who We Are</span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
-              Unlocking Potential, <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-white">Empowering Futures</span>
-            </h1>
-            <p className="text-slate-300 text-xl leading-relaxed">
-              KELP is dedicated to providing transformative, sustainable, and accessible educational solutions that foster holistic development and lifelong growth.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          eyebrow="Who We Are"
+          title="Unlocking Potential,"
+          highlight="Empowering Futures"
+          description="KELP is dedicated to providing transformative, sustainable, and accessible educational solutions that foster holistic development and lifelong growth."
+        />
 
         {/* Mission & Vision */}
         <section className="section-padding bg-white">
@@ -106,7 +98,7 @@ const About = () => {
           </div>
 
           <div className="container-custom relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-20 animate-fade-up">
+            <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-up">
               <span className="text-secondary font-bold text-sm uppercase tracking-widest">Our DNA</span>
               <h2 className="text-4xl md:text-5xl font-bold mt-4 leading-tight">
                 Core Values That <span className="text-secondary">Define Scucess</span>
@@ -134,7 +126,7 @@ const About = () => {
         </section>
 
         {/* CTA */}
-        <section className="container-custom py-24 relative z-10 text-center">
+        <section className="container-custom py-16 relative z-10 text-center">
           <div className="max-w-4xl mx-auto animate-fade-up">
             <h2 className="text-4xl md:text-5xl font-bold mb-8 text-primary">
               Let's <span className="text-secondary">Grow Together</span>

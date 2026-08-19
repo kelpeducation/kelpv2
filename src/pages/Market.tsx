@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PageHero from '@/components/PageHero';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { BookOpen, Brain, GraduationCap, Monitor, ShoppingCart, ArrowRight, Star, Filter, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Head from 'next/head';
-import { DecorativeBackground } from '@/components/ui/decorative-background';
 
 /* ────────── Data ────────── */
 import { categories, allProducts } from '@/data/products';
@@ -34,45 +34,38 @@ const Market = () => {
       <main ref={containerRef}>
 
         {/* ═══════════ HERO ═══════════ */}
-        <section className="pt-24 pb-20 section-padding bg-primary text-white relative overflow-hidden">
-          <DecorativeBackground gridOpacity={0.03} gridSize={60} />
-
-          <div className="container-custom relative z-10">
-            <div className="max-w-4xl mx-auto text-center animate-fade-up">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Empowering Your{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">
-                  Learning Journey
-                </span>
-              </h1>
-              <p className="text-slate-300 text-xl leading-relaxed mb-10">
-                Discover books and tools to boost your knowledge —{' '}
-                <em className="text-accent font-medium not-italic">wige neza, utere imbere.</em>
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  variant="secondary"
-                  asChild
-                  className="text-base px-8 py-6 h-auto hover:scale-105"
-                >
-                  <a href="#products">
-                    Shop Now
-                    <ShoppingCart size={18} className="ml-2" />
-                  </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="border-white/20 text-white hover:bg-white/10 text-base px-8 py-6 h-auto rounded-xl hover:scale-105 transition-all duration-300"
-                >
-                  <a href="#categories">Explore Categories</a>
-                </Button>
-              </div>
-            </div>
+        <PageHero
+          eyebrow="Marketplace"
+          title="Empowering Your"
+          highlight="Learning Journey"
+          description={
+            <>
+              Discover books and tools to boost your knowledge —{' '}
+              <em className="text-accent font-medium not-italic">wige neza, utere imbere.</em>
+            </>
+          }
+        >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+            <Button
+              size="lg"
+              variant="secondary"
+              asChild
+            >
+              <a href="#products">
+                Shop Now
+                <ShoppingCart size={18} className="ml-2" />
+              </a>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="border-white/20 text-white hover:bg-white/10"
+            >
+              <a href="#categories">Explore Categories</a>
+            </Button>
           </div>
-        </section>
+        </PageHero>
 
         {/* ═══════════ CATEGORIES ═══════════ */}
         <section id="categories" className="section-padding bg-muted/30">
@@ -171,7 +164,7 @@ const Market = () => {
                       <Link href={`/product/${product.id}`}>
                         <Button
                           size="sm"
-                          className="rounded-xl text-xs px-4 hover:scale-105"
+                          className="text-xs px-4 hover:scale-105"
                         >
                           <ShoppingCart size={14} className="mr-1" />
                           Add to Cart
@@ -202,7 +195,7 @@ const Market = () => {
             <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-up">
               <button
                 onClick={() => setActiveFilter('all')}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${activeFilter === 'all'
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${activeFilter === 'all'
                   ? 'bg-primary text-white shadow-lg shadow-primary/25'
                   : 'bg-white text-slate-600 border border-slate-200 hover:border-primary/30 hover:text-primary'
                   }`}
@@ -216,7 +209,7 @@ const Market = () => {
                   <button
                     key={cat.id}
                     onClick={() => setActiveFilter(cat.id)}
-                    className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${activeFilter === cat.id
+                    className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${activeFilter === cat.id
                       ? 'bg-primary text-white shadow-lg shadow-primary/25'
                       : 'bg-white text-slate-600 border border-slate-200 hover:border-primary/30 hover:text-primary'
                       }`}
@@ -270,7 +263,7 @@ const Market = () => {
                       <Link href={`/product/${product.id}`}>
                         <Button
                           size="sm"
-                          className="rounded-xl text-xs px-4 hover:scale-105"
+                          className="text-xs px-4 hover:scale-105"
                         >
                           Buy Now
                         </Button>
@@ -322,7 +315,7 @@ const Market = () => {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="border-white/20 text-white hover:bg-white/10 text-base px-8 py-6 h-auto rounded-xl hover:scale-105 transition-all duration-300"
+                  className="border-white/20 text-white hover:bg-white/10 hover:scale-105"
                 >
                   <Link href="/contact">Contact Us</Link>
                 </Button>

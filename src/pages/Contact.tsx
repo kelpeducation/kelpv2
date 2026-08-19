@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PageHero from '@/components/PageHero';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, Send, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import Head from 'next/head';
-import { DecorativeBackground } from '@/components/ui/decorative-background';
 
 const Contact = () => {
   const containerRef = useGSAPAnimation();
@@ -80,22 +80,12 @@ const Contact = () => {
       {test ? (
       <main ref={containerRef}>
         {/* Hero */}
-        <section className="pt-32 pb-20 section-padding bg-primary text-white relative overflow-hidden">
-          <DecorativeBackground gridOpacity={0.03} gridSize={60} />
-
-          <div className="container-custom relative z-10">
-            <div className="max-w-4xl mx-auto text-center animate-fade-up">
-              <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Contact Us</span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6">
-                Let's Start a
-                <span className="text-secondary block">Conversation</span>
-              </h1>
-              <p className="text-slate-300 text-xl leading-relaxed">
-                Ready to unlock your potential? Get in touch with our team and take the first step towards transformative education.
-              </p>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          eyebrow="Contact Us"
+          title="Let's Start a"
+          highlight="Conversation"
+          description="Ready to unlock your potential? Get in touch with our team and take the first step towards transformative education."
+        />
 
         {/* Contact Section */}
         <section className="section-padding bg-muted/30">
@@ -221,32 +211,6 @@ const Contact = () => {
                     </div>
                   </a>
 
-                  <div className="flex items-start gap-4 p-6 bg-card border border-border rounded-2xl">
-                    <div className="w-14 h-14 bg-accent rounded-xl flex items-center justify-center flex-shrink-0">
-                      <MapPin size={24} className="text-accent-foreground" />
-                    </div>
-                    <div>
-                      <p className="text-muted-foreground text-sm mb-1">Location</p>
-                      <p className="text-foreground font-semibold text-lg">Busasamana, Nyanza</p>
-                      <p className="text-muted-foreground">Southern Province, Rwanda</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Map placeholder */}
-                <div className="aspect-video bg-muted rounded-3xl flex items-center justify-center border border-border">
-                  <div className="text-center">
-                    <MapPin size={40} className="text-primary mx-auto mb-2" />
-                    <p className="text-muted-foreground">Map Location</p>
-                    <a 
-                      href="https://www.google.com/maps?q=Busasamana,+Nyanza,+Rwanda" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-primary text-sm hover:underline"
-                    >
-                      View on Google Maps
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>

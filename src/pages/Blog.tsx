@@ -77,7 +77,7 @@ const Blog = () => {
       {test ? (
       <main ref={containerRef}>
         {/* Hero */}
-        <section className="pt-32 pb-20 section-padding bg-primary text-white relative overflow-hidden">
+        <section className="pt-28 pb-16 section-padding bg-primary text-white relative overflow-hidden">
           <DecorativeBackground gridOpacity={0.03} gridSize={60} />
 
           <div className="container-custom relative z-10">

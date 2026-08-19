@@ -10,9 +10,11 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
   { href: '/services', label: 'Services & Programs', hasDropdown: true },
-  { href: '/blog', label: 'Grow With Us', hasDropdown: true },
   { href: '/market', label: 'Market' },
-  { href: '/testimonials', label: 'Success Stories' },
+  // Grow With Us hidden for now — re-add this entry (or manage via CMS) to bring it back.
+  // { href: '/blog', label: 'Grow With Us', hasDropdown: true },
+  // Success Stories hidden for now — re-add this entry (or manage via CMS) to bring it back.
+  // { href: '/testimonials', label: 'Success Stories' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -140,7 +142,7 @@ const Navbar = () => {
           }`}
       >
         <nav className="container mx-auto px-4 xl:px-8 2xl:px-12">
-          <div className="flex items-center justify-between h-24 xl:h-28">
+          <div className="flex items-center justify-between h-20 xl:h-24">
 
             {/* Logo — big and prominent across all screen sizes */}
             <Link href="/" className="flex items-center group flex-shrink-0">
@@ -148,7 +150,7 @@ const Navbar = () => {
                 src={logo}
                 alt="Kelp Education Logo"
                 priority
-                className="h-20 sm:h-22 xl:h-26 2xl:h-32 w-auto object-contain transform transition-transform group-hover:scale-105"
+                className="h-16 xl:h-20 2xl:h-24 w-auto object-contain transform transition-transform group-hover:scale-105"
               />
             </Link>
 
@@ -167,7 +169,7 @@ const Navbar = () => {
                   >
                     <Link
                       href={link.href}
-                      className={`relative px-2 xl:px-3 2xl:px-4 py-2 text-[11px] xl:text-xs 2xl:text-sm font-medium transition-all duration-300 rounded-md flex items-center gap-0.5 xl:gap-1 group whitespace-nowrap ${
+                      className={`relative px-3 xl:px-4 2xl:px-5 py-2 text-xs xl:text-sm 2xl:text-base font-medium transition-all duration-300 rounded-md flex items-center gap-0.5 xl:gap-1 group whitespace-nowrap ${
                         location === link.href || (hasDrop && activeDropdown === link.label)
                           ? 'text-primary'
                           : 'text-slate-700 hover:text-primary/90'
@@ -190,7 +192,7 @@ const Navbar = () => {
                     {/* Dropdown */}
                     {hasDrop && (
                       <div
-                        className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-300 transform origin-top w-[520px] xl:w-[560px] 2xl:w-[600px] ${
+                        className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-300 transform origin-top w-[460px] max-w-[92vw] xl:w-[480px] 2xl:w-[600px] ${
                           activeDropdown === link.label
                             ? 'opacity-100 visible translate-y-0'
                             : 'opacity-0 invisible -translate-y-2 pointer-events-none'
@@ -296,7 +298,7 @@ const Navbar = () => {
               <Button
                 asChild
                 shape="pill"
-                className="group px-4 xl:px-5 2xl:px-6 py-2 xl:py-2.5 2xl:py-3 h-auto text-[11px] xl:text-xs 2xl:text-sm whitespace-nowrap"
+                className="group px-5 xl:px-6 2xl:px-7 py-2.5 xl:py-3 2xl:py-3.5 h-auto text-xs xl:text-sm 2xl:text-base whitespace-nowrap"
               >
                 <Link href="/contact">
                   Enroll Now

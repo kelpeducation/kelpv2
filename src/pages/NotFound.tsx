@@ -54,7 +54,7 @@ const NotFound = () => {
                     Back to Home
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild className="border-white/10 text-white hover:bg-white/10 text-base px-8 h-12 rounded-xl hover:scale-105 transition-all duration-300">
+                <Button size="lg" variant="outline" asChild className="border-white/10 text-white hover:bg-white/10 hover:scale-105">
                   <Link href="/contact">
                     Contact Support
                     <ArrowRight size={18} className="ml-2" />

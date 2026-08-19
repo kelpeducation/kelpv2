@@ -301,8 +301,8 @@ const ProductDetails = () => {
                     </div>
                   </div>
                   
-                  <Button 
-                    className="w-full h-14 text-lg font-bold rounded-xl shadow-lg shadow-primary/25 hover:scale-[1.02] transition-transform duration-300"
+                  <Button
+                    className="w-full h-14 text-lg font-bold shadow-lg shadow-primary/25 hover:scale-[1.02] transition-transform duration-300"
                     disabled={!paymentMethod}
                     onClick={() => {
                       if (paymentMethod) {

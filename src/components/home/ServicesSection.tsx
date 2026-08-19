@@ -87,7 +87,7 @@ const ServicesSection = () => {
 
       <div className="container-custom relative z-10">
         {/* Header */}
-        <div className="mb-20 max-w-3xl">
+        <div className="mb-12 max-w-3xl">
           <span className="block mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
             What We Do
           </span>

@@ -211,7 +211,7 @@ const HeroSection = () => {
         >
 
           {/* ── LEFT — person + 2 cards ── */}
-          <div className="side-person hidden w-[270px] shrink-0 flex-col gap-3 lg:flex xl:w-[310px]">
+          <div className="side-person hidden w-[310px] shrink-0 flex-col gap-3 xl:flex">
             {/* circle */}
             <div style={{ position: 'relative', height: '330px' }}>
               <div style={{
@@ -251,8 +251,8 @@ const HeroSection = () => {
             <h1
               className="mb-5 font-black leading-tight text-primary"
               style={{
-                fontSize: 'clamp(36px, 5vw, 64px)',
-                letterSpacing: '-2px', lineHeight: 1.08,
+                fontSize: 'clamp(24px, 3vw, 40px)',
+                letterSpacing: '-1px', lineHeight: 1.15,
               }}
             >
               Learning that
@@ -327,7 +327,7 @@ const HeroSection = () => {
           </div>
 
           {/* ── RIGHT — person + 2 cards ── */}
-          <div className="side-person hidden w-[270px] shrink-0 flex-col gap-3 lg:flex xl:w-[310px]">
+          <div className="side-person hidden w-[310px] shrink-0 flex-col gap-3 xl:flex">
             {/* circle */}
             <div style={{ position: 'relative', height: '330px' }}>
               <div style={{

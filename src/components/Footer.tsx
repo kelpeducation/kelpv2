@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Mail, Phone, MapPin, ArrowRight, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import logo from '@/assets/logo 0.1.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,11 +14,11 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
             {/* Brand Column */}
             <div className="lg:col-span-1">
-              <Link href="/" className="inline-block -mt-10 -mb-4 -ml-4">
+              <Link href="/" className="inline-block mb-4">
                 <img
-                  src={typeof logo === 'string' ? logo : logo.src}
+                  src="/logo-white.png"
                   alt="KELP Education"
-                  className="w-0 md:w-72 h-auto object-contain scale-110"
+                  className="w-16 md:w-20 h-auto object-contain"
                 />
               </Link>
               <p className="text-background/70 text-sm leading-relaxed mb-6 mt-2">
@@ -61,7 +60,7 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-bold mb-6">Quick Links</h4>
               <ul className="space-y-3">
-                {['Home', 'About Us', 'Services', 'Market', 'Success Stories', 'Blog', 'Contact'].map((item) => (
+                {['Home', 'About Us', 'Services', 'Market', 'Blog', 'Contact'].map((item) => (
                   <li key={item}>
                     <Link
                       href={`/${item.toLowerCase().replace(' ', '-').replace('home', '')}`}

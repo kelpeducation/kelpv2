@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PageHero from '@/components/PageHero';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { BookOpen, Users, GraduationCap, Building2, Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -83,22 +84,12 @@ const Services = () => {
       <Navbar />
       <main ref={containerRef}>
         {/* Hero */}
-        <section className="pt-32 pb-20 section-padding bg-primary text-white relative overflow-hidden">
-          <DecorativeBackground gridOpacity={0.03} gridSize={60} />
-
-          <div className="container-custom relative z-10">
-            <div className="max-w-4xl mx-auto text-center animate-fade-up">
-              <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Our Services</span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6">
-                Comprehensive Education
-                <span className="text-secondary block">Programs & Services</span>
-              </h1>
-              <p className="text-slate-300 text-xl leading-relaxed">
-                From language mastery to institutional consultancy, our services are specifically designed to meet the evolving needs of modern learners and educational leaders.
-              </p>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          eyebrow="Our Services"
+          title="Comprehensive Education"
+          highlight="Programs & Services"
+          description="From language mastery to institutional consultancy, our services are specifically designed to meet the evolving needs of modern learners and educational leaders."
+        />
 
         {/* Services Detail */}
         <section className="section-padding bg-muted/30">
@@ -122,7 +113,7 @@ const Services = () => {
                       <img
                         src={service.image}
                         alt={service.title}
-                        className="h-[400px] w-full object-cover transition-transform duration-700 hover:scale-105"
+                        className="h-[280px] sm:h-[340px] lg:h-[400px] w-full object-cover transition-transform duration-700 hover:scale-105"
                       />
                     </div>
 
@@ -208,7 +199,7 @@ const Services = () => {
                     <ArrowRight size={18} className="ml-2" />
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild className="border-white/20 text-white hover:bg-white/10 text-base px-8 py-6 h-auto rounded-xl hover:scale-105 transition-all duration-300">
+                <Button size="lg" variant="outline" asChild className="border-white/20 text-white hover:bg-white/10 hover:scale-105">
                   <Link href="/contact">
                     Contact Us
                   </Link>
