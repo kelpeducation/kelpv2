@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 import { ChevronUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const ScrollToTopButton = () => {
+interface ScrollToTopButtonProps {
+    hidden?: boolean;
+}
+
+const ScrollToTopButton = ({ hidden = false }: ScrollToTopButtonProps = {}) => {
     const [isVisible, setIsVisible] = useState(false);
 
     // Show button when page is scrolled down
@@ -35,7 +39,7 @@ const ScrollToTopButton = () => {
             onClick={scrollToTop}
             className={cn(
                 "fixed bottom-24 right-8 z-[100] p-3 rounded-full bg-secondary text-secondary-foreground shadow-lg transition-all duration-300 transform hover:scale-110 hover:bg-secondary/90 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2",
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
+                isVisible && !hidden ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
             )}
             aria-label="Scroll to top"
         >

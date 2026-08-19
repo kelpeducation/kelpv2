@@ -118,7 +118,7 @@ const ProductDetails = () => {
 
             {/* ════ RIGHT: Checkout Sidebar ════ */}
             <div className="lg:col-span-5 animate-fade-up" style={{ animationDelay: '0.1s' }}>
-              <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-100 sticky top-32">
+              <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-100 lg:sticky lg:top-32">
                 
                 {/* Header Info */}
                 <div className="mb-8">

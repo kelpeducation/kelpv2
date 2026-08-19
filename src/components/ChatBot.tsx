@@ -41,8 +41,16 @@ const formatDate = (timestamp: number) => {
     });
 };
 
-const ChatBot = () => {
+interface ChatBotProps {
+    onOpenChange?: (open: boolean) => void;
+}
+
+const ChatBot = ({ onOpenChange }: ChatBotProps = {}) => {
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        onOpenChange?.(isOpen);
+    }, [isOpen, onOpenChange]);
     const [messages, setMessages] = useState<Message[]>([]);
     const [inputValue, setInputValue] = useState('');
     const [isLoading, setIsLoading] = useState(false);

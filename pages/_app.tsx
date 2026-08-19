@@ -12,6 +12,7 @@ import '@/styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -22,9 +23,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <Toaster />
         <Sonner />
         <ScrollToTop />
-        <ScrollToTopButton />
+        <ScrollToTopButton hidden={isChatOpen} />
         <Component {...pageProps} />
-        <ChatBot />
+        <ChatBot onOpenChange={setIsChatOpen} />
       </TooltipProvider>
     </QueryClientProvider>
   );
