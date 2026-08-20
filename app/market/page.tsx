@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Market from '@/pages/Market';
+import Market from '@/views/Market';
 
 export const metadata: Metadata = {
   title: 'Market | KELP Education',

@@ -170,17 +170,7 @@ const Testimonials = () => {
             </Button>
           </div>
         </section>
-      </main>):(<div className="min-h-screen w-full bg-red-500 flex items-center justify-center px-4">
-  <div className="text-center space-y-4">
-    <h1 className="text-white text-5xl md:text-7xl font-extrabold">
-      Coming Soon
-    </h1>
-    <p className="text-white/80 text-lg md:text-xl">
-      We’re working on something amazing
-    </p>
-  </div>
-</div>
-)}
+      </main>
 
       <Footer />
     </div>

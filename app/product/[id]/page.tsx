@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import ProductDetails from '@/pages/ProductDetails';
+import ProductDetails from '@/views/ProductDetails';
 import { allProducts } from '@/data/products';
 
 interface ProductPageProps {

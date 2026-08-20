@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Blog from '@/pages/Blog';
+import Blog from '@/views/Blog';
 
 export const metadata: Metadata = {
   title: 'Grow With Us | KELP Education Blog',

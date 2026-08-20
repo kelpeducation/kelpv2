@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.kelpeducation.com',
   },
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export const viewport: Viewport = {

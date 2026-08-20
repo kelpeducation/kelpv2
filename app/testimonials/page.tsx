@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Testimonials from '@/pages/Testimonials';
+import Testimonials from '@/views/Testimonials';
 
 export const metadata: Metadata = {
   title: 'Success Stories | KELP Education',

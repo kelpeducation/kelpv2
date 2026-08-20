@@ -99,40 +99,6 @@ const VideosBadge = () => (
   </FloatingBadge>
 );
 
-// ── Mini analytics chart (right side bottom) ────────────────────────────────
-const AnalyticsChart = () => (
-  <FloatingBadge
-    style={{
-      bottom: '52px', right: '6px',
-      flexDirection: 'column', alignItems: 'flex-start',
-      width: '175px', animationDelay: '1.2s',
-    }}
-  >
-    <div style={{ display: 'flex', gap: '5px', marginBottom: '5px' }}>
-      {['Daily', 'Week', 'Month'].map((t, i) => (
-        <span key={t} style={{
-          fontSize: '10px', fontWeight: i === 1 ? 700 : 400,
-          color: i === 1 ? 'white' : '#94a3b8',
-          background: i === 1 ? '#E46350' : 'transparent',
-          borderRadius: '5px', padding: '2px 6px',
-        }}>{t}</span>
-      ))}
-    </div>
-    <svg width="155" height="46" viewBox="0 0 155 46">
-      <defs>
-        <linearGradient id="chartFill" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#044F63" stopOpacity="0.22" />
-          <stop offset="100%" stopColor="#044F63" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      <path d="M0 36 C24 27, 44 31, 68 17 S112 7, 155 11"
-        fill="none" stroke="#044F63" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M0 36 C24 27, 44 31, 68 17 S112 7, 155 11 L155 46 L0 46 Z" fill="url(#chartFill)" />
-      <circle cx="110" cy="9" r="4" fill="#E46350" />
-    </svg>
-  </FloatingBadge>
-);
-
 // ══════════════════════════════════════════════════════════════════════════════
 const HeroSection = () => {
   const heroRef = useHeroAnimation();
@@ -344,7 +310,6 @@ const HeroSection = () => {
                 />
               </div>
               <VideosBadge />
-              <AnalyticsChart />
             </div>
           </div>
         </div>

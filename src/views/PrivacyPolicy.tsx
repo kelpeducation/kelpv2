@@ -2,9 +2,9 @@
 
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PageHero from '@/components/PageHero';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
-import { Shield, Lock, FileText, Mail, MapPin } from 'lucide-react';
-import { DecorativeBackground } from '@/components/ui/decorative-background';
+import { FileText, Mail, MapPin } from 'lucide-react';
 
 const PrivacyPolicy = () => {
     const containerRef = useGSAPAnimation();
@@ -12,21 +12,14 @@ const PrivacyPolicy = () => {
     return (
         <div className="min-h-screen bg-background">
             <Navbar />
-            <main ref={containerRef} className="pt-24 pb-16">
+            <main ref={containerRef}>
                 {/* Hero Section */}
-                <section className="relative bg-primary text-white py-20 px-6">
-                    <div className="container-custom relative z-10 text-center">
-                        <div className="inline-flex items-center justify-center p-3 bg-secondary/20 rounded-full mb-6 backdrop-blur-sm">
-                            <Shield className="text-secondary" size={32} />
-                        </div>
-                        <h1 className="text-4xl md:text-5xl font-bold mb-6">Privacy Policy</h1>
-                        <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                            We value your trust and are committed to protecting your personal information.
-                        </p>
-                    </div>
-                    {/* Background Pattern */}
-                    <DecorativeBackground gridOpacity={0.03} gridSize={40} />
-                </section>
+                <PageHero
+                    eyebrow="Legal"
+                    title="Privacy"
+                    highlight="Policy"
+                    description="We value your trust and are committed to protecting your personal information."
+                />
 
                 {/* Content Section */}
                 <div className="container-custom py-16 max-w-4xl">
