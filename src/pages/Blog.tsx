@@ -1,3 +1,5 @@
+'use client';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
@@ -5,7 +7,6 @@ import { Calendar, ArrowRight, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useState } from 'react';
-import Head from 'next/head';
 import { DecorativeBackground } from '@/components/ui/decorative-background';
 const blogPosts = [
   {
@@ -66,15 +67,9 @@ const blogPosts = [
 
 const Blog = () => {
   const containerRef = useGSAPAnimation();
-  const [test, setTestng]=useState(true);
   return (
     <div className="min-h-screen">
-      <Head>
-        <title>Grow With Us | KELP Education Blog</title>
-        <meta name="description" content="Insights and articles on literacy, teacher training, and adult learning from the KELP Education team." />
-      </Head>
       <Navbar />
-      {test ? (
       <main ref={containerRef}>
         {/* Hero */}
         <section className="pt-28 pb-16 section-padding bg-primary text-white relative overflow-hidden">
@@ -205,17 +200,7 @@ const Blog = () => {
             </div>
           </div>
         </section>
-      </main>):(<div className="min-h-screen w-full bg-red-500 flex items-center justify-center px-4">
-  <div className="text-center space-y-4">
-    <h1 className="text-white text-5xl md:text-7xl font-extrabold">
-      Coming Soon
-    </h1>
-    <p className="text-white/80 text-lg md:text-xl">
-      We’re working on something amazing
-    </p>
-  </div>
-</div>
-)}
+      </main>
 
       <Footer />
     </div>

@@ -1,7 +1,9 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronRight, ChevronDown, Youtube, Users, GraduationCap, ArrowRight, BookOpen, Building2, Globe, FileText, Edit, Clock, Lightbulb, Languages } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import logo from '@/assets/logo 0.2.png';
 import { Button } from '@/components/ui/button';
@@ -52,16 +54,10 @@ const serviceLinks = [
     description: 'Rapid English mastery, Professional English & tutoring'
   },
   {
-    title: 'School & Institutional Consultancy',
+    title: 'School Consultancy',
     icon: Building2,
-    href: '/services#school-institutional-consultancy',
-    description: 'Teacher training, curriculum design & school management'
-  },
-  {
-    title: 'Youth Coaching',
-    icon: Users,
-    href: '/services#youth-coaching',
-    description: 'Life skills, ethics, and career mentorship for youth'
+    href: '/services#school-consultancy',
+    description: 'Teacher training, school culture, leadership, management & support'
   }
 ];
 
@@ -100,8 +96,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileDropdowns, setMobileDropdowns] = useState<Record<string, boolean>>({});
-  const router = useRouter();
-  const location = router.pathname;
+  const location = usePathname();
 
   const toggleMobileDropdown = (label: string) => {
     setMobileDropdowns(prev => ({

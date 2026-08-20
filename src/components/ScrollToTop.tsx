@@ -1,17 +1,17 @@
+'use client';
+
 import { useEffect } from "react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 const ScrollToTop = () => {
-    const router = useRouter();
-    const pathname = router.pathname;
-    const hash = router.asPath.includes('#') ? router.asPath.slice(router.asPath.indexOf('#')) : '';
+    const pathname = usePathname();
 
     useEffect(() => {
         // If there's a hash (anchor link), let the anchor scroll logic handle it
-        if (!hash) {
+        if (!window.location.hash) {
             window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
         }
-    }, [pathname, hash]);
+    }, [pathname]);
 
     return null;
 };

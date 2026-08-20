@@ -1,7 +1,8 @@
+'use client';
+
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { useEffect } from "react";
-import Head from 'next/head';
 import { DecorativeBackground } from '@/components/ui/decorative-background';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,18 +11,15 @@ import { Home, ArrowRight, HelpCircle } from "lucide-react";
 import { useGSAPAnimation } from "@/hooks/useGSAPAnimation";
 
 const NotFound = () => {
-  const router = useRouter();
+  const pathname = usePathname();
   const containerRef = useGSAPAnimation();
 
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", router.pathname);
-  }, [router.pathname]);
+    console.error("404 Error: User attempted to access non-existent route:", pathname);
+  }, [pathname]);
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Head>
-        <title>Page Not Found | KELP Education</title>
-      </Head>
       <Navbar />
 
       <main ref={containerRef} className="flex-grow flex items-center justify-center relative overflow-hidden bg-primary pt-16 pb-32">
@@ -48,13 +46,13 @@ const NotFound = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                <Button size="lg" variant="secondary" asChild className="text-base px-8 h-12 hover:scale-105">
+                <Button size="lg" variant="secondary" asChild>
                   <Link href="/">
                     <Home size={18} className="mr-2" />
                     Back to Home
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild className="border-white/10 text-white hover:bg-white/10 hover:scale-105">
+                <Button size="lg" variant="outline" asChild className="border-white/10 text-white hover:bg-white/10">
                   <Link href="/contact">
                     Contact Support
                     <ArrowRight size={18} className="ml-2" />

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -6,7 +8,6 @@ import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { BookOpen, Brain, GraduationCap, Monitor, ShoppingCart, ArrowRight, Star, Filter, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import Head from 'next/head';
 
 /* ────────── Data ────────── */
 import { categories, allProducts } from '@/data/products';
@@ -26,10 +27,6 @@ const Market = () => {
 
   return (
     <div className="min-h-screen">
-      <Head>
-        <title>Market | KELP Education</title>
-        <meta name="description" content="Browse KELP's marketplace of learning resources, courses, and educational materials." />
-      </Head>
       <Navbar />
       <main ref={containerRef}>
 

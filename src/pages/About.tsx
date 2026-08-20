@@ -1,3 +1,5 @@
+'use client';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PageHero from '@/components/PageHero';
@@ -5,7 +7,6 @@ import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { Target, Eye, Heart, Shield, Users, BookOpen, Award, Globe, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import Head from 'next/head';
 
 const About = () => {
   const containerRef = useGSAPAnimation();
@@ -45,10 +46,6 @@ const About = () => {
 
   return (
     <div className="min-h-screen">
-      <Head>
-        <title>About Us | KELP Education</title>
-        <meta name="description" content="Learn about KELP's mission to deliver transformative, sustainable, and equitable education programs across Rwanda." />
-      </Head>
       <Navbar />
       <main ref={containerRef}>
         {/* Hero */}

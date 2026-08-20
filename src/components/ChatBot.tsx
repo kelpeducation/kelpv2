@@ -1,3 +1,4 @@
+'use client';
 
 import { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Send, Loader2, Sparkles, MoreHorizontal, MessageSquarePlus, History, Trash2, ArrowLeft, MessageSquareText } from 'lucide-react';

@@ -80,8 +80,7 @@ const Footer = () => {
               <ul className="space-y-3">
                 {[
                   { name: 'Global Language Mastery', id: 'global-language-mastery' },
-                  { name: 'School & Institutional Consultancy', id: 'school-institutional-consultancy' },
-                  { name: 'Youth Coaching', id: 'youth-coaching' },
+                  { name: 'School Consultancy', id: 'school-consultancy' },
                 ].map((service) => (
                   <li key={service.id}>
                     <Link

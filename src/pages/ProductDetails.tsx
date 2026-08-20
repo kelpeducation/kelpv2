@@ -1,7 +1,7 @@
+'use client';
+
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Head from 'next/head';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { allProducts, categories } from '@/data/products';
@@ -11,16 +11,18 @@ import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 
 type PaymentMethod = 'momo' | 'airtel' | 'visa' | null;
 
-const ProductDetails = () => {
-  const router = useRouter();
-  const { id } = router.query;
+interface ProductDetailsProps {
+  id?: string;
+}
+
+const ProductDetails = ({ id }: ProductDetailsProps) => {
   const containerRef = useGSAPAnimation();
-  
+
   const [quantity, setQuantity] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>(null);
-  
+
   // Find product
-  const productId = typeof id === 'string' ? Number(id) : Array.isArray(id) ? Number(id[0]) : undefined;
+  const productId = typeof id === 'string' ? Number(id) : undefined;
   const product = allProducts.find(p => p.id === productId);
   const category = categories.find(c => c.id === product?.category);
 
@@ -32,9 +34,6 @@ const ProductDetails = () => {
   if (!product) {
     return (
       <div className="min-h-screen flex flex-col">
-        <Head>
-          <title>Product Not Found | KELP Education</title>
-        </Head>
         <Navbar />
         <main className="flex-grow flex items-center justify-center section-padding bg-slate-50">
           <div className="text-center">
@@ -59,10 +58,6 @@ const ProductDetails = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Head>
-        <title>{product.title} | KELP Market</title>
-        <meta name="description" content={product.description} />
-      </Head>
       <Navbar />
 
       <main ref={containerRef} className="flex-grow bg-slate-50 pt-28 pb-20">

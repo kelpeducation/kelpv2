@@ -1,13 +1,13 @@
+'use client';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PageHero from '@/components/PageHero';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
-import { BookOpen, Users, GraduationCap, Building2, Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import Head from 'next/head';
 import { DecorativeBackground } from '@/components/ui/decorative-background';
 const services = [
   {
@@ -27,35 +27,19 @@ const services = [
     ],
   },
   {
-    id: 'school-institutional-consultancy',
-    title: 'School & Institutional Consultancy',
+    id: 'school-consultancy',
+    title: 'School Consultancy',
     subtitle: 'Elevating Educational Standards',
     description:
       'Partner with us to transform your educational institution. We offer comprehensive consultancy from curriculum design and teacher training to school management systems producing the best student results.',
     image:
       '/images/TeacherTrainingServices-Image.jfif',
     benefits: [
-      'School Consultancy: Strategic guidance to elevate institutional performance.',
       'Teacher Training: High-standard workshops on 21st-century methods.',
       'Shaping School Culture: Building values-driven, high-performing environments.',
       'Shaping School Leadership: Developing capable, visionary school leaders.',
       'School Management: Systems and processes for better student results.',
-      'School Support: Ongoing partnership beyond initial consultancy.',
-    ],
-  },
-  {
-    id: 'youth-coaching',
-    title: 'Youth Coaching',
-    subtitle: 'Empowering the Next Generation',
-    description:
-      'Our coaching programs focus on fundamental life skills, ethics, and career pathfinding, equipping youth with the tools they need to navigate modern challenges and succeed in life.',
-    image:
-      '/images/CoachingMentorship-Image.jfif',
-    benefits: [
-      'Literacy, Life Skills & Soft Skills: Neccessary skills for youth wellbeing and success in life',
-      'Character & Ethics: Building high-integrity and well-mannered youth.',
-      'Digital & Financial Literacy: Money & online safety skills.',
-      'Career Mentorship: Pathfinding for teens & graduates.',
+      'School Support: Ongoing partnership beyond initial consultancy, including access to KELP Market.',
     ],
   },
 ];
@@ -63,24 +47,25 @@ const services = [
 
 const Services = () => {
   const containerRef = useGSAPAnimation();
-  const router = useRouter();
 
   useEffect(() => {
-    if (router.asPath.includes('#')) {
-      const id = router.asPath.split('#')[1];
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+    const scrollToHash = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const id = hash.slice(1);
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
-    }
-  }, [router.asPath]);
+    };
+    scrollToHash();
+    window.addEventListener('hashchange', scrollToHash);
+    return () => window.removeEventListener('hashchange', scrollToHash);
+  }, []);
 
   return (
     <div className="min-h-screen">
-      <Head>
-        <title>Services & Programs | KELP Education</title>
-        <meta name="description" content="Explore KELP's education services and programs, including teacher training, school consultancy, English courses, and adult learning." />
-      </Head>
       <Navbar />
       <main ref={containerRef}>
         {/* Hero */}
@@ -193,13 +178,13 @@ const Services = () => {
                 Unlock your full potential with a personalized learning path. Our team is here to guide you to the perfect educational solution.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button size="lg" variant="secondary" asChild className="text-base px-8 py-6 h-auto hover:scale-105">
+                <Button size="lg" variant="secondary" asChild>
                   <Link href="/contact">
                     Schedule a Consultation
                     <ArrowRight size={18} className="ml-2" />
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild className="border-white/20 text-white hover:bg-white/10 hover:scale-105">
+                <Button size="lg" variant="outline" asChild className="border-white/20 text-white hover:bg-white/10">
                   <Link href="/contact">
                     Contact Us
                   </Link>

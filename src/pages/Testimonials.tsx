@@ -1,3 +1,5 @@
+'use client';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
@@ -5,7 +7,6 @@ import { Quote, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useState } from 'react';
-import Head from 'next/head';
 import { DecorativeBackground } from '@/components/ui/decorative-background';
 const testimonials = [
   {
@@ -60,15 +61,9 @@ const testimonials = [
 
 const Testimonials = () => {
   const containerRef = useGSAPAnimation();
-  const [test, setTestng]=useState(true);
   return (
     <div className="min-h-screen">
-      <Head>
-        <title>Success Stories | KELP Education</title>
-        <meta name="description" content="Read testimonials and success stories from students, parents, and schools who have benefited from KELP's education programs." />
-      </Head>
       <Navbar />
-      {test ? (
       <main ref={containerRef}>
         {/* Hero */}
         <section className="pt-28 pb-16 section-padding bg-primary text-white relative overflow-hidden">

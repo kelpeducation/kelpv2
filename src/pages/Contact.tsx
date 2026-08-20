@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -6,14 +8,12 @@ import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { Mail, Phone, Send, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import Head from 'next/head';
 
 const Contact = () => {
   const containerRef = useGSAPAnimation();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [test, setTestng]=useState(true);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -72,12 +72,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen">
-      <Head>
-        <title>Contact Us | KELP Education</title>
-        <meta name="description" content="Get in touch with KELP Education. We'll get back to you within 24 hours." />
-      </Head>
       <Navbar />
-      {test ? (
       <main ref={containerRef}>
         {/* Hero */}
         <PageHero
@@ -216,17 +211,7 @@ const Contact = () => {
             </div>
           </div>
         </section>
-      </main>):(<div className="min-h-screen w-full bg-red-500 flex items-center justify-center px-4">
-  <div className="text-center space-y-4">
-    <h1 className="text-white text-5xl md:text-7xl font-extrabold">
-      Coming Soon
-    </h1>
-    <p className="text-white/80 text-lg md:text-xl">
-      We’re working on something amazing
-    </p>
-  </div>
-</div>
-)}
+      </main>
 
       <Footer />
     </div>

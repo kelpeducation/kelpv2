@@ -1,8 +1,9 @@
+'use client';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { FileCheck, BookOpen, AlertCircle, HelpCircle, Phone, Mail } from 'lucide-react';
-import Head from 'next/head';
 import { DecorativeBackground } from '@/components/ui/decorative-background';
 
 const TermsOfService = () => {
@@ -10,10 +11,6 @@ const TermsOfService = () => {
 
     return (
         <div className="min-h-screen bg-background">
-            <Head>
-                <title>Terms of Service | KELP Education</title>
-                <meta name="description" content="Review the terms of service governing your use of KELP Education's website and programs." />
-            </Head>
             <Navbar />
             <main ref={containerRef} className="pt-24 pb-16">
                 {/* Hero Section */}

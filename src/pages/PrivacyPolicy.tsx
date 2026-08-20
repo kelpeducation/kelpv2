@@ -1,8 +1,9 @@
+'use client';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { Shield, Lock, FileText, Mail, MapPin } from 'lucide-react';
-import Head from 'next/head';
 import { DecorativeBackground } from '@/components/ui/decorative-background';
 
 const PrivacyPolicy = () => {
@@ -10,10 +11,6 @@ const PrivacyPolicy = () => {
 
     return (
         <div className="min-h-screen bg-background">
-            <Head>
-                <title>Privacy Policy | KELP Education</title>
-                <meta name="description" content="Read KELP Education's privacy policy to learn how we collect, use, and protect your information." />
-            </Head>
             <Navbar />
             <main ref={containerRef} className="pt-24 pb-16">
                 {/* Hero Section */}
