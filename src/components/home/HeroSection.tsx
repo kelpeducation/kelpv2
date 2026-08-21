@@ -31,7 +31,7 @@ const FloatingBadge = ({ children, style }) => (
 );
 
 // ── Score gauge (left side top) ─────────────────────────────────────────────
-const ScoreGauge = () => (
+const ScoreGauge = ({ label, state, footer }: { label: string; state: string; footer: string }) => (
   <FloatingBadge
     style={{
       top: '28px',
@@ -43,7 +43,7 @@ const ScoreGauge = () => (
     }}
   >
     <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
-      <span style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 600 }}>Course Progress</span>
+      <span style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 600 }}>{label}</span>
       <span style={{
         background: '#044F63', borderRadius: '50%', width: 20, height: 20,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -63,28 +63,28 @@ const ScoreGauge = () => (
       <path d="M12 72 A53 53 0 0 1 133 72" fill="none" stroke="#f1f5f9" strokeWidth="9" strokeLinecap="round" />
       <path d="M12 72 A53 53 0 0 1 133 72" fill="none" stroke="url(#gaugeG)" strokeWidth="9"
         strokeLinecap="round" strokeDasharray="166" strokeDashoffset="38" />
-      <text x="72" y="62" textAnchor="middle" fontSize="12" fontWeight="800" fill="#1e293b">Excellent</text>
-      <text x="72" y="74" textAnchor="middle" fontSize="9" fill="#94a3b8">Score</text>
+      <text x="72" y="62" textAnchor="middle" fontSize="12" fontWeight="800" fill="#1e293b">{state}</text>
+      <text x="72" y="74" textAnchor="middle" fontSize="9" fill="#94a3b8">{footer}</text>
     </svg>
   </FloatingBadge>
 );
 
 // ── Students badge (left side bottom) ──────────────────────────────────────
-const StudentsBadge = () => (
+const StudentsBadge = ({ count, label }: { count: string; label: string }) => (
   <FloatingBadge style={{ bottom: '52px', left: '8px', animationDelay: '0.8s' }}>
     <div style={{
       background: '#F5A700', borderRadius: '10px',
       width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px',
     }}>🎓</div>
     <div>
-      <div style={{ fontSize: '14px', fontWeight: 800, color: '#1e293b' }}>1,200+</div>
-      <div style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 500 }}>Active Students</div>
+      <div style={{ fontSize: '14px', fontWeight: 800, color: '#1e293b' }}>{count}</div>
+      <div style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 500 }}>{label}</div>
     </div>
   </FloatingBadge>
 );
 
 // ── Video lessons badge (right side top) ───────────────────────────────────
-const VideosBadge = () => (
+const VideosBadge = ({ count, label }: { count: string; label: string }) => (
   <FloatingBadge style={{ top: '28px', right: '8px', animationDelay: '0.4s' }}>
     <span style={{
       background: '#E46350', borderRadius: '50%', width: 28, height: 28,
@@ -93,14 +93,39 @@ const VideosBadge = () => (
       <Play size={12} fill="white" color="white" />
     </span>
     <div>
-      <div style={{ fontSize: '14px', fontWeight: 800, color: '#1e293b' }}>350+</div>
-      <div style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 500 }}>Video Lessons</div>
+      <div style={{ fontSize: '14px', fontWeight: 800, color: '#1e293b' }}>{count}</div>
+      <div style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 500 }}>{label}</div>
     </div>
   </FloatingBadge>
 );
 
 // ══════════════════════════════════════════════════════════════════════════════
-const HeroSection = () => {
+interface HeroSectionProps {
+  content: {
+    eyebrow: string;
+    title: string;
+    highlight: string;
+    description: string;
+    primaryCtaLabel: string;
+    primaryCtaHref: string;
+    secondaryCtaLabel: string;
+    secondaryCtaHref: string;
+    leftPersonImage: string;
+    rightPersonImage: string;
+    leftPersonAlt: string;
+    rightPersonAlt: string;
+    courseProgressLabel: string;
+    courseProgressState: string;
+    courseProgressFooter: string;
+    activeStudentsCount: string;
+    activeStudentsLabel: string;
+    videoLessonsCount: string;
+    videoLessonsLabel: string;
+    partners: Array<{ icon: string; name: string }>;
+  };
+}
+
+const HeroSection = ({ content }: HeroSectionProps) => {
   const heroRef = useHeroAnimation();
 
   useEffect(() => {
@@ -188,13 +213,20 @@ const HeroSection = () => {
                 boxShadow: '0 20px 55px rgba(4,79,99,0.22)',
               }}>
                 <img
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80"
-                  alt="Student"
+                  src={content.leftPersonImage}
+                  alt={content.leftPersonAlt}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
                 />
               </div>
-              <ScoreGauge />
-              <StudentsBadge />
+              <ScoreGauge
+                label={content.courseProgressLabel}
+                state={content.courseProgressState}
+                footer={content.courseProgressFooter}
+              />
+              <StudentsBadge
+                count={content.activeStudentsCount}
+                label={content.activeStudentsLabel}
+              />
             </div>
           </div>
 
@@ -208,7 +240,7 @@ const HeroSection = () => {
                 fontSize: '11px', fontWeight: 700, letterSpacing: '2.5px',
                 textTransform: 'uppercase', color: '#F5A700',
               }}>
-                Education Platform
+                {content.eyebrow}
               </span>
               <span style={{ display: 'inline-block', width: 28, height: 2, background: '#F5A700', borderRadius: 2 }} />
             </div>
@@ -221,16 +253,14 @@ const HeroSection = () => {
                 letterSpacing: '-1px', lineHeight: 1.15,
               }}
             >
-              Learning that
+              {content.title}
               <br />
-              <span className="text-secondary" style={{ fontStyle: 'italic' }}>adapts to life</span>
+              <span className="text-secondary" style={{ fontStyle: 'italic' }}>{content.highlight}</span>
             </h1>
 
             {/* subtext */}
             <p className="mb-8 max-w-[400px] text-sm leading-relaxed text-primary/60 lg:text-base">
-              We design modern education experiences that blend technology,
-              mentorship, and real-world relevance — built for how students
-              actually learn today.
+              {content.description}
             </p>
 
             {/* CTAs */}
@@ -238,8 +268,8 @@ const HeroSection = () => {
               <Button size="lg" asChild
                 className="group rounded-full bg-primary px-8 font-bold text-white shadow-xl transition-all hover:-translate-y-1"
                 style={{ boxShadow: '0 8px 28px rgba(4,79,99,0.32)' }}>
-                <Link href="/services" className="flex items-center gap-2">
-                  Explore Programs
+                <Link href={content.primaryCtaHref} className="flex items-center gap-2">
+                  {content.primaryCtaLabel}
                   <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:translate-x-1">
                     <ArrowRight size={14} />
                   </span>
@@ -247,7 +277,7 @@ const HeroSection = () => {
               </Button>
 
               <Link
-                href="/blog"
+                href={content.secondaryCtaHref}
                 className="flex items-center gap-3 text-sm font-semibold uppercase tracking-widest text-primary/60 transition-colors hover:text-primary"
                 style={{ background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'none' }}
               >
@@ -269,7 +299,7 @@ const HeroSection = () => {
                 >
                   <Play size={13} className="text-primary" fill="currentColor" />
                 </span>
-                Our Approach
+                {content.secondaryCtaLabel}
               </Link>
             </div>
 
@@ -277,12 +307,7 @@ const HeroSection = () => {
             <div style={{ width: '100%', maxWidth: 420 }}>
               <div style={{ borderTop: '1.5px dashed rgba(4,79,99,0.15)', marginBottom: '18px' }} />
               <div className="flex flex-wrap items-center justify-center gap-6">
-                {[
-                  { icon: '🏫', name: 'SchoolPro' },
-                  { icon: '📚', name: 'EduLearn' },
-                  { icon: '🎯', name: 'SkillUp' },
-                  { icon: '🌍', name: 'GlobalEd' },
-                ].map((b) => (
+                {content.partners.map((b) => (
                   <div key={b.name} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                     <span style={{ fontSize: 17 }}>{b.icon}</span>
                     <span style={{ fontSize: 13, fontWeight: 700, color: 'rgba(4,79,99,0.38)' }}>{b.name}</span>
@@ -304,12 +329,15 @@ const HeroSection = () => {
                 boxShadow: '0 20px 55px rgba(245,167,0,0.28)',
               }}>
                 <img
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"
-                  alt="Teacher"
+                  src={content.rightPersonImage}
+                  alt={content.rightPersonAlt}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
                 />
               </div>
-              <VideosBadge />
+              <VideosBadge
+                count={content.videoLessonsCount}
+                label={content.videoLessonsLabel}
+              />
             </div>
           </div>
         </div>

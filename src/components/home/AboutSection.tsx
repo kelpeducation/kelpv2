@@ -1,7 +1,34 @@
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { Target, Eye, Heart, Lightbulb, Shield } from 'lucide-react';
 
-const AboutSection = () => {
+const iconMap = {
+  Lightbulb,
+  Heart,
+  Shield,
+};
+
+interface AboutSectionProps {
+  content: {
+    badge: string;
+    title: string;
+    highlight: string;
+    description: string;
+    missionLabel: string;
+    missionTitle: string;
+    missionDescription: string;
+    visionLabel: string;
+    visionDescription: string;
+    stats: Array<{ value: string; label: string; tone: 'primary' | 'secondary' }>;
+    values: Array<{
+      icon: keyof typeof iconMap;
+      title: string;
+      description: string;
+      color: string;
+    }>;
+  };
+}
+
+const AboutSection = ({ content }: AboutSectionProps) => {
   const containerRef = useGSAPAnimation();
 
   return (
@@ -32,24 +59,24 @@ const AboutSection = () => {
                   <Target size={28} className="text-primary-foreground" />
                 </div>
                 <div>
-                  <p className="text-background/60 text-sm">Our Mission</p>
-                  <p className="font-bold text-lg">Empowering Through Education</p>
+                  <p className="text-background/60 text-sm">{content.missionLabel}</p>
+                  <p className="font-bold text-lg">{content.missionTitle}</p>
                 </div>
               </div>
 
               <p className="text-background/80 text-lg leading-relaxed mb-8">
-                To help individuals unlock their academic and personal potential through transformative, sustainable, and equitable education programs.
+                {content.missionDescription}
               </p>
 
               <div className="grid grid-cols-2 gap-6 pt-8 border-t border-background/20">
-                <div>
-                  <p className="text-3xl font-bold text-primary">8+</p>
-                  <p className="text-background/60 text-sm">Years of Impact</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-secondary">500+</p>
-                  <p className="text-background/60 text-sm">Lives Changed</p>
-                </div>
+                {content.stats.map((stat) => (
+                  <div key={stat.label}>
+                    <p className={`text-3xl font-bold ${stat.tone === 'secondary' ? 'text-secondary' : 'text-primary'}`}>
+                      {stat.value}
+                    </p>
+                    <p className="text-background/60 text-sm">{stat.label}</p>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -60,9 +87,9 @@ const AboutSection = () => {
                   <Eye size={24} className="text-accent-foreground" />
                 </div>
                 <div>
-                  <p className="font-bold text-foreground mb-1">Our Vision</p>
+                  <p className="font-bold text-foreground mb-1">{content.visionLabel}</p>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    To be a leading provider of transformative education, recognized for excellence and equity.
+                    {content.visionDescription}
                   </p>
                 </div>
               </div>
@@ -71,38 +98,19 @@ const AboutSection = () => {
 
           {/* Right Column - Content */}
           <div className="animate-slide-left">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider">About KELP</span>
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider">{content.badge}</span>
             <h2 className="text-3xl md:text-4xl text-primary lg:text-5xl font-bold mt-4 mb-6">
-              Education That
-              <span className="text-gradient-primary block">Transforms Lives</span>
+              {content.title}
+              <span className="text-gradient-primary block">{content.highlight}</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-              KELP — Kennis Education for Literacy and Potential — is dedicated to providing high-quality, accessible education for parents, schools, organizations, and adult learners across Rwanda and beyond.
+              {content.description}
             </p>
 
             {/* Values */}
             <div className="space-y-6">
-              {[
-                {
-                  icon: Lightbulb,
-                  title: 'Excellence',
-                  description: 'Continuous improvement and innovation in everything we do.',
-                  color: 'bg-primary',
-                },
-                {
-                  icon: Heart,
-                  title: 'Equity',
-                  description: 'Inclusive, accessible education tailored to diverse needs.',
-                  color: 'bg-secondary',
-                },
-                {
-                  icon: Shield,
-                  title: 'Empowerment',
-                  description: 'Unlocking potential through literacy and personal growth.',
-                  color: 'bg-accent',
-                },
-              ].map((value) => {
-                const Icon = value.icon;
+              {content.values.map((value) => {
+                const Icon = iconMap[value.icon] ?? Lightbulb;
                 return (
                   <div key={value.title} className="flex items-start gap-4 group">
                     <div className={`w-12 h-12 ${value.color} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>

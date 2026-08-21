@@ -1,28 +1,22 @@
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { Quote } from 'lucide-react';
 
-const testimonials = [
-  {
-    quote: "KELP's English courses transformed my communication skills and opened doors to new career opportunities. The personalized approach made all the difference.",
-    author: "Pacifique ISHIMWE",
-    role: "Adult Learner",
-    location: "Kigali, Rwanda",
-  },
-  {
-    quote: "As a school administrator, partnering with KELP for teacher training has elevated our entire institution. Our educators are now more confident and innovative.",
-    author: "Jean-Pierre Habimana",
-    role: "School Principal",
-    location: "Nyanza, Rwanda",
-  },
-  {
-    quote: "The coaching sessions helped my teenager develop study habits and self-confidence. KELP truly understands how to unlock a student's potential.",
-    author: "Claudine Mukamana",
-    role: "Parent",
-    location: "Huye, Rwanda",
-  },
-];
+interface TestimonialsSectionProps {
+  content: {
+    eyebrow: string;
+    title: string;
+    highlight: string;
+    description: string;
+    items: Array<{
+      quote: string;
+      author: string;
+      role: string;
+      location: string;
+    }>;
+  };
+}
 
-const TestimonialsSection = () => {
+const TestimonialsSection = ({ content }: TestimonialsSectionProps) => {
   const containerRef = useGSAPAnimation();
 
   return (
@@ -48,21 +42,21 @@ const TestimonialsSection = () => {
       <div className="container-custom relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-up">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Success Stories</span>
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider">{content.eyebrow}</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6 text-background">
-            Voices of
-            <span className="text-gradient-gold block">Transformation</span>
+            {content.title}
+            <span className="text-gradient-gold block">{content.highlight}</span>
           </h2>
           <p className="text-background/70 text-lg">
-            Hear from the individuals and institutions whose lives have been transformed through KELP's educational programs.
+            {content.description}
           </p>
         </div>
 
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8 stagger-children">
-          {testimonials.map((testimonial, index) => (
+          {content.items.map((testimonial, index) => (
             <div
-              key={index}
+              key={`${testimonial.author}-${index}`}
               className={`relative bg-background/5 backdrop-blur-sm border border-background/10 rounded-3xl p-8 hover:bg-background/10 transition-all duration-500 ${index === 1 ? 'md:-translate-y-8' : ''
                 }`}
             >

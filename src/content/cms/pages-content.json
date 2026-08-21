@@ -1,0 +1,308 @@
+{
+  "home": {
+    "hero": {
+      "eyebrow": "Education Platform",
+      "title": "Learning that",
+      "highlight": "adapts to life",
+      "description": "We design modern education experiences that blend technology, mentorship, and real-world relevance - built for how students actually learn today.",
+      "primaryCtaLabel": "Explore Programs",
+      "primaryCtaHref": "/services",
+      "secondaryCtaLabel": "Our Approach",
+      "secondaryCtaHref": "/blog",
+      "leftPersonImage": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
+      "rightPersonImage": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+      "leftPersonAlt": "Student",
+      "rightPersonAlt": "Teacher",
+      "courseProgressLabel": "Course Progress",
+      "courseProgressState": "Excellent",
+      "courseProgressFooter": "Score",
+      "activeStudentsCount": "1,200+",
+      "activeStudentsLabel": "Active Students",
+      "videoLessonsCount": "350+",
+      "videoLessonsLabel": "Video Lessons",
+      "partners": [
+        { "icon": "🏫", "name": "SchoolPro" },
+        { "icon": "📚", "name": "EduLearn" },
+        { "icon": "🎯", "name": "SkillUp" },
+        { "icon": "🌍", "name": "GlobalEd" }
+      ]
+    },
+    "servicesSection": {
+      "eyebrow": "What We Do",
+      "title": "Learning services that",
+      "highlight": "feel alive",
+      "description": "Education should be engaging, human, and practical. Our services combine structure with creativity to help learners thrive.",
+      "ctaLabel": "Explore all services",
+      "ctaHref": "/services",
+      "items": [
+        {
+          "icon": "BookOpen",
+          "title": "English Courses",
+          "description": "Structured language programs focused on literacy, fluency, and confident communication.",
+          "linkLabel": "Learn more",
+          "linkHref": "/services"
+        },
+        {
+          "icon": "Users",
+          "title": "Coaching",
+          "description": "Personalized guidance helping learners gain clarity, confidence, and direction.",
+          "linkLabel": "Learn more",
+          "linkHref": "/services"
+        },
+        {
+          "icon": "GraduationCap",
+          "title": "Teacher Training",
+          "description": "Practical training that equips educators with modern teaching tools and leadership skills.",
+          "linkLabel": "Learn more",
+          "linkHref": "/services"
+        },
+        {
+          "icon": "Building2",
+          "title": "School Consultancy",
+          "description": "Strategic advisory supporting schools to improve systems and learning outcomes.",
+          "linkLabel": "Learn more",
+          "linkHref": "/services"
+        }
+      ]
+    },
+    "aboutSection": {
+      "badge": "About KELP",
+      "title": "Education That",
+      "highlight": "Transforms Lives",
+      "description": "KELP - Kennis Education for Literacy and Potential - is dedicated to providing high-quality, accessible education for parents, schools, organizations, and adult learners across Rwanda and beyond.",
+      "missionLabel": "Our Mission",
+      "missionTitle": "Empowering Through Education",
+      "missionDescription": "To help individuals unlock their academic and personal potential through transformative, sustainable, and equitable education programs.",
+      "visionLabel": "Our Vision",
+      "visionDescription": "To be a leading provider of transformative education, recognized for excellence and equity.",
+      "stats": [
+        { "value": "8+", "label": "Years of Impact", "tone": "primary" },
+        { "value": "500+", "label": "Lives Changed", "tone": "secondary" }
+      ],
+      "values": [
+        {
+          "icon": "Lightbulb",
+          "title": "Excellence",
+          "description": "Continuous improvement and innovation in everything we do.",
+          "color": "bg-primary"
+        },
+        {
+          "icon": "Heart",
+          "title": "Equity",
+          "description": "Inclusive, accessible education tailored to diverse needs.",
+          "color": "bg-secondary"
+        },
+        {
+          "icon": "Shield",
+          "title": "Empowerment",
+          "description": "Unlocking potential through literacy and personal growth.",
+          "color": "bg-accent"
+        }
+      ]
+    },
+    "testimonialsSection": {
+      "eyebrow": "Success Stories",
+      "title": "Voices of",
+      "highlight": "Transformation",
+      "description": "Hear from the individuals and institutions whose lives have been transformed through KELP's educational programs.",
+      "items": [
+        {
+          "quote": "KELP's English courses transformed my communication skills and opened doors to new career opportunities. The personalized approach made all the difference.",
+          "author": "Pacifique ISHIMWE",
+          "role": "Adult Learner",
+          "location": "Kigali, Rwanda"
+        },
+        {
+          "quote": "As a school administrator, partnering with KELP for teacher training has elevated our entire institution. Our educators are now more confident and innovative.",
+          "author": "Jean-Pierre Habimana",
+          "role": "School Principal",
+          "location": "Nyanza, Rwanda"
+        },
+        {
+          "quote": "The coaching sessions helped my teenager develop study habits and self-confidence. KELP truly understands how to unlock a student's potential.",
+          "author": "Claudine Mukamana",
+          "role": "Parent",
+          "location": "Huye, Rwanda"
+        }
+      ]
+    },
+    "ctaSection": {
+      "title": "Ready to Unlock Your Potential?",
+      "description": "Join hundreds of students, educators, and institutions who have transformed their futures with KELP. Let's write your success story together.",
+      "primaryCtaLabel": "Get Started Now",
+      "primaryCtaHref": "/contact",
+      "secondaryCtaLabel": "Explore Programs",
+      "secondaryCtaHref": "/services"
+    }
+  },
+  "aboutPage": {
+    "hero": {
+      "eyebrow": "Who We Are",
+      "title": "Unlocking Potential,",
+      "highlight": "Empowering Futures",
+      "description": "KELP is dedicated to providing transformative, sustainable, and accessible educational solutions that foster holistic development and lifelong growth."
+    },
+    "missionTitle": "Our Mission",
+    "missionText": "Empower individuals through education and holistic development by providing innovative and accessible learning solutions in literacy, communication, personal growth, and essential life skills.",
+    "visionTitle": "Our Vision",
+    "visionText": "To become a leading provider of transformative, sustainable, and equitable education, recognized for excellence and inclusivity.",
+    "valuesEyebrow": "Our DNA",
+    "valuesTitle": "Core Values That",
+    "valuesHighlight": "Define Success",
+    "coreValues": [
+      {
+        "icon": "CheckCircle",
+        "title": "Accountability",
+        "description": "Uphold high standards and honor commitments.",
+        "color": "bg-primary"
+      },
+      {
+        "icon": "Award",
+        "title": "Excellence",
+        "description": "Continuously improve and innovate in programs and services.",
+        "color": "bg-secondary"
+      },
+      {
+        "icon": "Shield",
+        "title": "Integrity",
+        "description": "Ensure honesty and transparency to build trust.",
+        "color": "bg-primary"
+      },
+      {
+        "icon": "Users",
+        "title": "Equity",
+        "description": "Provide inclusive and accessible education to meet the diverse needs of all students.",
+        "color": "bg-secondary"
+      },
+      {
+        "icon": "Heart",
+        "title": "Service",
+        "description": "Exceed client expectations with impactful experiences.",
+        "color": "bg-primary"
+      }
+    ],
+    "ctaTitle": "Let's",
+    "ctaHighlight": "Grow Together",
+    "ctaDescription": "Experience the KELP difference. Whether you are a student, parent, or institution, we have a path for you.",
+    "ctaLabel": "Connect With Us",
+    "ctaHref": "/contact"
+  },
+  "servicesPage": {
+    "hero": {
+      "eyebrow": "Our Services",
+      "title": "Comprehensive Education",
+      "highlight": "Programs & Services",
+      "description": "From language mastery to institutional consultancy, our services are specifically designed to meet the evolving needs of modern learners and educational leaders."
+    },
+    "items": [
+      {
+        "id": "global-language-mastery",
+        "title": "Global Language Mastery",
+        "subtitle": "Master Languages for the Modern World",
+        "description": "We provide expert linguistic education designed to help you achieve absolute fluency and confidence, whether for business, expatriate living, or high-stakes public speaking.",
+        "image": "/images/ModernLanguagesConsultancy-Image.avif",
+        "benefits": [
+          "KOEC Club: Rapid English mastery system.",
+          "Professional English: Business-level fluency.",
+          "Kinyarwanda for Expats: Local language & culture.",
+          "One-on-One Tutoring: Private, personalized teaching.",
+          "Public Speaking: Training for high-stakes meetings."
+        ],
+        "ctaLabel": "Inquire Now",
+        "ctaHref": "/contact"
+      },
+      {
+        "id": "school-consultancy",
+        "title": "School Consultancy",
+        "subtitle": "Elevating Educational Standards",
+        "description": "Partner with us to transform your educational institution. We offer comprehensive consultancy from curriculum design and teacher training to school management systems producing the best student results.",
+        "image": "/images/TeacherTrainingServices-Image.jfif",
+        "benefits": [
+          "Teacher Training: High-standard workshops on 21st-century methods.",
+          "Shaping School Culture: Building values-driven, high-performing environments.",
+          "Shaping School Leadership: Developing capable, visionary school leaders.",
+          "School Management: Systems and processes for better student results.",
+          "School Support: Ongoing partnership beyond initial consultancy, including access to KELP Market."
+        ],
+        "ctaLabel": "Inquire Now",
+        "ctaHref": "/contact"
+      }
+    ],
+    "ctaTitle": "Not Sure Which Program Is",
+    "ctaHighlight": "Right for You?",
+    "ctaDescription": "Unlock your full potential with a personalized learning path. Our team is here to guide you to the perfect educational solution.",
+    "ctaPrimaryLabel": "Schedule a Consultation",
+    "ctaPrimaryHref": "/contact",
+    "ctaSecondaryLabel": "Contact Us",
+    "ctaSecondaryHref": "/contact"
+  },
+  "blogPage": {
+    "hero": {
+      "eyebrow": "Our Blog",
+      "title": "Insights &",
+      "highlight": "Resources",
+      "description": "Stay updated with the latest educational insights, tips, and resources from KELP. Knowledge shared is potential unlocked."
+    },
+    "featuredLabel": "Featured",
+    "posts": [
+      {
+        "id": 1,
+        "title": "The Power of Literacy: Transforming Communities One Reader at a Time",
+        "excerpt": "Discover how improving literacy rates can create ripple effects throughout communities, from economic growth to improved health outcomes.",
+        "category": "Education",
+        "date": "January 2, 2026",
+        "readTime": "5 min read",
+        "image": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        "id": 2,
+        "title": "5 Effective Study Techniques Every Student Should Know",
+        "excerpt": "Learn proven study methods that can help students of all ages improve their retention and academic performance.",
+        "category": "Tips & Tricks",
+        "date": "December 28, 2025",
+        "readTime": "4 min read",
+        "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        "id": 3,
+        "title": "Why Teacher Training Is the Key to Educational Excellence",
+        "excerpt": "Explore how investing in teacher development creates lasting positive impacts on student outcomes and school culture.",
+        "category": "Professional Development",
+        "date": "December 20, 2025",
+        "readTime": "6 min read",
+        "image": "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        "id": 4,
+        "title": "Adult Learning: It's Never Too Late to Start Your Educational Journey",
+        "excerpt": "Breaking down barriers and misconceptions about adult education, and why lifelong learning matters more than ever.",
+        "category": "Adult Education",
+        "date": "December 15, 2025",
+        "readTime": "5 min read",
+        "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        "id": 5,
+        "title": "Building Inclusive Classrooms: Strategies for Diverse Learners",
+        "excerpt": "Practical approaches for creating educational environments where every student feels valued and supported.",
+        "category": "Inclusive Education",
+        "date": "December 10, 2025",
+        "readTime": "7 min read",
+        "image": "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        "id": 6,
+        "title": "The Role of Parents in Student Success",
+        "excerpt": "How parental involvement and support can significantly boost a child's academic achievement and overall well-being.",
+        "category": "Parenting",
+        "date": "December 5, 2025",
+        "readTime": "4 min read",
+        "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800"
+      }
+    ],
+    "newsletterTitle": "Stay Updated with KELP",
+    "newsletterDescription": "Subscribe to our newsletter for the latest educational insights, tips, and updates from KELP.",
+    "newsletterButtonLabel": "Subscribe",
+    "newsletterPlaceholder": "Enter your email"
+  }
+}

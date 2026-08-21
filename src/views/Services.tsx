@@ -9,44 +9,13 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { DecorativeBackground } from '@/components/ui/decorative-background';
-const services = [
-  {
-    id: 'global-language-mastery',
-    title: 'Global Language Mastery',
-    subtitle: 'Master Languages for the Modern World',
-    description:
-      'We provide expert linguistic education designed to help you achieve absolute fluency and confidence, whether for business, expatriate living, or high-stakes public speaking.',
-    image:
-      '/images/ModernLanguagesConsultancy-Image.avif',
-    benefits: [
-      'KOEC Club: Rapid English mastery system.',
-      'Professional English: Business-level fluency.',
-      'Kinyarwanda for Expats: Local language & culture.',
-      'One-on-One Tutoring: Private, personalized teaching.',
-      'Public Speaking: Training for high-stakes meetings.',
-    ],
-  },
-  {
-    id: 'school-consultancy',
-    title: 'School Consultancy',
-    subtitle: 'Elevating Educational Standards',
-    description:
-      'Partner with us to transform your educational institution. We offer comprehensive consultancy from curriculum design and teacher training to school management systems producing the best student results.',
-    image:
-      '/images/TeacherTrainingServices-Image.jfif',
-    benefits: [
-      'Teacher Training: High-standard workshops on 21st-century methods.',
-      'Shaping School Culture: Building values-driven, high-performing environments.',
-      'Shaping School Leadership: Developing capable, visionary school leaders.',
-      'School Management: Systems and processes for better student results.',
-      'School Support: Ongoing partnership beyond initial consultancy, including access to KELP Market.',
-    ],
-  },
-];
+import { useCmsPagesContent } from '@/hooks/useCmsPagesContent';
 
 
 const Services = () => {
   const containerRef = useGSAPAnimation();
+  const pagesContent = useCmsPagesContent();
+  const servicesContent = pagesContent.servicesPage;
 
   useEffect(() => {
     const scrollToHash = () => {
@@ -70,16 +39,16 @@ const Services = () => {
       <main ref={containerRef}>
         {/* Hero */}
         <PageHero
-          eyebrow="Our Services"
-          title="Comprehensive Education"
-          highlight="Programs & Services"
-          description="From language mastery to institutional consultancy, our services are specifically designed to meet the evolving needs of modern learners and educational leaders."
+          eyebrow={servicesContent.hero.eyebrow}
+          title={servicesContent.hero.title}
+          highlight={servicesContent.hero.highlight}
+          description={servicesContent.hero.description}
         />
 
         {/* Services Detail */}
         <section className="section-padding bg-muted/30">
           <div className="container-custom space-y-32">
-            {services.map((service, index) => {
+            {servicesContent.items.map((service, index) => {
               const isEven = index % 2 === 0;
 
               return (
@@ -149,8 +118,8 @@ const Services = () => {
 
                     <div className="mt-10">
                       <Button size="lg" variant="secondary" asChild>
-                        <Link href="/contact">
-                          Inquire Now
+                        <Link href={service.ctaHref}>
+                          {service.ctaLabel}
                           <ArrowRight size={18} />
                         </Link>
                       </Button>
@@ -172,21 +141,21 @@ const Services = () => {
 
             <div className="relative z-10 max-w-3xl mx-auto space-y-8 animate-fade-up">
               <h2 className="text-2xl md:text-3xl font-bold leading-tight">
-                Not Sure Which Program Is <span className="text-secondary">Right for You?</span>
+                {servicesContent.ctaTitle} <span className="text-secondary">{servicesContent.ctaHighlight}</span>
               </h2>
               <p className="text-slate-300 text-base md:text-lg leading-relaxed">
-                Unlock your full potential with a personalized learning path. Our team is here to guide you to the perfect educational solution.
+                {servicesContent.ctaDescription}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button size="lg" variant="secondary" asChild>
-                  <Link href="/contact">
-                    Schedule a Consultation
+                  <Link href={servicesContent.ctaPrimaryHref}>
+                    {servicesContent.ctaPrimaryLabel}
                     <ArrowRight size={18} className="ml-2" />
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild className="border-white/20 text-white hover:bg-white/10">
-                  <Link href="/contact">
-                    Contact Us
+                  <Link href={servicesContent.ctaSecondaryHref}>
+                    {servicesContent.ctaSecondaryLabel}
                   </Link>
                 </Button>
               </div>

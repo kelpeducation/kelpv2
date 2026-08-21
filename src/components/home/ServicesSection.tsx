@@ -12,34 +12,32 @@ import gsap from 'gsap';
 import { Button } from '@/components/ui/button';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 
-const services = [
-  {
-    icon: BookOpen,
-    title: 'English Courses',
-    description:
-      'Structured language programs focused on literacy, fluency, and confident communication.',
-  },
-  {
-    icon: Users,
-    title: 'Coaching',
-    description:
-      'Personalized guidance helping learners gain clarity, confidence, and direction.',
-  },
-  {
-    icon: GraduationCap,
-    title: 'Teacher Training',
-    description:
-      'Practical training that equips educators with modern teaching tools and leadership skills.',
-  },
-  {
-    icon: Building2,
-    title: 'School Consultancy',
-    description:
-      'Strategic advisory supporting schools to improve systems and learning outcomes.',
-  },
-];
+const iconMap = {
+  BookOpen,
+  Users,
+  GraduationCap,
+  Building2,
+};
 
-const ServicesSection = () => {
+interface ServicesSectionProps {
+  content: {
+    eyebrow: string;
+    title: string;
+    highlight: string;
+    description: string;
+    ctaLabel: string;
+    ctaHref: string;
+    items: Array<{
+      icon: keyof typeof iconMap;
+      title: string;
+      description: string;
+      linkLabel: string;
+      linkHref: string;
+    }>;
+  };
+}
+
+const ServicesSection = ({ content }: ServicesSectionProps) => {
   const sectionRef = useGSAPAnimation();
 
   useEffect(() => {
@@ -89,26 +87,25 @@ const ServicesSection = () => {
         {/* Header */}
         <div className="mb-12 max-w-3xl">
           <span className="block mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
-            What We Do
+            {content.eyebrow}
           </span>
 
           <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl">
-            Learning services that
+            {content.title}
             <span className="block text-primary">
-              feel alive
+              {content.highlight}
             </span>
           </h2>
 
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Education should be engaging, human, and practical. Our services
-            combine structure with creativity to help learners thrive.
+            {content.description}
           </p>
         </div>
 
         {/* Services */}
         <div className="grid gap-12 md:grid-cols-2">
-          {services.map((service, index) => {
-            const Icon = service.icon;
+          {content.items.map((service, index) => {
+            const Icon = iconMap[service.icon] ?? BookOpen;
 
             return (
               <div
@@ -133,10 +130,10 @@ const ServicesSection = () => {
                   </p>
 
                   <Link
-                    href="/services"
+                    href={service.linkHref}
                     className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary"
                   >
-                    Learn more
+                    {service.linkLabel}
                     <ArrowRight
                       size={16}
                       className="transition-transform group-hover:translate-x-1"
@@ -159,8 +156,8 @@ const ServicesSection = () => {
         {/* CTA */}
         <div className="mt-20">
           <Button size="lg" variant="hero" asChild>
-            <Link href="/services">
-              Explore all services
+            <Link href={content.ctaHref}>
+              {content.ctaLabel}
               <ArrowRight size={18} />
             </Link>
           </Button>

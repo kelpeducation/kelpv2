@@ -7,42 +7,20 @@ import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { Target, Eye, Heart, Shield, Users, BookOpen, Award, Globe, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { useCmsPagesContent } from '@/hooks/useCmsPagesContent';
+
+const iconMap = {
+  CheckCircle,
+  Award,
+  Shield,
+  Users,
+  Heart,
+};
 
 const About = () => {
   const containerRef = useGSAPAnimation();
-
-  const coreValues = [
-    {
-      icon: CheckCircle,
-      title: 'Accountability',
-      description: 'Uphold high standards and honor commitments.',
-      color: 'bg-primary',
-    },
-    {
-      icon: Award,
-      title: 'Excellence',
-      description: 'Continuously improve and innovate in programs and services.',
-      color: 'bg-secondary', // Aqua
-    },
-    {
-      icon: Shield,
-      title: 'Integrity',
-      description: 'Ensure honesty and transparency to build trust.',
-      color: 'bg-primary',
-    },
-    {
-      icon: Users,
-      title: 'Equity',
-      description: 'Provide inclusive and accessible education to meet the diverse needs of all students.',
-      color: 'bg-secondary', // Aqua
-    },
-    {
-      icon: Heart,
-      title: 'Service',
-      description: 'Exceed client expectations with impactful experiences.',
-      color: 'bg-primary',
-    }
-  ];
+  const pagesContent = useCmsPagesContent();
+  const aboutContent = pagesContent.aboutPage;
 
   return (
     <div className="min-h-screen">
@@ -50,10 +28,10 @@ const About = () => {
       <main ref={containerRef}>
         {/* Hero */}
         <PageHero
-          eyebrow="Who We Are"
-          title="Unlocking Potential,"
-          highlight="Empowering Futures"
-          description="KELP is dedicated to providing transformative, sustainable, and accessible educational solutions that foster holistic development and lifelong growth."
+          eyebrow={aboutContent.hero.eyebrow}
+          title={aboutContent.hero.title}
+          highlight={aboutContent.hero.highlight}
+          description={aboutContent.hero.description}
         />
 
         {/* Mission & Vision */}
@@ -66,9 +44,9 @@ const About = () => {
                 <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-8 relative z-10 group-hover:-translate-y-2 transition-transform duration-300 shadow-lg shadow-primary/20">
                   <Target size={32} className="text-white" />
                 </div>
-                <h3 className="text-3xl font-bold mb-6 text-primary">Our Mission</h3>
+                <h3 className="text-3xl font-bold mb-6 text-primary">{aboutContent.missionTitle}</h3>
                 <p className="text-slate-600 text-lg leading-relaxed relative z-10">
-                  Empower individuals through education and holistic development by providing innovative and accessible learning solutions in literacy, communication, personal growth, and essential life skills.
+                  {aboutContent.missionText}
                 </p>
               </div>
 
@@ -78,9 +56,9 @@ const About = () => {
                 <div className="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-8 relative z-10 group-hover:-translate-y-2 transition-transform duration-300 shadow-lg shadow-secondary/20">
                   <Eye size={32} className="text-secondary-foreground" />
                 </div>
-                <h3 className="text-3xl font-bold mb-6 text-primary">Our Vision</h3>
+                <h3 className="text-3xl font-bold mb-6 text-primary">{aboutContent.visionTitle}</h3>
                 <p className="text-slate-600 text-lg leading-relaxed relative z-10">
-                  To become a leading provider of transformative, sustainable, and equitable education, recognized for excellence and inclusivity.
+                  {aboutContent.visionText}
                 </p>
               </div>
             </div>
@@ -96,15 +74,15 @@ const About = () => {
 
           <div className="container-custom relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-up">
-              <span className="text-secondary font-bold text-sm uppercase tracking-widest">Our DNA</span>
+              <span className="text-secondary font-bold text-sm uppercase tracking-widest">{aboutContent.valuesEyebrow}</span>
               <h2 className="text-4xl md:text-5xl font-bold mt-4 leading-tight">
-                Core Values That <span className="text-secondary">Define Scucess</span>
+                {aboutContent.valuesTitle} <span className="text-secondary">{aboutContent.valuesHighlight}</span>
               </h2>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children justify-center">
-              {coreValues.map((value, index) => {
-                const Icon = value.icon;
+              {aboutContent.coreValues.map((value, index) => {
+                const Icon = iconMap[value.icon as keyof typeof iconMap] ?? CheckCircle;
                 return (
                   <div
                     key={value.title}
@@ -126,13 +104,13 @@ const About = () => {
         <section className="container-custom py-16 relative z-10 text-center">
           <div className="max-w-4xl mx-auto animate-fade-up">
             <h2 className="text-4xl md:text-5xl font-bold mb-8 text-primary">
-              Let's <span className="text-secondary">Grow Together</span>
+              {aboutContent.ctaTitle} <span className="text-secondary">{aboutContent.ctaHighlight}</span>
             </h2>
             <p className="text-slate-600 text-xl mb-10 leading-relaxed">
-              Experience the KELP difference. Whether you are a student, parent, or institution, we have a path for you.
+              {aboutContent.ctaDescription}
             </p>
             <Button size="xl" shape="pill" asChild className="text-lg px-10 py-6 h-auto shadow-xl hover:shadow-2xl hover:-translate-y-1">
-              <Link href="/contact">Connect With Us</Link>
+              <Link href={aboutContent.ctaHref}>{aboutContent.ctaLabel}</Link>
             </Button>
           </div>
         </section>

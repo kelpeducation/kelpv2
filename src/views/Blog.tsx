@@ -8,65 +8,14 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useState } from 'react';
 import { DecorativeBackground } from '@/components/ui/decorative-background';
-const blogPosts = [
-  {
-    id: 1,
-    title: 'The Power of Literacy: Transforming Communities One Reader at a Time',
-    excerpt: 'Discover how improving literacy rates can create ripple effects throughout communities, from economic growth to improved health outcomes.',
-    category: 'Education',
-    date: 'January 2, 2026',
-    readTime: '5 min read',
-    image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 2,
-    title: '5 Effective Study Techniques Every Student Should Know',
-    excerpt: 'Learn proven study methods that can help students of all ages improve their retention and academic performance.',
-    category: 'Tips & Tricks',
-    date: 'December 28, 2025',
-    readTime: '4 min read',
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 3,
-    title: 'Why Teacher Training Is the Key to Educational Excellence',
-    excerpt: 'Explore how investing in teacher development creates lasting positive impacts on student outcomes and school culture.',
-    category: 'Professional Development',
-    date: 'December 20, 2025',
-    readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 4,
-    title: 'Adult Learning: It\'s Never Too Late to Start Your Educational Journey',
-    excerpt: 'Breaking down barriers and misconceptions about adult education, and why lifelong learning matters more than ever.',
-    category: 'Adult Education',
-    date: 'December 15, 2025',
-    readTime: '5 min read',
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 5,
-    title: 'Building Inclusive Classrooms: Strategies for Diverse Learners',
-    excerpt: 'Practical approaches for creating educational environments where every student feels valued and supported.',
-    category: 'Inclusive Education',
-    date: 'December 10, 2025',
-    readTime: '7 min read',
-    image: 'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 6,
-    title: 'The Role of Parents in Student Success',
-    excerpt: 'How parental involvement and support can significantly boost a child\'s academic achievement and overall well-being.',
-    category: 'Parenting',
-    date: 'December 5, 2025',
-    readTime: '4 min read',
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800',
-  },
-];
+import { useCmsPagesContent } from '@/hooks/useCmsPagesContent';
 
 const Blog = () => {
   const containerRef = useGSAPAnimation();
+  const pagesContent = useCmsPagesContent();
+  const blogContent = pagesContent.blogPage;
+  const blogPosts = blogContent.posts;
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -77,13 +26,13 @@ const Blog = () => {
 
           <div className="container-custom relative z-10">
             <div className="max-w-4xl mx-auto text-center animate-fade-up">
-              <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Our Blog</span>
+              <span className="text-secondary font-semibold text-sm uppercase tracking-wider">{blogContent.hero.eyebrow}</span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6">
-                Insights &
-                <span className="text-secondary block">Resources</span>
+                {blogContent.hero.title}
+                <span className="text-secondary block">{blogContent.hero.highlight}</span>
               </h1>
               <p className="text-slate-300 text-xl leading-relaxed">
-                Stay updated with the latest educational insights, tips, and resources from KELP. Knowledge shared is potential unlocked.
+                {blogContent.hero.description}
               </p>
             </div>
           </div>
@@ -98,7 +47,7 @@ const Blog = () => {
               <div className="relative z-10 grid lg:grid-cols-2 gap-8 items-center">
                 <div>
                   <span className="inline-block bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                    Featured
+                    {blogContent.featuredLabel}
                   </span>
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-background">
                     {blogPosts[0].title}
@@ -182,19 +131,19 @@ const Blog = () => {
           <div className="container-custom">
             <div className="bg-gradient-primary rounded-3xl p-12 lg:p-16 text-center animate-scale-in">
               <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-                Stay Updated with KELP
+                {blogContent.newsletterTitle}
               </h2>
               <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
-                Subscribe to our newsletter for the latest educational insights, tips, and updates from KELP.
+                {blogContent.newsletterDescription}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={blogContent.newsletterPlaceholder}
                   className="flex-1 h-14 px-6 rounded-xl bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary-foreground/30"
                 />
                 <Button variant="gold" size="lg">
-                  Subscribe
+                  {blogContent.newsletterButtonLabel}
                 </Button>
               </div>
             </div>

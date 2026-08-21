@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { kelpKnowledge, getSystemPrompt } from './kelpKnowledge';
+import { buildSystemPrompt, getLiveKelpKnowledge } from './kelpKnowledge';
 
 // Initialize the Gemini API
 let genAI: GoogleGenerativeAI | null = null;
@@ -23,9 +23,11 @@ export const sendMessage = async (userMessage: string): Promise<string> => {
     try {
         const api = getGeminiAPI();
         const model = api.getGenerativeModel({ model: 'gemini-flash-latest' });
+        const knowledge = await getLiveKelpKnowledge();
+        const systemPrompt = buildSystemPrompt(knowledge);
 
         // Prepend context to user message
-        const fullPrompt = `${getSystemPrompt()}
+        const fullPrompt = `${systemPrompt}
 
 User Question: ${userMessage}
 
@@ -36,15 +38,17 @@ Please provide a helpful answer about KELP Ltd:`;
         const text = response.text();
 
         return text;
-    } catch (error: any) {
+    } catch (error) {
         console.error('Error sending message to Gemini:', error);
 
+        const message = error instanceof Error ? error.message : '';
+
         // Handle specific error cases
-        if (error.message?.includes('API_KEY') || error.message?.includes('API key')) {
+        if (message.includes('API_KEY') || message.includes('API key')) {
             throw new Error('API key error');
         }
 
-        if (error.message?.includes('quota') || error.message?.includes('QUOTA')) {
+        if (message.includes('quota') || message.includes('QUOTA')) {
             throw new Error('Quota exceeded');
         }
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PageHero from '@/components/PageHero';
@@ -8,10 +8,12 @@ import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { Mail, Phone, Send, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { defaultSiteSettings, loadLiveSiteSettings, SiteSettings } from '@/lib/siteSettings';
 
 const Contact = () => {
   const containerRef = useGSAPAnimation();
   const { toast } = useToast();
+  const [siteSettings, setSiteSettings] = useState<SiteSettings>(defaultSiteSettings);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -69,6 +71,10 @@ const Contact = () => {
     // Reset submitted state after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
   };
+
+  useEffect(() => {
+    loadLiveSiteSettings().then(setSiteSettings);
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -181,7 +187,7 @@ const Contact = () => {
                 
                 <div className="space-y-6 mb-12">
                   <a
-                    href="tel:+250795240664"
+                    href={`tel:${siteSettings.contact.phone.replace(/\s+/g, '')}`}
                     className="flex items-start gap-4 p-6 bg-card border border-border rounded-2xl hover:border-primary/30 hover:shadow-lg transition-all duration-300 group"
                   >
                     <div className="w-14 h-14 bg-primary rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
@@ -189,12 +195,12 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-muted-foreground text-sm mb-1">Phone</p>
-                      <p className="text-foreground font-semibold text-lg">+250 795 240 664</p>
+                      <p className="text-foreground font-semibold text-lg">{siteSettings.contact.phone}</p>
                     </div>
                   </a>
 
                   <a
-                    href="mailto:kelpeducation@gmail.com"
+                    href={`mailto:${siteSettings.contact.email}`}
                     className="flex items-start gap-4 p-6 bg-card border border-border rounded-2xl hover:border-primary/30 hover:shadow-lg transition-all duration-300 group"
                   >
                     <div className="w-14 h-14 bg-secondary rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
@@ -202,7 +208,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-muted-foreground text-sm mb-1">Email</p>
-                      <p className="text-foreground font-semibold text-lg">kelpeducation@gmail.com</p>
+                      <p className="text-foreground font-semibold text-lg">{siteSettings.contact.email}</p>
                     </div>
                   </a>
 

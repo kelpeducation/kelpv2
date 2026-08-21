@@ -1,9 +1,20 @@
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-const CTASection = () => {
+interface CTASectionProps {
+  content: {
+    title: string;
+    description: string;
+    primaryCtaLabel: string;
+    primaryCtaHref: string;
+    secondaryCtaLabel: string;
+    secondaryCtaHref: string;
+  };
+}
+
+const CTASection = ({ content }: CTASectionProps) => {
   const containerRef = useGSAPAnimation();
 
   return (
@@ -21,17 +32,17 @@ const CTASection = () => {
            
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
-              Ready to Unlock Your Potential?
+              {content.title}
             </h2>
             
             <p className="text-primary-foreground/80 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
-              Join hundreds of students, educators, and institutions who have transformed their futures with KELP. Let's write your success story together.
+              {content.description}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="gold" size="xl" asChild>
-                <Link href="/contact">
-                  Get Started Now
+                <Link href={content.primaryCtaHref}>
+                  {content.primaryCtaLabel}
                   <ArrowRight size={22} />
                 </Link>
               </Button>
@@ -41,7 +52,7 @@ const CTASection = () => {
                 className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                 asChild
               >
-                <Link href="/services">Explore Programs</Link>
+                <Link href={content.secondaryCtaHref}>{content.secondaryCtaLabel}</Link>
               </Button>
             </div>
           </div>

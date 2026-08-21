@@ -1,0 +1,38 @@
+{
+  "brand": {
+    "name": "KELP Education",
+    "tagline": "Transformative, sustainable, and equitable education for all. Unlocking potential through literacy and growth."
+  },
+  "contact": {
+    "phone": "+250 795 240 664",
+    "email": "kelpeducation@gmail.com",
+    "address": "Busasamana, Nyanza, Southern Province, Rwanda"
+  },
+  "socialLinks": {
+    "whatsapp": "https://wa.me/250795240664",
+    "linkedin": "https://linkedin.com",
+    "instagram": "https://instagram.com",
+    "facebook": "https://facebook.com",
+    "youtube": "https://youtube.com"
+  },
+  "footer": {
+    "quickLinks": [
+      "Home",
+      "About Us",
+      "Services",
+      "Market",
+      "Blog",
+      "Contact"
+    ],
+    "serviceLinks": [
+      {
+        "name": "Global Language Mastery",
+        "id": "global-language-mastery"
+      },
+      {
+        "name": "School Consultancy",
+        "id": "school-consultancy"
+      }
+    ]
+  }
+}

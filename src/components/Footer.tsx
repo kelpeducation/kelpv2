@@ -1,8 +1,15 @@
 import Link from 'next/link';
 import { Mail, Phone, MapPin, ArrowRight, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { defaultSiteSettings, loadLiveSiteSettings, SiteSettings } from '@/lib/siteSettings';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [siteSettings, setSiteSettings] = useState<SiteSettings>(defaultSiteSettings);
+
+  useEffect(() => {
+    loadLiveSiteSettings().then(setSiteSettings);
+  }, []);
 
   return (
     <footer className="bg-footer-gradient text-background relative overflow-hidden">
@@ -22,32 +29,32 @@ const Footer = () => {
                 />
               </Link>
               <p className="text-background/70 text-sm leading-relaxed mb-6 mt-2">
-                Transformative, sustainable, and equitable education for all. Unlocking potential through literacy and growth.
+                {siteSettings.brand.tagline}
               </p>
               <div className="flex gap-4">
                 <a
-                  href="#facebook"
+                  href={siteSettings.socialLinks.facebook}
                   className="w-10 h-10 rounded-full bg-slate-900/50 flex items-center justify-center border border-white/10 hover:bg-secondary hover:border-secondary hover:scale-110 hover:shadow-[0_0_15px_rgba(228,99,80,0.5)] transition-all duration-300 group"
                   aria-label="Facebook"
                 >
                   <Facebook size={18} className="text-secondary group-hover:text-white transition-colors" />
                 </a>
                 <a
-                  href="#twitter"
+                  href={siteSettings.socialLinks.whatsapp}
                   className="w-10 h-10 rounded-full bg-slate-900/50 flex items-center justify-center border border-white/10 hover:bg-secondary hover:border-secondary hover:scale-110 hover:shadow-[0_0_15px_rgba(228,99,80,0.5)] transition-all duration-300 group"
-                  aria-label="Twitter"
+                  aria-label="WhatsApp"
                 >
                   <Twitter size={18} className="text-secondary group-hover:text-white transition-colors" />
                 </a>
                 <a
-                  href="#linkedin"
+                  href={siteSettings.socialLinks.linkedin}
                   className="w-10 h-10 rounded-full bg-slate-900/50 flex items-center justify-center border border-white/10 hover:bg-secondary hover:border-secondary hover:scale-110 hover:shadow-[0_0_15px_rgba(228,99,80,0.5)] transition-all duration-300 group"
                   aria-label="LinkedIn"
                 >
                   <Linkedin size={18} className="text-secondary group-hover:text-white transition-colors" />
                 </a>
                 <a
-                  href="#instagram"
+                  href={siteSettings.socialLinks.instagram}
                   className="w-10 h-10 rounded-full bg-slate-900/50 flex items-center justify-center border border-white/10 hover:bg-secondary hover:border-secondary hover:scale-110 hover:shadow-[0_0_15px_rgba(228,99,80,0.5)] transition-all duration-300 group"
                   aria-label="Instagram"
                 >
@@ -60,7 +67,7 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-bold mb-6">Quick Links</h4>
               <ul className="space-y-3">
-                {['Home', 'About Us', 'Services', 'Market', 'Blog', 'Contact'].map((item) => (
+                {siteSettings.footer.quickLinks.map((item) => (
                   <li key={item}>
                     <Link
                       href={`/${item.toLowerCase().replace(' ', '-').replace('home', '')}`}
@@ -78,10 +85,7 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-bold mb-6">Our Services</h4>
               <ul className="space-y-3">
-                {[
-                  { name: 'Global Language Mastery', id: 'global-language-mastery' },
-                  { name: 'School Consultancy', id: 'school-consultancy' },
-                ].map((service) => (
+                {siteSettings.footer.serviceLinks.map((service) => (
                   <li key={service.id}>
                     <Link
                       href={`/services#${service.id}`}
@@ -101,25 +105,25 @@ const Footer = () => {
               <ul className="space-y-4">
                 <li>
                   <a
-                    href="tel:+250795240664"
+                    href={`tel:${siteSettings.contact.phone.replace(/\s+/g, '')}`}
                     className="flex items-start gap-3 text-background/70 hover:text-secondary transition-colors duration-300"
                   >
                     <Phone size={18} className="mt-0.5 text-secondary" />
-                    <span>+250 795 240 664</span>
+                    <span>{siteSettings.contact.phone}</span>
                   </a>
                 </li>
                 <li>
                   <a
-                    href="mailto:kelpeducation@gmail.com"
+                    href={`mailto:${siteSettings.contact.email}`}
                     className="flex items-start gap-3 text-background/70 hover:text-secondary transition-colors duration-300"
                   >
                     <Mail size={18} className="mt-0.5 text-secondary" />
-                    <span>kelpeducation@gmail.com</span>
+                    <span>{siteSettings.contact.email}</span>
                   </a>
                 </li>
                 <li className="flex items-start gap-3 text-background/70">
                   <MapPin size={18} className="mt-0.5 text-secondary flex-shrink-0" />
-                  <span>Busasamana, Nyanza,<br />Southern Province, Rwanda</span>
+                  <span>{siteSettings.contact.address}</span>
                 </li>
               </ul>
             </div>
