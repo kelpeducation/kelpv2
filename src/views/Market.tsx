@@ -8,17 +8,16 @@ import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 import { BookOpen, Brain, GraduationCap, Monitor, ShoppingCart, ArrowRight, Star, Filter, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-
-/* ────────── Data ────────── */
-import { categories, allProducts } from '@/data/products';
+import { useCmsProducts } from '@/hooks/useCmsProducts';
 
 const featuredIds = [1, 2, 3, 4];
-const featuredProducts = allProducts.filter((p) => featuredIds.includes(p.id));
 
 /* ────────── Component ────────── */
 const Market = () => {
   const containerRef = useGSAPAnimation();
   const [activeFilter, setActiveFilter] = useState('all');
+  const { categories, allProducts } = useCmsProducts();
+  const featuredProducts = allProducts.filter((p) => featuredIds.includes(p.id));
 
   const filteredProducts =
     activeFilter === 'all'

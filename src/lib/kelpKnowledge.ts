@@ -1,6 +1,9 @@
 import chatbotKnowledgeJson from '@/content/cms/chatbot-knowledge.json';
+import { defaultSiteSettings } from '@/lib/siteSettings';
 
 export const kelpKnowledge = chatbotKnowledgeJson;
+
+const { phone: contactPhone, email: contactEmail } = defaultSiteSettings.contact;
 
 export const getLiveKelpKnowledge = async () => {
     try {
@@ -33,7 +36,7 @@ ${JSON.stringify(kelpKnowledge, null, 2)}
 Important guidelines:
 - Keep responses concise and helpful (2-3 paragraphs max)
 - Use a warm, educational tone that reflects KELP's values
-- Always mention contact details when relevant: kelpeducation@gmail.com or +250 734 155 573
+- Always mention contact details when relevant: ${contactEmail} or ${contactPhone}
 - If you don't know something specific, suggest contacting KELP directly
 - Emphasize KELP's tagline: "Unlock your potential with KELP Ltd — Let's grow together!"
 - Focus on KELP's mission of empowering individuals through education and holistic development`;
@@ -53,7 +56,7 @@ ${JSON.stringify(knowledge, null, 2)}
 Important guidelines:
 - Keep responses concise and helpful (2-3 paragraphs max)
 - Use a warm, educational tone that reflects KELP's values
-- Always mention contact details when relevant: kelpeducation@gmail.com or +250 734 155 573
+- Always mention contact details when relevant: ${contactEmail} or ${contactPhone}
 - If you don't know something specific, suggest contacting KELP directly
 - Emphasize KELP's tagline: "Unlock your potential with KELP Ltd - Let's grow together!"
 - Focus on KELP's mission of empowering individuals through education and holistic development`;

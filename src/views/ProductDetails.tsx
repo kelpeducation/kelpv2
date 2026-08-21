@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { allProducts, categories } from '@/data/products';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Star, Minus, Plus, ShieldCheck, Truck, CreditCard, ChevronRight } from 'lucide-react';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
+import { useCmsProducts } from '@/hooks/useCmsProducts';
 
 type PaymentMethod = 'momo' | 'airtel' | 'visa' | null;
 
@@ -17,6 +17,7 @@ interface ProductDetailsProps {
 
 const ProductDetails = ({ id }: ProductDetailsProps) => {
   const containerRef = useGSAPAnimation();
+  const { categories, allProducts } = useCmsProducts();
 
   const [quantity, setQuantity] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>(null);
