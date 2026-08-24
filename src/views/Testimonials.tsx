@@ -76,7 +76,7 @@ const Testimonials = () => {
                 Voices of
                 <span className="text-secondary block">Transformation</span>
               </h1>
-              <p className="text-slate-300 text-xl leading-relaxed">
+              <p className="text-slate-300 text-sm leading-relaxed lg:text-base">
                 Real stories from real people whose lives have been transformed through KELP's educational programs. Their success is our greatest achievement.
               </p>
             </div>

@@ -31,7 +31,7 @@ const Blog = () => {
                 {blogContent.hero.title}
                 <span className="text-secondary block">{blogContent.hero.highlight}</span>
               </h1>
-              <p className="text-slate-300 text-xl leading-relaxed">
+              <p className="text-slate-300 text-sm leading-relaxed lg:text-base">
                 {blogContent.hero.description}
               </p>
             </div>

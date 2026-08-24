@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { DecorativeBackground } from '@/components/ui/decorative-background';
 import { useCmsPagesContent } from '@/hooks/useCmsPagesContent';
+import EnrollDialog from '@/components/EnrollDialog';
 
 
 const Services = () => {
@@ -116,13 +117,22 @@ const Services = () => {
                       ))}
                     </ul>
 
-                    <div className="mt-10">
+                    <div className="mt-10 flex flex-wrap gap-4">
                       <Button size="lg" variant="secondary" asChild>
                         <Link href={service.ctaHref}>
                           {service.ctaLabel}
                           <ArrowRight size={18} />
                         </Link>
                       </Button>
+
+                      {service.id === 'global-language-mastery' && (
+                        <EnrollDialog
+                          programName="the English Learning Program"
+                          courseOptions={service.benefits.map((benefit: string) =>
+                            benefit.includes(':') ? benefit.split(':')[0].trim() : benefit
+                          )}
+                        />
+                      )}
                     </div>
                   </div>
                 </div>

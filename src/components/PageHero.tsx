@@ -20,7 +20,7 @@ const PageHero = ({ eyebrow, title, highlight, description, children }: PageHero
           {title}
           <span className="text-secondary block">{highlight}</span>
         </h1>
-        <p className="text-slate-300 text-xl leading-relaxed">{description}</p>
+        <p className="text-slate-300 text-sm leading-relaxed lg:text-base">{description}</p>
         {children}
       </div>
     </div>
