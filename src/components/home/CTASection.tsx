@@ -31,7 +31,7 @@ const CTASection = ({ content }: CTASectionProps) => {
           <div className="relative z-10 max-w-3xl mx-auto text-center">
            
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-foreground mb-6">
               {content.title}
             </h2>
             

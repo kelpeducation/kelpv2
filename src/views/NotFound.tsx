@@ -37,7 +37,7 @@ const NotFound = () => {
                 <HelpCircle size={32} className="text-secondary" />
               </div>
 
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
+              <h2 className="text-2xl md:text-3xl font-bold text-white">
                 Page <span className="text-secondary">Not Found</span>
               </h2>
 

@@ -99,7 +99,7 @@ const AboutSection = ({ content }: AboutSectionProps) => {
           {/* Right Column - Content */}
           <div className="animate-slide-left">
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">{content.badge}</span>
-            <h2 className="text-3xl md:text-4xl text-primary lg:text-5xl font-bold mt-4 mb-6">
+            <h2 className="text-2xl md:text-3xl text-primary lg:text-4xl font-bold mt-4 mb-6">
               {content.title}
               <span className="text-gradient-primary block">{content.highlight}</span>
             </h2>

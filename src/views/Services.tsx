@@ -88,7 +88,7 @@ const Services = () => {
                       {service.subtitle}
                     </span>
 
-                    <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+                    <h2 className="mt-3 text-2xl font-bold md:text-3xl">
                       {service.title}
                     </h2>
 
@@ -140,7 +140,7 @@ const Services = () => {
             <DecorativeBackground grid={false} blobs={2} blobColor="secondary" />
 
             <div className="relative z-10 max-w-3xl mx-auto space-y-8 animate-fade-up">
-              <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+              <h2 className="text-xl md:text-2xl font-bold leading-tight">
                 {servicesContent.ctaTitle} <span className="text-secondary">{servicesContent.ctaHighlight}</span>
               </h2>
               <p className="text-slate-300 text-base md:text-lg leading-relaxed">

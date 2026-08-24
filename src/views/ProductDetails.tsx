@@ -38,7 +38,7 @@ const ProductDetails = ({ id }: ProductDetailsProps) => {
         <Navbar />
         <main className="flex-grow flex items-center justify-center section-padding bg-slate-50">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-slate-900 mb-4">Product Not Found</h1>
+            <h1 className="text-3xl font-bold text-slate-900 mb-4">Product Not Found</h1>
             <p className="text-muted-foreground mb-8">The learning resource you are looking for does not exist or has been removed.</p>
             <Button asChild className="bg-primary group text-white">
               <Link href="/market">
@@ -96,7 +96,7 @@ const ProductDetails = ({ id }: ProductDetailsProps) => {
 
               {/* Product Info Description */}
               <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-100">
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">About this resource</h2>
+                <h2 className="text-xl font-bold text-slate-900 mb-4">About this resource</h2>
                 <p className="text-slate-600 leading-relaxed text-lg mb-6">
                   {product.description}
                 </p>
@@ -127,7 +127,7 @@ const ProductDetails = ({ id }: ProductDetailsProps) => {
                       <span className="text-xs font-bold text-amber-900">{product.rating}</span>
                     </div>
                   </div>
-                  <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight mb-2">
+                  <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-2">
                     {product.title}
                   </h1>
                   <p className="text-lg text-accent italic font-medium">

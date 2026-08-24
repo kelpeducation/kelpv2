@@ -27,7 +27,7 @@ const PrivacyPolicy = () => {
 
                         {/* Introduction */}
                         <div className="space-y-4">
-                            <h2 className="text-2xl font-bold text-primary flex items-center gap-3">
+                            <h2 className="text-xl font-bold text-primary flex items-center gap-3">
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Introduction
                             </h2>
@@ -49,7 +49,7 @@ const PrivacyPolicy = () => {
 
                         {/* Data Collection */}
                         <div className="space-y-4">
-                            <h2 className="text-2xl font-bold text-primary flex items-center gap-3">
+                            <h2 className="text-xl font-bold text-primary flex items-center gap-3">
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Information We Collect
                             </h2>
@@ -66,7 +66,7 @@ const PrivacyPolicy = () => {
 
                         {/* How We Use Info */}
                         <div className="space-y-4">
-                            <h2 className="text-2xl font-bold text-primary flex items-center gap-3">
+                            <h2 className="text-xl font-bold text-primary flex items-center gap-3">
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 How We Use Your Information
                             </h2>
@@ -92,7 +92,7 @@ const PrivacyPolicy = () => {
 
                         {/* Data Protection */}
                         <div className="space-y-4">
-                            <h2 className="text-2xl font-bold text-primary flex items-center gap-3">
+                            <h2 className="text-xl font-bold text-primary flex items-center gap-3">
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Data Protection & Security
                             </h2>
@@ -103,7 +103,7 @@ const PrivacyPolicy = () => {
 
                         {/* Contact Section */}
                         <div className="bg-primary text-white p-8 rounded-3xl mt-12 text-center">
-                            <h3 className="text-2xl font-bold mb-4">Contact Us</h3>
+                            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
                             <p className="text-slate-300 mb-8">
                                 If you have any questions about this Privacy Policy, please contact us:
                             </p>

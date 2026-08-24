@@ -68,7 +68,7 @@ const Market = () => {
           <div className="container-custom">
             <div className="text-center mb-16 animate-fade-up">
               <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Browse By</span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-3">
+              <h2 className="text-2xl md:text-3xl font-bold mt-3">
                 Product <span className="text-primary">Categories</span>
               </h2>
               <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
@@ -114,7 +114,7 @@ const Market = () => {
           <div className="container-custom">
             <div className="text-center mb-16 animate-fade-up">
               <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Top Picks</span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-3">
+              <h2 className="text-2xl md:text-3xl font-bold mt-3">
                 Featured <span className="text-primary">Products</span>
               </h2>
               <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
@@ -179,7 +179,7 @@ const Market = () => {
           <div className="container-custom">
             <div className="text-center mb-12 animate-fade-up">
               <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Full Collection</span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-3">
+              <h2 className="text-2xl md:text-3xl font-bold mt-3">
                 All <span className="text-primary">Products</span>
               </h2>
               <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
@@ -288,7 +288,7 @@ const Market = () => {
             </div>
 
             <div className="relative z-10 max-w-3xl mx-auto space-y-8 animate-fade-up">
-              <h2 className="text-2xl md:text-4xl font-bold leading-tight">
+              <h2 className="text-xl md:text-2xl font-bold leading-tight">
                 Invest in Your Future —{' '}
                 <span className="text-secondary">Ejo Heza Hatangirira Uyu Munsi</span>
               </h2>

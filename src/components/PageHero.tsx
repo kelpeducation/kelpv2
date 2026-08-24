@@ -16,7 +16,7 @@ const PageHero = ({ eyebrow, title, highlight, description, children }: PageHero
     <div className="container-custom relative z-10">
       <div className="max-w-4xl mx-auto text-center animate-fade-up">
         <span className="text-secondary font-semibold text-sm uppercase tracking-wider">{eyebrow}</span>
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-4 mb-6">
           {title}
           <span className="text-secondary block">{highlight}</span>
         </h1>

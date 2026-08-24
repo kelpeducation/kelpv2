@@ -90,7 +90,7 @@ const ServicesSection = ({ content }: ServicesSectionProps) => {
             {content.eyebrow}
           </span>
 
-          <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl">
+          <h2 className="text-2xl font-bold md:text-3xl lg:text-4xl">
             {content.title}
             <span className="block text-primary">
               {content.highlight}

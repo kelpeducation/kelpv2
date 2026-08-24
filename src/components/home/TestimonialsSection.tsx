@@ -43,7 +43,7 @@ const TestimonialsSection = ({ content }: TestimonialsSectionProps) => {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-up">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">{content.eyebrow}</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6 text-background">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-4 mb-6 text-background">
             {content.title}
             <span className="text-gradient-gold block">{content.highlight}</span>
           </h2>

@@ -27,7 +27,7 @@ const Blog = () => {
           <div className="container-custom relative z-10">
             <div className="max-w-4xl mx-auto text-center animate-fade-up">
               <span className="text-secondary font-semibold text-sm uppercase tracking-wider">{blogContent.hero.eyebrow}</span>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-4 mb-6">
                 {blogContent.hero.title}
                 <span className="text-secondary block">{blogContent.hero.highlight}</span>
               </h1>
@@ -49,7 +49,7 @@ const Blog = () => {
                   <span className="inline-block bg-white/15 text-background text-xs font-semibold px-3 py-1 rounded-full mb-4">
                     {blogContent.featuredLabel}
                   </span>
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-background">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 text-background">
                     {blogPosts[0].title}
                   </h2>
                   <p className="text-background/70 text-lg leading-relaxed mb-6">
@@ -130,7 +130,7 @@ const Blog = () => {
         <section className="section-padding bg-background">
           <div className="container-custom">
             <div className="bg-gradient-primary rounded-3xl p-12 lg:p-16 text-center animate-scale-in">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
                 {blogContent.newsletterTitle}
               </h2>
               <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">

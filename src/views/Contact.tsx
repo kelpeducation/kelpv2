@@ -95,7 +95,7 @@ const Contact = () => {
               {/* Contact Form */}
               <div className="animate-slide-right">
                 <div className="bg-card border border-border rounded-3xl p-8 lg:p-10">
-                  <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
+                  <h2 className="text-xl font-bold mb-6">Send Us a Message</h2>
                   
                   {isSubmitted ? (
                     <div className="text-center py-12">
@@ -183,7 +183,7 @@ const Contact = () => {
 
               {/* Contact Info */}
               <div className="animate-slide-left">
-                <h2 className="text-2xl font-bold mb-8">Get in Touch</h2>
+                <h2 className="text-xl font-bold mb-8">Get in Touch</h2>
                 
                 <div className="space-y-6 mb-12">
                   <a

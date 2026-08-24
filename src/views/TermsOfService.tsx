@@ -27,7 +27,7 @@ const TermsOfService = () => {
 
                         {/* Agreement */}
                         <div className="space-y-4">
-                            <h2 className="text-2xl font-bold text-primary flex items-center gap-3">
+                            <h2 className="text-xl font-bold text-primary flex items-center gap-3">
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Agreement to Terms
                             </h2>
@@ -38,7 +38,7 @@ const TermsOfService = () => {
 
                         {/* Services Description */}
                         <div className="space-y-4">
-                            <h2 className="text-2xl font-bold text-primary flex items-center gap-3">
+                            <h2 className="text-xl font-bold text-primary flex items-center gap-3">
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Our Educational Services
                             </h2>
@@ -65,7 +65,7 @@ const TermsOfService = () => {
 
                         {/* User Obligations */}
                         <div className="space-y-4">
-                            <h2 className="text-2xl font-bold text-primary flex items-center gap-3">
+                            <h2 className="text-xl font-bold text-primary flex items-center gap-3">
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 User Responsibilities
                             </h2>
@@ -93,7 +93,7 @@ const TermsOfService = () => {
 
                         {/* Disclaimer */}
                         <div className="space-y-4">
-                            <h2 className="text-2xl font-bold text-primary flex items-center gap-3">
+                            <h2 className="text-xl font-bold text-primary flex items-center gap-3">
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Limitation of Liability
                             </h2>
@@ -104,7 +104,7 @@ const TermsOfService = () => {
 
                         {/* Updates to Terms */}
                         <div className="space-y-4">
-                            <h2 className="text-2xl font-bold text-primary flex items-center gap-3">
+                            <h2 className="text-xl font-bold text-primary flex items-center gap-3">
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Changes to Terms
                             </h2>
@@ -117,7 +117,7 @@ const TermsOfService = () => {
                         <div className="bg-primary text-white p-8 rounded-3xl mt-12">
                             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                                 <div>
-                                    <h3 className="text-2xl font-bold mb-2">Questions?</h3>
+                                    <h3 className="text-xl font-bold mb-2">Questions?</h3>
                                     <p className="text-slate-300">
                                         Contact our support team for any clarifications.
                                     </p>
