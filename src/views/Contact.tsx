@@ -103,7 +103,7 @@ const Contact = () => {
                         <CheckCircle size={40} className="text-primary" />
                       </div>
                       <h3 className="text-xl font-bold mb-2">Thank You!</h3>
-                      <p className="text-muted-foreground">
+                      <p className="text-muted-foreground text-sm leading-relaxed lg:text-base">
                         Your message has been sent successfully. We'll get back to you soon.
                       </p>
                     </div>

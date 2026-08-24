@@ -41,7 +41,7 @@ const NotFound = () => {
                 Page <span className="text-secondary">Not Found</span>
               </h2>
 
-              <p className="text-slate-300 text-base md:text-lg max-w-lg mx-auto leading-relaxed">
+              <p className="text-slate-300 text-sm leading-relaxed lg:text-base max-w-lg mx-auto">
                 It looks like you've ventured into uncharted waters. The page you are looking for might have been moved, removed, or never existed.
               </p>
 

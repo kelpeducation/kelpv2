@@ -45,7 +45,7 @@ const About = () => {
                   <Target size={32} className="text-white" />
                 </div>
                 <h3 className="text-xl font-bold mb-6 text-primary">{aboutContent.missionTitle}</h3>
-                <p className="text-slate-600 text-lg leading-relaxed relative z-10">
+                <p className="text-slate-600 text-sm leading-relaxed relative z-10 lg:text-base">
                   {aboutContent.missionText}
                 </p>
               </div>
@@ -57,7 +57,7 @@ const About = () => {
                   <Eye size={32} className="text-secondary-foreground" />
                 </div>
                 <h3 className="text-xl font-bold mb-6 text-primary">{aboutContent.visionTitle}</h3>
-                <p className="text-slate-600 text-lg leading-relaxed relative z-10">
+                <p className="text-slate-600 text-sm leading-relaxed relative z-10 lg:text-base">
                   {aboutContent.visionText}
                 </p>
               </div>
@@ -92,7 +92,7 @@ const About = () => {
                       <Icon size={36} className={`${value.color === 'bg-secondary' ? 'text-secondary-foreground' : 'text-primary'}`} />
                     </div>
                     <h3 className="text-xl font-bold mb-4">{value.title}</h3>
-                    <p className="text-slate-300 leading-relaxed text-lg">{value.description}</p>
+                    <p className="text-slate-300 text-sm leading-relaxed lg:text-base">{value.description}</p>
                   </div>
                 );
               })}
@@ -106,7 +106,7 @@ const About = () => {
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-primary">
               {aboutContent.ctaTitle} <span className="text-secondary">{aboutContent.ctaHighlight}</span>
             </h2>
-            <p className="text-slate-600 text-xl mb-10 leading-relaxed">
+            <p className="text-slate-600 text-sm leading-relaxed lg:text-base mb-10">
               {aboutContent.ctaDescription}
             </p>
             <Button size="xl" shape="pill" asChild className="text-lg px-10 py-6 h-auto shadow-xl hover:shadow-2xl hover:-translate-y-1">

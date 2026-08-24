@@ -39,7 +39,7 @@ const ProductDetails = ({ id }: ProductDetailsProps) => {
         <main className="flex-grow flex items-center justify-center section-padding bg-slate-50">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-slate-900 mb-4">Product Not Found</h1>
-            <p className="text-muted-foreground mb-8">The learning resource you are looking for does not exist or has been removed.</p>
+            <p className="text-muted-foreground text-sm mb-8">The learning resource you are looking for does not exist or has been removed.</p>
             <Button asChild className="bg-primary group text-white">
               <Link href="/market">
                 <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
@@ -97,7 +97,7 @@ const ProductDetails = ({ id }: ProductDetailsProps) => {
               {/* Product Info Description */}
               <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-100">
                 <h2 className="text-xl font-bold text-slate-900 mb-4">About this resource</h2>
-                <p className="text-slate-600 leading-relaxed text-lg mb-6">
+                <p className="text-slate-600 text-sm leading-relaxed lg:text-base mb-6">
                   {product.description}
                 </p>
                 <div className="flex items-center gap-4 py-4 border-y border-slate-100">
@@ -130,7 +130,7 @@ const ProductDetails = ({ id }: ProductDetailsProps) => {
                   <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-2">
                     {product.title}
                   </h1>
-                  <p className="text-lg text-accent italic font-medium">
+                  <p className="text-sm lg:text-base text-accent italic font-medium">
                     &quot;{product.phrase}&quot;
                   </p>
                 </div>

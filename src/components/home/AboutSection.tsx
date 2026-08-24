@@ -64,7 +64,7 @@ const AboutSection = ({ content }: AboutSectionProps) => {
                 </div>
               </div>
 
-              <p className="text-background/80 text-lg leading-relaxed mb-8">
+              <p className="text-background/80 text-sm leading-relaxed mb-8 lg:text-base">
                 {content.missionDescription}
               </p>
 
@@ -103,7 +103,7 @@ const AboutSection = ({ content }: AboutSectionProps) => {
               {content.title}
               <span className="text-gradient-primary block">{content.highlight}</span>
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-10">
+            <p className="text-muted-foreground text-sm leading-relaxed lg:text-base mb-10">
               {content.description}
             </p>
 
@@ -118,7 +118,7 @@ const AboutSection = ({ content }: AboutSectionProps) => {
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground text-lg mb-1">{value.title}</h4>
-                      <p className="text-muted-foreground">{value.description}</p>
+                      <p className="text-muted-foreground text-sm leading-relaxed lg:text-base">{value.description}</p>
                     </div>
                   </div>
                 );

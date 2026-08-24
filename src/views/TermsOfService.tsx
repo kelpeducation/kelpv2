@@ -31,7 +31,7 @@ const TermsOfService = () => {
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Agreement to Terms
                             </h2>
-                            <p className="text-slate-600 leading-relaxed">
+                            <p className="text-slate-600 text-sm leading-relaxed lg:text-base">
                                 By accessing or using the services provided by Kennis Education for Literacy and Potential Ltd ("KELP Ltd"), you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our services.
                             </p>
                         </div>
@@ -42,7 +42,7 @@ const TermsOfService = () => {
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Our Educational Services
                             </h2>
-                            <p className="text-slate-600 leading-relaxed">
+                            <p className="text-slate-600 text-sm leading-relaxed lg:text-base">
                                 KELP Ltd provides a range of educational solutions, including but not limited to:
                             </p>
                             <div className="grid sm:grid-cols-2 gap-4 mt-4">
@@ -69,7 +69,7 @@ const TermsOfService = () => {
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 User Responsibilities
                             </h2>
-                            <p className="text-slate-600 leading-relaxed">
+                            <p className="text-slate-600 text-sm leading-relaxed lg:text-base">
                                 As a user of our services, you agree to:
                             </p>
                             <ul className="list-disc pl-6 space-y-3 text-slate-600 marker:text-secondary">
@@ -97,7 +97,7 @@ const TermsOfService = () => {
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Limitation of Liability
                             </h2>
-                            <p className="text-slate-600 leading-relaxed">
+                            <p className="text-slate-600 text-sm leading-relaxed lg:text-base">
                                 While we strive for excellence in all our educational programs, KELP Ltd shall not be held liable for any indirect, incidental, or consequential damages arising from the use of our services. Our commitment is to provide the highest quality education and support to help you reach your potential.
                             </p>
                         </div>
@@ -108,7 +108,7 @@ const TermsOfService = () => {
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Changes to Terms
                             </h2>
-                            <p className="text-slate-600 leading-relaxed">
+                            <p className="text-slate-600 text-sm leading-relaxed lg:text-base">
                                 We reserve the right to modify these terms at any time. We will notify users of any significant changes. Your continued use of our services following any changes indicates your acceptance of the new terms.
                             </p>
                         </div>
@@ -118,7 +118,7 @@ const TermsOfService = () => {
                             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                                 <div>
                                     <h3 className="text-xl font-bold mb-2">Questions?</h3>
-                                    <p className="text-slate-300">
+                                    <p className="text-slate-300 text-sm">
                                         Contact our support team for any clarifications.
                                     </p>
                                 </div>

@@ -52,7 +52,7 @@ const Blog = () => {
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 text-background">
                     {blogPosts[0].title}
                   </h2>
-                  <p className="text-background/70 text-lg leading-relaxed mb-6">
+                  <p className="text-background/70 text-sm leading-relaxed lg:text-base mb-6">
                     {blogPosts[0].excerpt}
                   </p>
                   <div className="flex items-center gap-4 text-background/60 text-sm mb-6">
@@ -105,7 +105,7 @@ const Blog = () => {
                       {post.title}
                     </h3>
                     
-                    <p className="text-muted-foreground leading-relaxed mb-4 line-clamp-2">
+                    <p className="text-muted-foreground text-sm leading-relaxed lg:text-base mb-4 line-clamp-2">
                       {post.excerpt}
                     </p>
 
@@ -133,7 +133,7 @@ const Blog = () => {
               <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
                 {blogContent.newsletterTitle}
               </h2>
-              <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-primary-foreground/80 text-sm leading-relaxed lg:text-base mb-8 max-w-2xl mx-auto">
                 {blogContent.newsletterDescription}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">

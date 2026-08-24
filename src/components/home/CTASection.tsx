@@ -35,7 +35,7 @@ const CTASection = ({ content }: CTASectionProps) => {
               {content.title}
             </h2>
             
-            <p className="text-primary-foreground/80 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p className="text-primary-foreground/80 text-sm leading-relaxed lg:text-base mb-10 max-w-2xl mx-auto">
               {content.description}
             </p>
 

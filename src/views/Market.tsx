@@ -71,7 +71,7 @@ const Market = () => {
               <h2 className="text-2xl md:text-3xl font-bold mt-3">
                 Product <span className="text-primary">Categories</span>
               </h2>
-              <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+              <p className="text-muted-foreground text-sm leading-relaxed lg:text-base mt-4 max-w-xl mx-auto">
                 Find exactly what you need to level up your learning experience.
               </p>
             </div>
@@ -117,7 +117,7 @@ const Market = () => {
               <h2 className="text-2xl md:text-3xl font-bold mt-3">
                 Featured <span className="text-primary">Products</span>
               </h2>
-              <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+              <p className="text-muted-foreground text-sm leading-relaxed lg:text-base mt-4 max-w-xl mx-auto">
                 Our handpicked recommendations to kickstart your growth — <em className="text-secondary">bikore neza, wiyubake.</em>
               </p>
             </div>
@@ -182,7 +182,7 @@ const Market = () => {
               <h2 className="text-2xl md:text-3xl font-bold mt-3">
                 All <span className="text-primary">Products</span>
               </h2>
-              <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+              <p className="text-muted-foreground text-sm leading-relaxed lg:text-base mt-4 max-w-xl mx-auto">
                 Start learning today — every resource you need in one place.
               </p>
             </div>
@@ -272,7 +272,7 @@ const Market = () => {
 
             {filteredProducts.length === 0 && (
               <div className="text-center py-20">
-                <p className="text-muted-foreground text-lg">No products found in this category yet.</p>
+                <p className="text-muted-foreground text-sm">No products found in this category yet.</p>
               </div>
             )}
           </div>
@@ -292,7 +292,7 @@ const Market = () => {
                 Invest in Your Future —{' '}
                 <span className="text-secondary">Ejo Heza Hatangirira Uyu Munsi</span>
               </h2>
-              <p className="text-slate-300 text-base md:text-lg leading-relaxed">
+              <p className="text-slate-300 text-sm leading-relaxed lg:text-base">
                 Every book, every tool, every resource brings you one step closer to the future you deserve. Start your journey with KELP today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">

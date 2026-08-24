@@ -93,7 +93,7 @@ const Services = () => {
                       {service.title}
                     </h2>
 
-                    <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+                    <p className="mt-6 text-sm leading-relaxed lg:text-base text-muted-foreground">
                       {service.description}
                     </p>
 
@@ -153,7 +153,7 @@ const Services = () => {
               <h2 className="text-xl md:text-2xl font-bold leading-tight">
                 {servicesContent.ctaTitle} <span className="text-secondary">{servicesContent.ctaHighlight}</span>
               </h2>
-              <p className="text-slate-300 text-base md:text-lg leading-relaxed">
+              <p className="text-slate-300 text-sm leading-relaxed lg:text-base">
                 {servicesContent.ctaDescription}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">

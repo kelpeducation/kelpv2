@@ -31,7 +31,7 @@ const PrivacyPolicy = () => {
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Introduction
                             </h2>
-                            <p className="text-slate-600 leading-relaxed">
+                            <p className="text-slate-600 text-sm leading-relaxed lg:text-base">
                                 Kennis Education for Literacy and Potential Ltd ("KELP Ltd") is dedicated to providing transformative, sustainable, and accessible educational solutions. We respect your privacy and are committed to protecting the personal data we collect from our students, parents, partners, and website visitors.
                             </p>
                         </div>
@@ -53,7 +53,7 @@ const PrivacyPolicy = () => {
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Information We Collect
                             </h2>
-                            <p className="text-slate-600 leading-relaxed">
+                            <p className="text-slate-600 text-sm leading-relaxed lg:text-base">
                                 We collect information necessary to provide our educational services effectively. This may include:
                             </p>
                             <ul className="list-disc pl-6 space-y-2 text-slate-600 marker:text-secondary">
@@ -70,7 +70,7 @@ const PrivacyPolicy = () => {
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 How We Use Your Information
                             </h2>
-                            <p className="text-slate-600 leading-relaxed">
+                            <p className="text-slate-600 text-sm leading-relaxed lg:text-base">
                                 Your data helps us to:
                             </p>
                             <div className="grid md:grid-cols-2 gap-4">
@@ -96,7 +96,7 @@ const PrivacyPolicy = () => {
                                 <div className="w-8 h-1 bg-secondary rounded-full"></div>
                                 Data Protection & Security
                             </h2>
-                            <p className="text-slate-600 leading-relaxed">
+                            <p className="text-slate-600 text-sm leading-relaxed lg:text-base">
                                 We implement robust security measures to safeguard your personal data against unauthorized access, alteration, disclosure, or destruction. We practice data minimization and only retain information for as long as necessary to fulfill our educational mission and legal requirements.
                             </p>
                         </div>
@@ -104,7 +104,7 @@ const PrivacyPolicy = () => {
                         {/* Contact Section */}
                         <div className="bg-primary text-white p-8 rounded-3xl mt-12 text-center">
                             <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-                            <p className="text-slate-300 mb-8">
+                            <p className="text-slate-300 text-sm mb-8">
                                 If you have any questions about this Privacy Policy, please contact us:
                             </p>
                             <div className="flex flex-col md:flex-row justify-center gap-6">

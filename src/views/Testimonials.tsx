@@ -135,7 +135,7 @@ const Testimonials = () => {
               <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
                 Our Impact in Numbers
               </h2>
-              <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto">
+              <p className="text-primary-foreground/80 text-sm leading-relaxed lg:text-base max-w-2xl mx-auto">
                 Every number represents a life transformed, a goal achieved, a potential unlocked.
               </p>
             </div>
@@ -149,7 +149,7 @@ const Testimonials = () => {
               ].map((stat, index) => (
                 <div key={index} className="text-center">
                   <p className="text-4xl md:text-5xl font-bold text-primary-foreground mb-2">{stat.value}</p>
-                  <p className="text-primary-foreground/70">{stat.label}</p>
+                  <p className="text-primary-foreground/70 text-sm">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -162,7 +162,7 @@ const Testimonials = () => {
             <h2 className="text-2xl md:text-3xl font-bold mb-6">
               Ready to Write Your Success Story?
             </h2>
-            <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-sm leading-relaxed lg:text-base mb-8 max-w-2xl mx-auto">
               Join the growing community of individuals and organizations who have transformed their futures with KELP.
             </p>
             <Button variant="hero" size="lg" asChild>

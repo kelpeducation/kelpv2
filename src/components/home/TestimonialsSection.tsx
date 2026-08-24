@@ -47,7 +47,7 @@ const TestimonialsSection = ({ content }: TestimonialsSectionProps) => {
             {content.title}
             <span className="text-gradient-gold block">{content.highlight}</span>
           </h2>
-          <p className="text-background/70 text-lg">
+          <p className="text-background/70 text-sm leading-relaxed lg:text-base">
             {content.description}
           </p>
         </div>

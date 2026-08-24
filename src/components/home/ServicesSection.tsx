@@ -99,7 +99,7 @@ const ServicesSection = ({ content }: ServicesSectionProps) => {
             </span>
           </h2>
 
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 text-sm leading-relaxed lg:text-base text-muted-foreground">
             {content.description}
           </p>
         </div>
@@ -127,7 +127,7 @@ const ServicesSection = ({ content }: ServicesSectionProps) => {
                     {service.title}
                   </h3>
 
-                  <p className="mt-3 leading-relaxed text-muted-foreground">
+                  <p className="mt-3 text-sm leading-relaxed lg:text-base text-muted-foreground">
                     {service.description}
                   </p>
 
