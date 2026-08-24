@@ -44,7 +44,7 @@ const About = () => {
                 <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-8 relative z-10 group-hover:-translate-y-2 transition-transform duration-300 shadow-lg shadow-primary/20">
                   <Target size={32} className="text-white" />
                 </div>
-                <h3 className="text-3xl font-bold mb-6 text-primary">{aboutContent.missionTitle}</h3>
+                <h3 className="text-2xl font-bold mb-6 text-primary">{aboutContent.missionTitle}</h3>
                 <p className="text-slate-600 text-lg leading-relaxed relative z-10">
                   {aboutContent.missionText}
                 </p>
@@ -56,7 +56,7 @@ const About = () => {
                 <div className="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-8 relative z-10 group-hover:-translate-y-2 transition-transform duration-300 shadow-lg shadow-secondary/20">
                   <Eye size={32} className="text-secondary-foreground" />
                 </div>
-                <h3 className="text-3xl font-bold mb-6 text-primary">{aboutContent.visionTitle}</h3>
+                <h3 className="text-2xl font-bold mb-6 text-primary">{aboutContent.visionTitle}</h3>
                 <p className="text-slate-600 text-lg leading-relaxed relative z-10">
                   {aboutContent.visionText}
                 </p>
@@ -75,7 +75,7 @@ const About = () => {
           <div className="container-custom relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-up">
               <span className="text-secondary font-bold text-sm uppercase tracking-widest">{aboutContent.valuesEyebrow}</span>
-              <h2 className="text-4xl md:text-5xl font-bold mt-4 leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 leading-tight">
                 {aboutContent.valuesTitle} <span className="text-secondary">{aboutContent.valuesHighlight}</span>
               </h2>
             </div>
@@ -103,7 +103,7 @@ const About = () => {
         {/* CTA */}
         <section className="container-custom py-16 relative z-10 text-center">
           <div className="max-w-4xl mx-auto animate-fade-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-primary">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary">
               {aboutContent.ctaTitle} <span className="text-secondary">{aboutContent.ctaHighlight}</span>
             </h2>
             <p className="text-slate-600 text-xl mb-10 leading-relaxed">

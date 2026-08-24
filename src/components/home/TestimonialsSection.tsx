@@ -22,7 +22,7 @@ const TestimonialsSection = ({ content }: TestimonialsSectionProps) => {
   return (
     <section
       ref={containerRef}
-      className="section-padding bg-foreground text-background relative overflow-hidden"
+      className="section-padding bg-primary text-background relative overflow-hidden"
       style={{
         backgroundImage: 'url("/images/hero2.png")',
         backgroundSize: 'cover',
@@ -31,7 +31,7 @@ const TestimonialsSection = ({ content }: TestimonialsSectionProps) => {
       }}
     >
       {/* Background overlay - lighter for visibility */}
-      <div className="absolute inset-0 bg-foreground/80 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-primary/85 backdrop-blur-sm" />
 
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full">

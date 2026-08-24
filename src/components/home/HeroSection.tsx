@@ -331,7 +331,7 @@ const HeroSection = ({ content }: HeroSectionProps) => {
                 <img
                   src={content.rightPersonImage}
                   alt={content.rightPersonAlt}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 38%' }}
                 />
               </div>
               <VideosBadge

@@ -9,10 +9,10 @@
       "primaryCtaHref": "/services",
       "secondaryCtaLabel": "Our Approach",
       "secondaryCtaHref": "/blog",
-      "leftPersonImage": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
-      "rightPersonImage": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
-      "leftPersonAlt": "Student",
-      "rightPersonAlt": "Teacher",
+      "leftPersonImage": "/images/5.jpg",
+      "rightPersonImage": "/images/7.jpg",
+      "leftPersonAlt": "KELP student with her school books",
+      "rightPersonAlt": "Student writing in class",
       "courseProgressLabel": "Course Progress",
       "courseProgressState": "Excellent",
       "courseProgressFooter": "Score",
@@ -216,7 +216,7 @@
         "title": "School Consultancy",
         "subtitle": "Elevating Educational Standards",
         "description": "Partner with us to transform your educational institution. We offer comprehensive consultancy from curriculum design and teacher training to school management systems producing the best student results.",
-        "image": "/images/TeacherTrainingServices-Image.jfif",
+        "image": "/images/coach.jpg",
         "benefits": [
           "Teacher Training: High-standard workshops on 21st-century methods.",
           "Shaping School Culture: Building values-driven, high-performing environments.",
@@ -252,7 +252,7 @@
         "category": "Education",
         "date": "January 2, 2026",
         "readTime": "5 min read",
-        "image": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800"
+        "image": "/images/4.jpg"
       },
       {
         "id": 2,
@@ -261,7 +261,7 @@
         "category": "Tips & Tricks",
         "date": "December 28, 2025",
         "readTime": "4 min read",
-        "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800"
+        "image": "/images/2.jpg"
       },
       {
         "id": 3,
@@ -270,7 +270,7 @@
         "category": "Professional Development",
         "date": "December 20, 2025",
         "readTime": "6 min read",
-        "image": "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=800"
+        "image": "/images/3.jpg"
       },
       {
         "id": 4,
@@ -279,7 +279,7 @@
         "category": "Adult Education",
         "date": "December 15, 2025",
         "readTime": "5 min read",
-        "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
+        "image": "/images/8.jpg"
       },
       {
         "id": 5,
@@ -288,7 +288,7 @@
         "category": "Inclusive Education",
         "date": "December 10, 2025",
         "readTime": "7 min read",
-        "image": "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&q=80&w=800"
+        "image": "/images/6.jpg"
       },
       {
         "id": 6,
@@ -297,7 +297,7 @@
         "category": "Parenting",
         "date": "December 5, 2025",
         "readTime": "4 min read",
-        "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800"
+        "image": "/images/1.jpg"
       }
     ],
     "newsletterTitle": "Stay Updated with KELP",

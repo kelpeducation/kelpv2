@@ -72,7 +72,7 @@ const Testimonials = () => {
           <div className="container-custom relative z-10">
             <div className="max-w-4xl mx-auto text-center animate-fade-up">
               <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Success Stories</span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
                 Voices of
                 <span className="text-secondary block">Transformation</span>
               </h1>

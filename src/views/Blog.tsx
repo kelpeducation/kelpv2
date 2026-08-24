@@ -27,7 +27,7 @@ const Blog = () => {
           <div className="container-custom relative z-10">
             <div className="max-w-4xl mx-auto text-center animate-fade-up">
               <span className="text-secondary font-semibold text-sm uppercase tracking-wider">{blogContent.hero.eyebrow}</span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
                 {blogContent.hero.title}
                 <span className="text-secondary block">{blogContent.hero.highlight}</span>
               </h1>
@@ -41,12 +41,12 @@ const Blog = () => {
         {/* Featured Post */}
         <section className="section-padding bg-muted/30 pt-0 -mt-8">
           <div className="container-custom">
-            <div className="bg-foreground text-background rounded-3xl p-8 lg:p-12 relative overflow-hidden animate-scale-in">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-              
+            <div className="bg-primary text-background rounded-3xl p-8 lg:p-12 relative overflow-hidden animate-scale-in">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+
               <div className="relative z-10 grid lg:grid-cols-2 gap-8 items-center">
                 <div>
-                  <span className="inline-block bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                  <span className="inline-block bg-white/15 text-background text-xs font-semibold px-3 py-1 rounded-full mb-4">
                     {blogContent.featuredLabel}
                   </span>
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-background">
