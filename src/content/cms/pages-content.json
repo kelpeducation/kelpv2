@@ -62,6 +62,13 @@
           "description": "Strategic advisory supporting schools to improve systems and learning outcomes.",
           "linkLabel": "Learn more",
           "linkHref": "/services"
+        },
+        {
+          "icon": "LifeBuoy",
+          "title": "School Support",
+          "description": "Ongoing partnership and resources for schools, including access to KELP Market.",
+          "linkLabel": "Learn more",
+          "linkHref": "/services"
         }
       ]
     },
@@ -221,8 +228,23 @@
           "Teacher Training: High-standard workshops on 21st-century methods.",
           "Shaping School Culture: Building values-driven, high-performing environments.",
           "Shaping School Leadership: Developing capable, visionary school leaders.",
-          "School Management: Systems and processes for better student results.",
-          "School Support: Ongoing partnership beyond initial consultancy, including access to KELP Market."
+          "School Management: Systems and processes for better student results."
+        ],
+        "ctaLabel": "Inquire Now",
+        "ctaHref": "/contact"
+      },
+      {
+        "id": "school-support",
+        "title": "School Support",
+        "subtitle": "Ongoing Partnership for Lasting Impact",
+        "description": "Our relationship doesn't end after consultancy. We stay by your school's side with continued resources, tools, and access to KELP Market, ensuring your progress is sustained long after the initial engagement.",
+        "image": "/images/10.jpg",
+        "benefits": [
+          "KELP Market Access: Discounted books, learning materials, and classroom tools for your school.",
+          "Ongoing Partnership: Continued guidance and check-ins beyond the initial consultancy engagement.",
+          "Resource Provision: Curated learning resources tailored to your school's specific needs.",
+          "Priority Support: Faster response times and dedicated support for partner schools.",
+          "Community Access: Connect with a growing network of KELP partner schools and educators."
         ],
         "ctaLabel": "Inquire Now",
         "ctaHref": "/contact"

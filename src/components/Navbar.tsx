@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight, ChevronDown, Youtube, Users, GraduationCap, ArrowRight, BookOpen, Building2, Globe, FileText, Edit, Clock, Lightbulb, Languages } from 'lucide-react';
+import { Menu, X, ChevronRight, ChevronDown, Youtube, Users, GraduationCap, ArrowRight, BookOpen, Building2, Globe, FileText, Edit, Clock, Lightbulb, Languages, LifeBuoy } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
@@ -58,7 +58,13 @@ const serviceLinks = [
     title: 'School Consultancy',
     icon: Building2,
     href: '/services#school-consultancy',
-    description: 'Teacher training, school culture, leadership, management & support'
+    description: 'Teacher training, school culture, leadership & management'
+  },
+  {
+    title: 'School Support',
+    icon: LifeBuoy,
+    href: '/services#school-support',
+    description: 'Ongoing partnership, resources & access to KELP Market'
   }
 ];
 

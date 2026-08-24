@@ -32,6 +32,10 @@
       {
         "name": "School Consultancy",
         "id": "school-consultancy"
+      },
+      {
+        "name": "School Support",
+        "id": "school-support"
       }
     ]
   }

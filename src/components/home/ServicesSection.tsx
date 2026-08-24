@@ -4,6 +4,7 @@ import {
   Users,
   GraduationCap,
   Building2,
+  LifeBuoy,
   ArrowRight,
 } from 'lucide-react';
 import { useEffect } from 'react';
@@ -17,6 +18,7 @@ const iconMap = {
   Users,
   GraduationCap,
   Building2,
+  LifeBuoy,
 };
 
 interface ServicesSectionProps {

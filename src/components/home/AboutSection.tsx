@@ -81,7 +81,7 @@ const AboutSection = ({ content }: AboutSectionProps) => {
             </div>
 
             {/* Vision card */}
-            <div className="absolute -bottom-8 -right-8 bg-card rounded-2xl p-6 shadow-xl border border-border max-w-xs animate-float z-20">
+            <div className="relative mt-6 w-full max-w-xs mx-auto lg:mt-0 lg:absolute lg:-bottom-8 lg:-right-8 lg:mx-0 bg-card rounded-2xl p-6 shadow-xl border border-border animate-float z-20">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center flex-shrink-0">
                   <Eye size={24} className="text-accent-foreground" />

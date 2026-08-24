@@ -71,7 +71,7 @@ const Footer = () => {
                   <li key={item}>
                     <Link
                       href={`/${item.toLowerCase().replace(' ', '-').replace('home', '')}`}
-                      className="text-background/70 hover:text-secondary transition-colors duration-300 flex items-center gap-2 group"
+                      className="text-background/70 hover:text-secondary transition-colors duration-300 flex items-center gap-2 group text-sm"
                     >
                       <ArrowRight size={14} className="opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
                       {item}
@@ -89,7 +89,7 @@ const Footer = () => {
                   <li key={service.id}>
                     <Link
                       href={`/services#${service.id}`}
-                      className="text-background/70 hover:text-secondary transition-colors duration-300 flex items-center gap-2 group"
+                      className="text-background/70 hover:text-secondary transition-colors duration-300 flex items-center gap-2 group text-sm"
                     >
                       <ArrowRight size={14} className="opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
                       {service.name}
@@ -106,7 +106,7 @@ const Footer = () => {
                 <li>
                   <a
                     href={`tel:${siteSettings.contact.phone.replace(/\s+/g, '')}`}
-                    className="flex items-start gap-3 text-background/70 hover:text-secondary transition-colors duration-300"
+                    className="flex items-start gap-3 text-background/70 hover:text-secondary transition-colors duration-300 text-sm"
                   >
                     <Phone size={18} className="mt-0.5 text-secondary" />
                     <span>{siteSettings.contact.phone}</span>
@@ -115,13 +115,13 @@ const Footer = () => {
                 <li>
                   <a
                     href={`mailto:${siteSettings.contact.email}`}
-                    className="flex items-start gap-3 text-background/70 hover:text-secondary transition-colors duration-300"
+                    className="flex items-start gap-3 text-background/70 hover:text-secondary transition-colors duration-300 text-sm"
                   >
                     <Mail size={18} className="mt-0.5 text-secondary" />
                     <span>{siteSettings.contact.email}</span>
                   </a>
                 </li>
-                <li className="flex items-start gap-3 text-background/70">
+                <li className="flex items-start gap-3 text-background/70 text-sm">
                   <MapPin size={18} className="mt-0.5 text-secondary flex-shrink-0" />
                   <span>{siteSettings.contact.address}</span>
                 </li>
