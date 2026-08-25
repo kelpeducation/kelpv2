@@ -121,7 +121,6 @@ interface HeroSectionProps {
     activeStudentsLabel: string;
     videoLessonsCount: string;
     videoLessonsLabel: string;
-    partners: Array<{ icon: string; name: string }>;
   };
 }
 

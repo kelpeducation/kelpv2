@@ -19,13 +19,7 @@
       "activeStudentsCount": "1,200+",
       "activeStudentsLabel": "Active Students",
       "videoLessonsCount": "350+",
-      "videoLessonsLabel": "Video Lessons",
-      "partners": [
-        { "icon": "🏫", "name": "SchoolPro" },
-        { "icon": "📚", "name": "EduLearn" },
-        { "icon": "🎯", "name": "SkillUp" },
-        { "icon": "🌍", "name": "GlobalEd" }
-      ]
+      "videoLessonsLabel": "Video Lessons"
     },
     "servicesSection": {
       "eyebrow": "What We Do",
