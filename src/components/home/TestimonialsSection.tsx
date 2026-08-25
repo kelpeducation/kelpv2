@@ -57,7 +57,7 @@ const TestimonialsSection = ({ content }: TestimonialsSectionProps) => {
       <div className="relative z-10">
         {/* Header */}
         <div className="container-custom text-center max-w-3xl mx-auto mb-16 animate-fade-up">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">{content.eyebrow}</span>
+          <span className="text-secondary font-semibold text-sm uppercase tracking-wider">{content.eyebrow}</span>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-4 mb-6 text-background">
             {content.title}
             <span className="text-gradient-gold block">{content.highlight}</span>
@@ -76,25 +76,25 @@ const TestimonialsSection = ({ content }: TestimonialsSectionProps) => {
             {loopItems.map((testimonial, index) => (
               <div
                 key={`${testimonial.author}-${index}`}
-                className="w-[280px] sm:w-[320px] flex-shrink-0 flex flex-col items-center text-center px-2"
+                className="w-[300px] h-[300px] sm:w-[340px] sm:h-[340px] flex-shrink-0 rounded-full bg-background/5 border border-background/10 backdrop-blur-sm flex flex-col items-center justify-center text-center p-10"
               >
                 {/* Circular avatar */}
                 <div
-                  className={`w-20 h-20 rounded-full bg-gradient-to-br ${avatarRings[index % avatarRings.length]} flex items-center justify-center text-xl font-bold text-white shadow-lg ring-4 ring-background/10 mb-6 flex-shrink-0`}
+                  className={`w-14 h-14 rounded-full bg-gradient-to-br ${avatarRings[index % avatarRings.length]} flex items-center justify-center text-base font-bold text-white shadow-lg ring-4 ring-background/10 mb-4 flex-shrink-0`}
                 >
                   {getInitials(testimonial.author)}
                 </div>
 
                 {/* Quote */}
-                <blockquote className="text-background/90 text-sm leading-relaxed lg:text-base mb-6">
+                <blockquote className="text-background/90 text-xs leading-relaxed line-clamp-4 mb-4 max-w-[190px]">
                   "{testimonial.quote}"
                 </blockquote>
 
                 {/* Author */}
                 <div>
-                  <p className="font-bold text-background">{testimonial.author}</p>
-                  <p className="text-background/60 text-sm">{testimonial.role}</p>
-                  <p className="text-primary text-sm mt-1">{testimonial.location}</p>
+                  <p className="font-bold text-background text-sm">{testimonial.author}</p>
+                  <p className="text-background/60 text-xs">{testimonial.role}</p>
+                  <p className="text-primary text-xs mt-0.5">{testimonial.location}</p>
                 </div>
               </div>
             ))}
