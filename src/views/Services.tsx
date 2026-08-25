@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PageHero from '@/components/PageHero';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
@@ -126,14 +126,27 @@ const Services = () => {
                       </Button>
 
                       {service.id === 'global-language-mastery' && (
-                        <EnrollDialog
-                          programName="the English Learning Program"
-                          courseOptions={service.benefits.map((benefit: string) =>
-                            benefit.includes(':') ? benefit.split(':')[0].trim() : benefit
-                          )}
-                        />
+                        <>
+                          <EnrollDialog
+                            programName="the English Learning Program"
+                            courseOptions={service.benefits.map((benefit: string) =>
+                              benefit.includes(':') ? benefit.split(':')[0].trim() : benefit
+                            )}
+                          />
+                          <Button size="lg" variant="outline" asChild>
+                            <Link href="/portal/login">
+                              <LogIn size={18} />
+                              Student Login
+                            </Link>
+                          </Button>
+                        </>
                       )}
                     </div>
+                    {service.id === 'global-language-mastery' && (
+                      <p className="mt-4 text-xs text-muted-foreground">
+                        Already enrolled? Log in to book classes, meet your teachers, and see announcements.
+                      </p>
+                    )}
                   </div>
                 </div>
               );

@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { DecorativeBackground } from '@/components/ui/decorative-background';
 import { useCmsPagesContent } from '@/hooks/useCmsPagesContent';
+import NewsletterForm from '@/components/NewsletterForm';
 
 const Blog = () => {
   const containerRef = useGSAPAnimation();
@@ -136,16 +137,10 @@ const Blog = () => {
               <p className="text-primary-foreground/80 text-sm leading-relaxed lg:text-base mb-8 max-w-2xl mx-auto">
                 {blogContent.newsletterDescription}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder={blogContent.newsletterPlaceholder}
-                  className="flex-1 h-14 px-6 rounded-xl bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary-foreground/30"
-                />
-                <Button variant="gold" size="lg">
-                  {blogContent.newsletterButtonLabel}
-                </Button>
-              </div>
+              <NewsletterForm
+                placeholder={blogContent.newsletterPlaceholder}
+                buttonLabel={blogContent.newsletterButtonLabel}
+              />
             </div>
           </div>
         </section>

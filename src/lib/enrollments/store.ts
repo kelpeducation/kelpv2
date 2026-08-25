@@ -1,5 +1,4 @@
-import { promises as fs } from 'fs';
-import path from 'path';
+import { supabasePublic, getSupabaseAdmin } from '@/lib/supabase/server';
 
 export interface Enrollment {
   id: string;
@@ -12,28 +11,63 @@ export interface Enrollment {
 
 export type NewEnrollment = Pick<Enrollment, 'name' | 'email' | 'phone' | 'course'>;
 
-const filePath = path.join(process.cwd(), 'src', 'content', 'enrollments.json');
+interface EnrollmentRow {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  course: string;
+  submitted_at: string;
+}
 
+const toEnrollment = (row: EnrollmentRow): Enrollment => ({
+  id: row.id,
+  name: row.name,
+  email: row.email,
+  phone: row.phone,
+  course: row.course,
+  submittedAt: row.submitted_at,
+});
+
+/**
+ * Reads every enrollment. Requires the service_role key (bypasses Row Level
+ * Security) since the enrollments table intentionally has no public SELECT
+ * policy — see supabase/migrations/0001_create_enrollments.sql.
+ */
 export const readEnrollments = async (): Promise<Enrollment[]> => {
-  try {
-    const raw = await fs.readFile(filePath, 'utf-8');
-    return JSON.parse(raw) as Enrollment[];
-  } catch {
-    return [];
+  const admin = getSupabaseAdmin();
+
+  const { data, error } = await admin
+    .from('enrollments')
+    .select('*')
+    .order('submitted_at', { ascending: false });
+
+  if (error) {
+    throw new Error(`Failed to read enrollments: ${error.message}`);
   }
+
+  return (data as EnrollmentRow[]).map(toEnrollment);
 };
 
+/**
+ * Inserts a new enrollment using the public (RLS-scoped) client — anyone may
+ * submit one, per the "Public can submit enrollments" policy.
+ */
 export const addEnrollment = async (entry: NewEnrollment): Promise<Enrollment> => {
-  const enrollments = await readEnrollments();
+  const { data, error } = await supabasePublic
+    .from('enrollments')
+    .insert({
+      name: entry.name,
+      email: entry.email,
+      phone: entry.phone,
+      course: entry.course,
+    })
+    .select()
+    .single();
 
-  const newEntry: Enrollment = {
-    ...entry,
-    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-    submittedAt: new Date().toISOString(),
-  };
+  if (error) {
+    throw new Error(`Failed to submit enrollment: ${error.message}`);
+  }
 
-  enrollments.push(newEntry);
-  await fs.writeFile(filePath, `${JSON.stringify(enrollments, null, 2)}\n`, 'utf-8');
-
-  return newEntry;
+  return toEnrollment(data as EnrollmentRow);
 };

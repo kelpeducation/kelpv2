@@ -16,8 +16,9 @@ export async function GET(req: NextRequest) {
   try {
     const data = await readEnrollments();
     return NextResponse.json({ data });
-  } catch {
-    return NextResponse.json({ error: 'Failed to read enrollments.' }, { status: 500 });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Failed to read enrollments.';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
 
@@ -45,7 +46,8 @@ export async function POST(req: NextRequest) {
     const entry = await addEnrollment({ name, email, phone, course });
 
     return NextResponse.json({ ok: true, data: entry });
-  } catch {
-    return NextResponse.json({ error: 'Failed to submit enrollment.' }, { status: 500 });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Failed to submit enrollment.';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

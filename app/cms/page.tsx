@@ -21,11 +21,13 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { AlertCircle, CheckCircle2, Loader2, Save, Users } from 'lucide-react';
+import { AlertCircle, CheckCircle2, Download, Loader2, Mail, Save, Users } from 'lucide-react';
 import type { Enrollment } from '@/lib/enrollments/store';
+import type { Subscriber } from '@/lib/newsletter/store';
 
 type CmsSection = 'site-settings' | 'products' | 'chatbot-knowledge' | 'pages-content';
-type ViewId = CmsSection | 'enrollments';
+type DataViewId = 'enrollments' | 'subscribers';
+type ViewId = CmsSection | DataViewId;
 
 const sections: { id: CmsSection; label: string; help: string }[] = [
   {
@@ -50,13 +52,37 @@ const sections: { id: CmsSection; label: string; help: string }[] = [
   },
 ];
 
-const enrollmentsTab = {
-  id: 'enrollments' as const,
-  label: 'Course Enrollments',
-  help: 'People who joined a program from the Services page (e.g. the English Learning Program).',
-};
+const dataViews: { id: DataViewId; label: string; help: string; icon: typeof Users }[] = [
+  {
+    id: 'enrollments',
+    label: 'Course Enrollments',
+    help: 'People who joined a program from the Services page (e.g. the English Learning Program).',
+    icon: Users,
+  },
+  {
+    id: 'subscribers',
+    label: 'Newsletter Subscribers',
+    help: 'Emails collected from the "Stay Updated with KELP" newsletter form on the Blog page.',
+    icon: Mail,
+  },
+];
 
-const isCmsSection = (id: ViewId): id is CmsSection => id !== 'enrollments';
+const isCmsSection = (id: ViewId): id is CmsSection =>
+  id !== 'enrollments' && id !== 'subscribers';
+
+const downloadCsv = (filename: string, rows: string[][]) => {
+  const escape = (value: string) => `"${value.replace(/"/g, '""')}"`;
+  const csv = rows.map((row) => row.map(escape).join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+};
 
 const CmsPage = () => {
   const [view, setView] = useState<ViewId>('site-settings');
@@ -73,6 +99,10 @@ const CmsPage = () => {
   const [enrollmentsLoading, setEnrollmentsLoading] = useState(false);
   const [enrollmentsError, setEnrollmentsError] = useState('');
   const [courseFilter, setCourseFilter] = useState('all');
+
+  const [subscribers, setSubscribers] = useState<Subscriber[] | null>(null);
+  const [subscribersLoading, setSubscribersLoading] = useState(false);
+  const [subscribersError, setSubscribersError] = useState('');
 
   const activeSectionMeta = useMemo(
     () => sections.find((item) => item.id === view),
@@ -188,6 +218,36 @@ const CmsPage = () => {
     }
   };
 
+  const loadSubscribers = async () => {
+    if (!cmsKey.trim()) {
+      setSubscribersError('Provide admin password above, then load subscribers.');
+      return;
+    }
+
+    setSubscribersLoading(true);
+    setSubscribersError('');
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        cache: 'no-store',
+        headers: { 'x-cms-key': cmsKey },
+      });
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload?.error || 'Failed to load subscribers.');
+      }
+
+      setSubscribers(payload.data as Subscriber[]);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown error while loading subscribers.';
+      setSubscribersError(message);
+      setSubscribers(null);
+    } finally {
+      setSubscribersLoading(false);
+    }
+  };
+
   const courseOptions = useMemo(() => {
     if (!enrollments) return [];
     return Array.from(new Set(enrollments.map((e) => e.course))).sort();
@@ -199,7 +259,30 @@ const CmsPage = () => {
     return enrollments.filter((e) => e.course === courseFilter);
   }, [enrollments, courseFilter]);
 
-  const allTabs = [...sections, enrollmentsTab];
+  const sortedSubscribers = useMemo(() => {
+    if (!subscribers) return [];
+    return subscribers.slice().sort((a, b) => b.subscribedAt.localeCompare(a.subscribedAt));
+  }, [subscribers]);
+
+  const allTabs = [...sections, ...dataViews];
+
+  const exportEnrollmentsCsv = () => {
+    if (!enrollments) return;
+    const rows = [
+      ['Name', 'Program', 'Email', 'Phone', 'Joined'],
+      ...filteredEnrollments.map((e) => [e.name, e.course, e.email, e.phone, e.submittedAt]),
+    ];
+    downloadCsv('kelp-course-enrollments.csv', rows);
+  };
+
+  const exportSubscribersCsv = () => {
+    if (!subscribers) return;
+    const rows = [
+      ['Email', 'Subscribed'],
+      ...sortedSubscribers.map((s) => [s.email, s.subscribedAt]),
+    ];
+    downloadCsv('kelp-newsletter-subscribers.csv', rows);
+  };
 
   return (
     <main className="min-h-screen bg-slate-50 py-10">
@@ -208,7 +291,7 @@ const CmsPage = () => {
           <CardHeader>
             <CardTitle className="text-3xl font-bold text-primary">Website Content Management</CardTitle>
             <CardDescription>
-              Edit your website-wide content and view course enrollments from one place.
+              Edit your website-wide content, and view course enrollments and newsletter subscribers, from one place.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -227,9 +310,9 @@ const CmsPage = () => {
               <div className="rounded-xl border border-slate-200 bg-white p-4">
                 <p className="text-sm font-semibold text-slate-800">How to use</p>
                 <ol className="mt-2 list-decimal pl-4 text-sm text-slate-600 space-y-1">
-                  <li>Choose a section or the Enrollments tab.</li>
-                  <li>Edit JSON, or load the roster.</li>
-                  <li>Save changes / refresh roster.</li>
+                  <li>Choose a section, or the Enrollments / Subscribers tab.</li>
+                  <li>Edit JSON, or load the data.</li>
+                  <li>Save changes, or refresh / export.</li>
                 </ol>
               </div>
             </div>
@@ -238,7 +321,7 @@ const CmsPage = () => {
               <TabsList className="w-full justify-start overflow-x-auto">
                 {allTabs.map((item) => (
                   <TabsTrigger key={item.id} value={item.id}>
-                    {item.id === 'enrollments' && <Users size={14} className="mr-1.5" />}
+                    {'icon' in item && <item.icon size={14} className="mr-1.5" />}
                     {item.label}
                   </TabsTrigger>
                 ))}
@@ -248,12 +331,14 @@ const CmsPage = () => {
             {view === 'enrollments' ? (
               <div className="space-y-4">
                 <div className="rounded-xl border border-slate-200 bg-white p-4">
-                  <p className="text-sm font-semibold text-slate-800">{enrollmentsTab.label}</p>
-                  <p className="text-sm text-slate-600">{enrollmentsTab.help}</p>
+                  <p className="text-sm font-semibold text-slate-800">Course Enrollments</p>
+                  <p className="text-sm text-slate-600">
+                    People who joined a program from the Services page (e.g. the English Learning Program).
+                  </p>
                 </div>
 
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-3">
                     <Button onClick={loadEnrollments} disabled={enrollmentsLoading}>
                       {enrollmentsLoading ? (
                         <Loader2 className="h-4 w-4 animate-spin" />
@@ -262,6 +347,12 @@ const CmsPage = () => {
                       )}
                       {enrollments ? 'Refresh Roster' : 'Load Roster'}
                     </Button>
+                    {enrollments && (
+                      <Button variant="outline" onClick={exportEnrollmentsCsv}>
+                        <Download className="h-4 w-4" />
+                        Export CSV
+                      </Button>
+                    )}
                     {enrollments && (
                       <span className="text-sm text-slate-600">
                         {filteredEnrollments.length} of {enrollments.length} people
@@ -287,8 +378,8 @@ const CmsPage = () => {
                 </div>
 
                 {enrollmentsError && (
-                  <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-                    <AlertCircle className="h-4 w-4" />
+                  <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 whitespace-pre-line">
+                    <AlertCircle className="h-4 w-4 flex-shrink-0" />
                     <span>{enrollmentsError}</span>
                   </div>
                 )}
@@ -325,6 +416,69 @@ const CmsPage = () => {
                                 </TableCell>
                               </TableRow>
                             ))}
+                        </TableBody>
+                      </Table>
+                    )}
+                  </div>
+                )}
+              </div>
+            ) : view === 'subscribers' ? (
+              <div className="space-y-4">
+                <div className="rounded-xl border border-slate-200 bg-white p-4">
+                  <p className="text-sm font-semibold text-slate-800">Newsletter Subscribers</p>
+                  <p className="text-sm text-slate-600">
+                    Emails collected from the "Stay Updated with KELP" newsletter form on the Blog page.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-3">
+                  <Button onClick={loadSubscribers} disabled={subscribersLoading}>
+                    {subscribersLoading ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <Mail className="h-4 w-4" />
+                    )}
+                    {subscribers ? 'Refresh List' : 'Load Subscribers'}
+                  </Button>
+                  {subscribers && (
+                    <Button variant="outline" onClick={exportSubscribersCsv}>
+                      <Download className="h-4 w-4" />
+                      Export CSV
+                    </Button>
+                  )}
+                  {subscribers && (
+                    <span className="text-sm text-slate-600">{subscribers.length} subscribers</span>
+                  )}
+                </div>
+
+                {subscribersError && (
+                  <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 whitespace-pre-line">
+                    <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                    <span>{subscribersError}</span>
+                  </div>
+                )}
+
+                {subscribers && (
+                  <div className="rounded-xl border border-slate-200 bg-white overflow-x-auto">
+                    {sortedSubscribers.length === 0 ? (
+                      <p className="p-6 text-center text-sm text-slate-500">No subscribers yet.</p>
+                    ) : (
+                      <Table>
+                        <TableHeader>
+                          <TableRow>
+                            <TableHead>Email</TableHead>
+                            <TableHead>Subscribed</TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {sortedSubscribers.map((subscriber) => (
+                            <TableRow key={subscriber.id}>
+                              <TableCell className="font-medium">{subscriber.email}</TableCell>
+                              <TableCell className="whitespace-nowrap text-sm text-slate-500">
+                                {new Date(subscriber.subscribedAt).toLocaleString()}
+                              </TableCell>
+                            </TableRow>
+                          ))}
                         </TableBody>
                       </Table>
                     )}

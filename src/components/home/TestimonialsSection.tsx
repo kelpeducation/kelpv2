@@ -1,5 +1,4 @@
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
-import { Quote } from 'lucide-react';
 
 interface TestimonialsSectionProps {
   content: {
@@ -16,8 +15,24 @@ interface TestimonialsSectionProps {
   };
 }
 
+const avatarRings = [
+  'from-secondary to-accent',
+  'from-accent to-primary',
+  'from-primary to-secondary',
+];
+
+const getInitials = (name: string) =>
+  name
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join('')
+    .toUpperCase();
+
 const TestimonialsSection = ({ content }: TestimonialsSectionProps) => {
   const containerRef = useGSAPAnimation();
+  const loopItems = [...content.items, ...content.items];
 
   return (
     <section
@@ -39,9 +54,9 @@ const TestimonialsSection = ({ content }: TestimonialsSectionProps) => {
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="container-custom relative z-10">
+      <div className="relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-up">
+        <div className="container-custom text-center max-w-3xl mx-auto mb-16 animate-fade-up">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">{content.eyebrow}</span>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-4 mb-6 text-background">
             {content.title}
@@ -52,35 +67,38 @@ const TestimonialsSection = ({ content }: TestimonialsSectionProps) => {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 stagger-children">
-          {content.items.map((testimonial, index) => (
-            <div
-              key={`${testimonial.author}-${index}`}
-              className={`relative bg-background/5 backdrop-blur-sm border border-background/10 rounded-3xl p-8 hover:bg-background/10 transition-all duration-500 ${index === 1 ? 'md:-translate-y-8' : ''
-                }`}
-            >
-              {/* Quote icon */}
-              <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-6">
-                <Quote size={24} className="text-primary-foreground" />
+        {/* Moving testimonials */}
+        <div
+          className="group/marquee relative overflow-hidden"
+          style={{ maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)' }}
+        >
+          <div className="flex w-max gap-6 lg:gap-8 animate-marquee group-hover/marquee:[animation-play-state:paused]">
+            {loopItems.map((testimonial, index) => (
+              <div
+                key={`${testimonial.author}-${index}`}
+                className="w-[280px] sm:w-[320px] flex-shrink-0 flex flex-col items-center text-center px-2"
+              >
+                {/* Circular avatar */}
+                <div
+                  className={`w-20 h-20 rounded-full bg-gradient-to-br ${avatarRings[index % avatarRings.length]} flex items-center justify-center text-xl font-bold text-white shadow-lg ring-4 ring-background/10 mb-6 flex-shrink-0`}
+                >
+                  {getInitials(testimonial.author)}
+                </div>
+
+                {/* Quote */}
+                <blockquote className="text-background/90 text-sm leading-relaxed lg:text-base mb-6">
+                  "{testimonial.quote}"
+                </blockquote>
+
+                {/* Author */}
+                <div>
+                  <p className="font-bold text-background">{testimonial.author}</p>
+                  <p className="text-background/60 text-sm">{testimonial.role}</p>
+                  <p className="text-primary text-sm mt-1">{testimonial.location}</p>
+                </div>
               </div>
-
-              {/* Quote */}
-              <blockquote className="text-background/90 text-sm leading-relaxed lg:text-base mb-8">
-                "{testimonial.quote}"
-              </blockquote>
-
-              {/* Author */}
-              <div className="pt-6 border-t border-background/10">
-                <p className="font-bold text-background">{testimonial.author}</p>
-                <p className="text-background/60 text-sm">{testimonial.role}</p>
-                <p className="text-primary text-sm mt-1">{testimonial.location}</p>
-              </div>
-
-              {/* Decorative element */}
-              <div className="absolute top-4 right-4 w-16 h-16 bg-secondary/20 rounded-full opacity-50" />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
