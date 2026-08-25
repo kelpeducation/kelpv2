@@ -112,7 +112,7 @@ const Testimonials = () => {
                   </span>
 
                   {/* Quote */}
-                  <blockquote className="text-foreground leading-relaxed mb-6">
+                  <blockquote className="text-foreground text-sm leading-relaxed lg:text-base mb-6">
                     "{testimonial.quote}"
                   </blockquote>
 

@@ -66,7 +66,7 @@ const TestimonialsSection = ({ content }: TestimonialsSectionProps) => {
               </div>
 
               {/* Quote */}
-              <blockquote className="text-background/90 text-lg leading-relaxed mb-8">
+              <blockquote className="text-background/90 text-sm leading-relaxed lg:text-base mb-8">
                 "{testimonial.quote}"
               </blockquote>
 
