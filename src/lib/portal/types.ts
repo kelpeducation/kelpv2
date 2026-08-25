@@ -6,6 +6,7 @@ export interface Course {
   teacherName: string;
   teacherBio: string;
   teacherAvatarInitials: string;
+  price: number;
 }
 
 export interface Booking {
@@ -38,6 +39,7 @@ interface CourseRow {
   teacher_name: string;
   teacher_bio: string;
   teacher_avatar_initials: string;
+  price: number;
 }
 
 export const toCourse = (row: CourseRow): Course => ({
@@ -47,6 +49,7 @@ export const toCourse = (row: CourseRow): Course => ({
   description: row.description,
   teacherName: row.teacher_name,
   teacherBio: row.teacher_bio,
+  price: row.price ?? 0,
   teacherAvatarInitials: row.teacher_avatar_initials,
 });
 

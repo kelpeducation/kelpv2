@@ -104,7 +104,8 @@ const BookingDialog = ({ course, studentId, open, onOpenChange, onBooked }: Book
               <span className="font-semibold text-foreground">
                 {new Date(`${date}T00:00:00`).toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })}
               </span>{' '}
-              at <span className="font-semibold text-foreground">{timeSlot}</span> with {course.teacherName}.
+              at <span className="font-semibold text-foreground">{timeSlot}</span> with {course.teacherName} —{' '}
+              <span className="font-semibold text-foreground">{course.price.toLocaleString()} RWF</span> (negotiable).
             </DialogDescription>
             <Button className="w-full" onClick={resetAndClose}>
               Done
@@ -113,7 +114,12 @@ const BookingDialog = ({ course, studentId, open, onOpenChange, onBooked }: Book
         ) : (
           <>
             <DialogHeader>
-              <DialogTitle>Book {course.title}</DialogTitle>
+              <DialogTitle className="flex items-center justify-between gap-3">
+                <span>Book {course.title}</span>
+                <span className="text-primary text-base whitespace-nowrap">
+                  {course.price.toLocaleString()} RWF
+                </span>
+              </DialogTitle>
               <DialogDescription>Classes run Tuesday through Saturday.</DialogDescription>
             </DialogHeader>
 
@@ -159,6 +165,11 @@ const BookingDialog = ({ course, studentId, open, onOpenChange, onBooked }: Book
                     ))}
                   </SelectContent>
                 </Select>
+              </div>
+
+              <div className="flex items-center justify-between pt-2 border-t border-border">
+                <span className="text-sm text-muted-foreground">Class fee</span>
+                <span className="font-bold text-foreground">{course.price.toLocaleString()} RWF</span>
               </div>
 
               <Button className="w-full" onClick={handleConfirm} disabled={submitting}>

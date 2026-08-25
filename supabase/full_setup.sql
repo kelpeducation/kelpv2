@@ -155,6 +155,7 @@ create table if not exists public.courses (
   teacher_name text not null,
   teacher_bio text not null,
   teacher_avatar_initials text not null,
+  price integer not null default 5000,
   created_at timestamptz not null default now()
 );
 
@@ -166,7 +167,7 @@ create policy "Logged-in students can view courses"
   to authenticated
   using (true);
 
-insert into public.courses (title, level, description, teacher_name, teacher_bio, teacher_avatar_initials)
+insert into public.courses (title, level, description, teacher_name, teacher_bio, teacher_avatar_initials, price)
 values
   (
     'KOEC Club',
@@ -174,7 +175,8 @@ values
     'Rapid English mastery system focused on everyday conversation, confidence, and classroom fundamentals.',
     'Aline Uwase',
     'Aline has taught English for over 8 years across Rwandan secondary schools and adult learning centers. She specializes in building speaking confidence for beginner learners through conversational practice.',
-    'AU'
+    'AU',
+    5000
   ),
   (
     'Professional English',
@@ -182,7 +184,8 @@ values
     'Business-level fluency: emails, meetings, presentations, and workplace communication for career growth.',
     'Eric Mugisha',
     'Eric spent six years training corporate teams in business English and communication skills before joining KELP. He focuses on practical, workplace-ready English for professionals.',
-    'EM'
+    'EM',
+    8000
   ),
   (
     'Public Speaking',
@@ -190,7 +193,8 @@ values
     'Training for high-stakes meetings, presentations, and public engagements, in a supportive small-group setting.',
     'Grace Ingabire',
     'Grace is a communications coach and former debate champion who helps learners find their voice, structure ideas clearly, and speak with confidence in English.',
-    'GI'
+    'GI',
+    6000
   )
 on conflict do nothing;
 
