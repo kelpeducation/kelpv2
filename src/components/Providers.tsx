@@ -7,11 +7,10 @@ import { Toaster as Sonner } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import ScrollToTop from '@/components/ScrollToTop';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
-import ChatBot from '@/components/ChatBot';
+import ScrollProgressBar from '@/components/ScrollProgressBar';
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   const [queryClient] = useState(() => new QueryClient());
-  const [isChatOpen, setIsChatOpen] = useState(false);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -19,9 +18,9 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
         <Toaster />
         <Sonner />
         <ScrollToTop />
-        <ScrollToTopButton hidden={isChatOpen} />
+        <ScrollProgressBar />
+        <ScrollToTopButton />
         {children}
-        <ChatBot onOpenChange={setIsChatOpen} />
       </TooltipProvider>
     </QueryClientProvider>
   );
