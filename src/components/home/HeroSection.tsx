@@ -302,19 +302,6 @@ const HeroSection = ({ content }: HeroSectionProps) => {
                 {content.secondaryCtaLabel}
               </Link>
             </div>
-
-            {/* divider + partner logos */}
-            <div style={{ width: '100%', maxWidth: 420 }}>
-              <div style={{ borderTop: '1.5px dashed rgba(4,79,99,0.15)', marginBottom: '18px' }} />
-              <div className="flex flex-wrap items-center justify-center gap-6">
-                {content.partners.map((b) => (
-                  <div key={b.name} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <span style={{ fontSize: 17 }}>{b.icon}</span>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: 'rgba(4,79,99,0.38)' }}>{b.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* ── RIGHT — person + 2 cards ── */}

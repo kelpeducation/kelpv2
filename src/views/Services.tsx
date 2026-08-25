@@ -4,13 +4,12 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PageHero from '@/components/PageHero';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
-import { Check, ArrowRight, LogIn } from 'lucide-react';
+import { Check, ArrowRight, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { DecorativeBackground } from '@/components/ui/decorative-background';
 import { useCmsPagesContent } from '@/hooks/useCmsPagesContent';
-import EnrollDialog from '@/components/EnrollDialog';
 
 
 const Services = () => {
@@ -126,25 +125,22 @@ const Services = () => {
                       </Button>
 
                       {service.id === 'global-language-mastery' && (
-                        <>
-                          <EnrollDialog
-                            programName="the English Learning Program"
-                            courseOptions={service.benefits.map((benefit: string) =>
-                              benefit.includes(':') ? benefit.split(':')[0].trim() : benefit
-                            )}
-                          />
-                          <Button size="lg" variant="outline" asChild>
-                            <Link href="/portal/login">
-                              <LogIn size={18} />
-                              Student Login
-                            </Link>
-                          </Button>
-                        </>
+                        <Button size="lg" variant="hero" asChild>
+                          <Link href="/portal/register">
+                            <UserPlus size={18} />
+                            Enroll Now
+                          </Link>
+                        </Button>
                       )}
                     </div>
                     {service.id === 'global-language-mastery' && (
                       <p className="mt-4 text-xs text-muted-foreground">
-                        Already enrolled? Log in to book classes, meet your teachers, and see announcements.
+                        Create your account to book classes, meet your teachers, and see announcements.{' '}
+                        Already enrolled?{' '}
+                        <Link href="/portal/login" className="text-primary font-semibold hover:text-secondary transition-colors">
+                          Log in
+                        </Link>
+                        .
                       </p>
                     )}
                   </div>

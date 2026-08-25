@@ -80,13 +80,13 @@ const About = () => {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children justify-center">
-              {aboutContent.coreValues.map((value, index) => {
+            <div className="flex flex-wrap justify-center gap-8 stagger-children">
+              {aboutContent.coreValues.map((value) => {
                 const Icon = iconMap[value.icon as keyof typeof iconMap] ?? CheckCircle;
                 return (
                   <div
                     key={value.title}
-                    className={`bg-white/5 border border-white/10 backdrop-blur-sm rounded-3xl p-10 text-center group hover:bg-white/10 transition-all duration-500 ${index >= 3 ? 'lg:col-span-1 lg:last:col-span-1 lg:last:col-start-auto' : ''}`}
+                    className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.4rem)] bg-white/5 border border-white/10 backdrop-blur-sm rounded-3xl p-10 text-center group hover:bg-white/10 transition-all duration-500"
                   >
                     <div className={`w-20 h-20 ${value.color === 'bg-secondary' ? 'bg-secondary shadow-secondary/30' : 'bg-white text-primary shadow-white/10'} rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                       <Icon size={36} className={`${value.color === 'bg-secondary' ? 'text-secondary-foreground' : 'text-primary'}`} />

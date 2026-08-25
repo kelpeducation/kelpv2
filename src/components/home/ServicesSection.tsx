@@ -108,11 +108,15 @@ const ServicesSection = ({ content }: ServicesSectionProps) => {
         <div className="grid gap-12 md:grid-cols-2">
           {content.items.map((service, index) => {
             const Icon = iconMap[service.icon] ?? BookOpen;
+            const isDanglingLast =
+              index === content.items.length - 1 && content.items.length % 2 !== 0;
 
             return (
               <div
                 key={service.title}
-                className="group relative flex gap-6 rounded-3xl border border-border bg-card p-8 transition-all hover:shadow-xl"
+                className={`group relative flex gap-6 rounded-3xl border border-border bg-card p-8 transition-all hover:shadow-xl ${
+                  isDanglingLast ? 'md:col-span-2 md:max-w-[calc(50%-1.5rem)] md:mx-auto' : ''
+                }`}
               >
                 {/* Floating icon block */}
                 <div

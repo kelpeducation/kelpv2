@@ -84,11 +84,11 @@ const Blog = () => {
         {/* Blog Grid */}
         <section className="section-padding bg-muted/30">
           <div className="container-custom">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+            <div className="flex flex-wrap justify-center gap-8 stagger-children">
               {blogPosts.slice(1).map((post, index) => (
                 <article
                   key={post.id}
-                  className={`bg-card border border-border rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-500 group ${
+                  className={`w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.4rem)] bg-card border border-border rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-500 group ${
                     index === 0 ? 'lg:-translate-y-4' : index === 2 ? 'lg:-translate-y-4' : ''
                   }`}
                 >
