@@ -3,11 +3,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Loader2, MailCheck } from 'lucide-react';
+import { Loader2, Mail, MailCheck, Phone, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import PortalAuthLayout from '@/components/portal/PortalAuthLayout';
+import IconInput from '@/components/portal/IconInput';
+import PasswordInput from '@/components/portal/PasswordInput';
 import { supabaseBrowser } from '@/lib/supabase/browser';
 import { useToast } from '@/hooks/use-toast';
 
@@ -77,7 +78,8 @@ const PortalRegister = () => {
       <PortalAuthLayout
         eyebrow="English Learning Program"
         title="Check your email"
-        description=""
+        description="One last step to activate your account."
+        image="/images/learning1.jpg"
         footer={
           <Link href="/portal/login" className="text-primary font-semibold hover:text-secondary transition-colors">
             Back to login
@@ -102,6 +104,7 @@ const PortalRegister = () => {
       eyebrow="English Learning Program"
       title="Create your account"
       description="Join the platform to book classes, meet your teachers, and stay up to date."
+      image="/images/learning1.jpg"
       footer={
         <>
           Already have an account?{' '}
@@ -114,8 +117,9 @@ const PortalRegister = () => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="reg-name">Full Name</Label>
-          <Input
+          <IconInput
             id="reg-name"
+            icon={User}
             value={form.fullName}
             onChange={(e) => setForm((prev) => ({ ...prev, fullName: e.target.value }))}
             placeholder="Enter your full name"
@@ -125,8 +129,9 @@ const PortalRegister = () => {
 
         <div className="space-y-2">
           <Label htmlFor="reg-email">Email Address</Label>
-          <Input
+          <IconInput
             id="reg-email"
+            icon={Mail}
             type="email"
             value={form.email}
             onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
@@ -137,8 +142,9 @@ const PortalRegister = () => {
 
         <div className="space-y-2">
           <Label htmlFor="reg-phone">Phone Number</Label>
-          <Input
+          <IconInput
             id="reg-phone"
+            icon={Phone}
             type="tel"
             value={form.phone}
             onChange={(e) => setForm((prev) => ({ ...prev, phone: e.target.value }))}
@@ -149,9 +155,8 @@ const PortalRegister = () => {
 
         <div className="space-y-2">
           <Label htmlFor="reg-password">Password</Label>
-          <Input
+          <PasswordInput
             id="reg-password"
-            type="password"
             value={form.password}
             onChange={(e) => setForm((prev) => ({ ...prev, password: e.target.value }))}
             placeholder="At least 6 characters"

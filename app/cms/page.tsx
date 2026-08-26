@@ -23,6 +23,7 @@ import {
 } from '@/components/ui/table';
 import {
   AlertCircle,
+  BookOpen,
   Bot,
   CheckCircle2,
   Code2,
@@ -30,6 +31,7 @@ import {
   FileText,
   Loader2,
   Mail,
+  Megaphone,
   Save,
   Settings,
   ShoppingBag,
@@ -38,9 +40,11 @@ import {
 import type { Enrollment } from '@/lib/enrollments/store';
 import type { Subscriber } from '@/lib/newsletter/store';
 import JsonFieldEditor from '@/components/cms/JsonFieldEditor';
+import CourseManager from '@/components/cms/CourseManager';
+import AnnouncementManager from '@/components/cms/AnnouncementManager';
 
 type CmsSection = 'site-settings' | 'products' | 'chatbot-knowledge' | 'pages-content';
-type DataViewId = 'enrollments' | 'subscribers';
+type DataViewId = 'enrollments' | 'subscribers' | 'courses' | 'announcements';
 type ViewId = CmsSection | DataViewId;
 
 const sections: { id: CmsSection; label: string; help: string; icon: typeof Settings }[] = [
@@ -72,6 +76,18 @@ const sections: { id: CmsSection; label: string; help: string; icon: typeof Sett
 
 const dataViews: { id: DataViewId; label: string; help: string; icon: typeof Users }[] = [
   {
+    id: 'courses',
+    label: 'Courses & Teachers',
+    help: 'Add, edit, or remove the courses and teacher bios students see in the portal.',
+    icon: BookOpen,
+  },
+  {
+    id: 'announcements',
+    label: 'Announcements',
+    help: 'Post updates that every logged-in student sees on their dashboard.',
+    icon: Megaphone,
+  },
+  {
     id: 'enrollments',
     label: 'Course Enrollments',
     help: 'People who joined a program from the Services page (e.g. the English Learning Program).',
@@ -85,8 +101,9 @@ const dataViews: { id: DataViewId; label: string; help: string; icon: typeof Use
   },
 ];
 
-const isCmsSection = (id: ViewId): id is CmsSection =>
-  id !== 'enrollments' && id !== 'subscribers';
+const dataViewIds: DataViewId[] = ['enrollments', 'subscribers', 'courses', 'announcements'];
+
+const isCmsSection = (id: ViewId): id is CmsSection => !dataViewIds.includes(id as DataViewId);
 
 const downloadCsv = (filename: string, rows: string[][]) => {
   const escape = (value: string) => `"${value.replace(/"/g, '""')}"`;
@@ -336,7 +353,7 @@ const CmsPage = () => {
               <div className="rounded-xl border border-slate-200 bg-white p-4">
                 <p className="text-sm font-semibold text-slate-800">How to use</p>
                 <ol className="mt-2 list-decimal pl-4 text-sm text-slate-600 space-y-1">
-                  <li>Choose a section, or the Enrollments / Subscribers tab.</li>
+                  <li>Choose a content section, or Courses / Announcements / Enrollments / Subscribers.</li>
                   <li>Click a section title to expand it, then edit the fields.</li>
                   <li>Save changes, or refresh / export.</li>
                 </ol>
@@ -354,7 +371,11 @@ const CmsPage = () => {
               </TabsList>
             </Tabs>
 
-            {view === 'enrollments' ? (
+            {view === 'courses' ? (
+              <CourseManager cmsKey={cmsKey} />
+            ) : view === 'announcements' ? (
+              <AnnouncementManager cmsKey={cmsKey} />
+            ) : view === 'enrollments' ? (
               <div className="space-y-4">
                 <div className="rounded-xl border border-slate-200 bg-white p-4">
                   <p className="text-sm font-semibold text-slate-800">Course Enrollments</p>

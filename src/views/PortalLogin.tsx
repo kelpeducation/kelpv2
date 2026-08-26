@@ -3,11 +3,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Loader2, MailCheck } from 'lucide-react';
+import { Loader2, Mail, MailCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import PortalAuthLayout from '@/components/portal/PortalAuthLayout';
+import IconInput from '@/components/portal/IconInput';
+import PasswordInput from '@/components/portal/PasswordInput';
 import { supabaseBrowser } from '@/lib/supabase/browser';
 import { useToast } from '@/hooks/use-toast';
 
@@ -80,6 +81,7 @@ const PortalLogin = () => {
       eyebrow="English Learning Program"
       title="Welcome back"
       description="Log in to book classes, view your teachers, and catch up on announcements."
+      image="/images/learning2.jpg"
       footer={
         <>
           New here?{' '}
@@ -92,8 +94,9 @@ const PortalLogin = () => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="login-email">Email Address</Label>
-          <Input
+          <IconInput
             id="login-email"
+            icon={Mail}
             type="email"
             value={form.email}
             onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
@@ -103,10 +106,17 @@ const PortalLogin = () => {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="login-password">Password</Label>
-          <Input
+          <div className="flex items-center justify-between">
+            <Label htmlFor="login-password">Password</Label>
+            <Link
+              href="/portal/forgot-password"
+              className="text-xs font-semibold text-primary hover:text-secondary transition-colors"
+            >
+              Forgot password?
+            </Link>
+          </div>
+          <PasswordInput
             id="login-password"
-            type="password"
             value={form.password}
             onChange={(e) => setForm((prev) => ({ ...prev, password: e.target.value }))}
             placeholder="Enter your password"

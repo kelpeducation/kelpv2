@@ -1,10 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { LogOut } from 'lucide-react';
-import logo from '@/assets/logo 0.2.png';
 import { cn } from '@/lib/utils';
 import { portalNavItems } from '@/lib/portal/nav';
 import { supabaseBrowser } from '@/lib/supabase/browser';
@@ -20,9 +18,10 @@ const PortalSidebar = () => {
 
   return (
     <aside className="hidden lg:flex flex-col fixed left-0 top-0 h-screen w-64 flex-shrink-0 border-r border-border bg-white z-40">
-      <div className="h-20 flex items-center px-6 border-b border-border flex-shrink-0">
-        <Link href="/" className="flex items-center gap-3">
-          <Image src={logo} alt="KELP Education" className="h-9 w-auto object-contain" />
+      <div className="flex items-center justify-center py-4 px-6 border-b border-border flex-shrink-0">
+        <Link href="/" className="flex items-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-side.png" alt="KELP Education" className="h-14 w-auto object-contain" />
         </Link>
       </div>
 
