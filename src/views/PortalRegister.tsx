@@ -52,6 +52,14 @@ const PortalRegister = () => {
     setSubmitting(false);
 
     if (error) {
+      if (error.message.toLowerCase().includes('rate limit')) {
+        toast({
+          title: 'Too many signups right now',
+          description: 'Our email service is briefly rate-limited. Please try again in a few minutes.',
+          variant: 'destructive',
+        });
+        return;
+      }
       toast({ title: 'Could not create account', description: error.message, variant: 'destructive' });
       return;
     }

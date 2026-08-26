@@ -116,8 +116,11 @@ const BookingDialog = ({ course, studentId, open, onOpenChange, onBooked }: Book
             <DialogHeader>
               <DialogTitle className="flex items-center justify-between gap-3">
                 <span>Book {course.title}</span>
-                <span className="text-primary text-base whitespace-nowrap">
-                  {course.price.toLocaleString()} RWF
+                <span className="text-right">
+                  <span className="block text-primary text-base whitespace-nowrap">
+                    {course.price.toLocaleString()} RWF
+                  </span>
+                  <span className="block text-[11px] font-normal text-muted-foreground italic">Negotiable</span>
                 </span>
               </DialogTitle>
               <DialogDescription>Classes run Tuesday through Saturday.</DialogDescription>
@@ -168,7 +171,9 @@ const BookingDialog = ({ course, studentId, open, onOpenChange, onBooked }: Book
               </div>
 
               <div className="flex items-center justify-between pt-2 border-t border-border">
-                <span className="text-sm text-muted-foreground">Class fee</span>
+                <span className="text-sm text-muted-foreground">
+                  Class fee <span className="italic">(negotiable)</span>
+                </span>
                 <span className="font-bold text-foreground">{course.price.toLocaleString()} RWF</span>
               </div>
 

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Loader2 } from 'lucide-react';
+import { Loader2, MailCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -15,6 +15,8 @@ const PortalLogin = () => {
   const router = useRouter();
   const { toast } = useToast();
   const [submitting, setSubmitting] = useState(false);
+  const [resending, setResending] = useState(false);
+  const [needsConfirmation, setNeedsConfirmation] = useState(false);
   const [form, setForm] = useState({ email: '', password: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -26,6 +28,7 @@ const PortalLogin = () => {
     }
 
     setSubmitting(true);
+    setNeedsConfirmation(false);
 
     const { error } = await supabaseBrowser.auth.signInWithPassword({
       email: form.email.trim(),
@@ -35,11 +38,41 @@ const PortalLogin = () => {
     setSubmitting(false);
 
     if (error) {
+      if (error.message.toLowerCase().includes('email not confirmed')) {
+        setNeedsConfirmation(true);
+        toast({
+          title: 'Email not confirmed yet',
+          description: 'Check your inbox for the confirmation link, or resend it below.',
+          variant: 'destructive',
+        });
+        return;
+      }
       toast({ title: 'Could not log in', description: error.message, variant: 'destructive' });
       return;
     }
 
     router.push('/portal/dashboard');
+  };
+
+  const handleResend = async () => {
+    if (!form.email.trim()) {
+      toast({ title: 'Enter your email above first', variant: 'destructive' });
+      return;
+    }
+
+    setResending(true);
+    const { error } = await supabaseBrowser.auth.resend({
+      type: 'signup',
+      email: form.email.trim(),
+    });
+    setResending(false);
+
+    if (error) {
+      toast({ title: 'Could not resend email', description: error.message, variant: 'destructive' });
+      return;
+    }
+
+    toast({ title: 'Confirmation email sent', description: `Check ${form.email.trim()} for the link.` });
   };
 
   return (
@@ -85,6 +118,20 @@ const PortalLogin = () => {
           {submitting && <Loader2 size={18} className="animate-spin" />}
           {submitting ? 'Logging in...' : 'Log In'}
         </Button>
+
+        {needsConfirmation && (
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full"
+            size="lg"
+            onClick={handleResend}
+            disabled={resending}
+          >
+            {resending ? <Loader2 size={18} className="animate-spin" /> : <MailCheck size={18} />}
+            {resending ? 'Sending...' : 'Resend confirmation email'}
+          </Button>
+        )}
       </form>
     </PortalAuthLayout>
   );
