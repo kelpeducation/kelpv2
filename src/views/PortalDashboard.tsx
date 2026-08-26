@@ -4,9 +4,10 @@ import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Loader2, LogOut, Megaphone, CalendarClock, X } from 'lucide-react';
+import { Loader2, LogOut, Megaphone, CalendarClock, X, BookOpen, Sparkles } from 'lucide-react';
 import logo from '@/assets/logo 0.2.png';
 import { Button } from '@/components/ui/button';
+import { DecorativeBackground } from '@/components/ui/decorative-background';
 import { supabaseBrowser } from '@/lib/supabase/browser';
 import { usePortalSession } from '@/hooks/usePortalSession';
 import { useToast } from '@/hooks/use-toast';
@@ -22,6 +23,14 @@ import {
   toAnnouncement,
   toProfile,
 } from '@/lib/portal/types';
+
+const getInitials = (name: string) =>
+  name
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join('');
 
 const PortalDashboard = () => {
   const router = useRouter();
@@ -101,22 +110,25 @@ const PortalDashboard = () => {
     );
   }
 
+  const displayName = profile?.fullName || session.user.email || 'Student';
+
   return (
     <div className="min-h-screen bg-muted/30">
       {/* Header */}
-      <header className="bg-white border-b border-border sticky top-0 z-30">
+      <header className="bg-white border-b border-border sticky top-0 z-30 shadow-sm">
         <div className="container-custom flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-3">
             <Image src={logo} alt="KELP Education" className="h-10 w-auto object-contain" />
           </Link>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-xs font-bold text-white flex-shrink-0">
+              {getInitials(displayName) || 'S'}
+            </div>
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-semibold text-foreground">
-                {profile?.fullName || session.user.email}
-              </p>
+              <p className="text-sm font-semibold text-foreground leading-tight">{displayName}</p>
               <p className="text-xs text-muted-foreground">Student</p>
             </div>
-            <Button variant="outline" size="sm" onClick={handleLogout}>
+            <Button variant="outline" size="sm" onClick={handleLogout} className="ml-1">
               <LogOut size={14} />
               Log Out
             </Button>
@@ -124,18 +136,25 @@ const PortalDashboard = () => {
         </div>
       </header>
 
+      {/* Welcome hero */}
+      <div className="relative bg-primary text-white overflow-hidden">
+        <DecorativeBackground gridOpacity={0.05} gridSize={60} blobs={2} blobColor="secondary" />
+        <div className="container-custom relative z-10 py-10 md:py-14">
+          <span className="inline-flex items-center gap-1.5 text-secondary font-semibold text-xs uppercase tracking-wider">
+            <Sparkles size={14} />
+            Student Portal
+          </span>
+          <h1 className="text-2xl md:text-4xl font-bold mt-3 mb-2">
+            Welcome{profile?.fullName ? `, ${profile.fullName.split(' ')[0]}` : ''}!
+          </h1>
+          <p className="text-slate-300 text-sm md:text-base leading-relaxed max-w-xl">
+            Book a class, meet your teachers, and stay current with announcements below.
+          </p>
+        </div>
+      </div>
+
       <main className="section-padding">
         <div className="container-custom space-y-12">
-          {/* Welcome */}
-          <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-              Welcome{profile?.fullName ? `, ${profile.fullName.split(' ')[0]}` : ''}!
-            </h1>
-            <p className="text-muted-foreground text-sm leading-relaxed lg:text-base">
-              Book a class, meet your teachers, and stay current with announcements below.
-            </p>
-          </div>
-
           {dataLoading ? (
             <div className="flex justify-center py-16">
               <Loader2 className="h-6 w-6 animate-spin text-primary" />
@@ -145,13 +164,18 @@ const PortalDashboard = () => {
               {/* Announcements */}
               {announcements.length > 0 && (
                 <section>
-                  <h2 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                    <Megaphone size={20} className="text-secondary" />
+                  <h2 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2.5">
+                    <span className="w-8 h-8 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0">
+                      <Megaphone size={16} />
+                    </span>
                     Announcements
                   </h2>
                   <div className="space-y-3">
                     {announcements.map((a) => (
-                      <div key={a.id} className="bg-card border border-border rounded-2xl p-5">
+                      <div
+                        key={a.id}
+                        className="bg-card border border-border border-l-4 border-l-secondary rounded-2xl p-5 shadow-sm"
+                      >
                         <div className="flex items-start justify-between gap-4">
                           <p className="font-semibold text-foreground text-sm">{a.title}</p>
                           <p className="text-xs text-muted-foreground whitespace-nowrap flex-shrink-0">
@@ -168,15 +192,36 @@ const PortalDashboard = () => {
               {/* My upcoming bookings */}
               {bookings.length > 0 && (
                 <section>
-                  <h2 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                    <CalendarClock size={20} className="text-secondary" />
+                  <h2 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2.5">
+                    <span className="w-8 h-8 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0">
+                      <CalendarClock size={16} />
+                    </span>
                     Your Upcoming Classes
                   </h2>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {bookings.map((b) => {
                       const course = courseById(b.courseId);
+                      const classDate = new Date(`${b.classDate}T00:00:00`);
                       return (
-                        <div key={b.id} className="bg-card border border-border rounded-2xl p-5 relative">
+                        <div
+                          key={b.id}
+                          className="bg-card border border-border rounded-2xl p-5 relative flex gap-4 shadow-sm hover:shadow-md transition-shadow"
+                        >
+                          <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-primary text-white flex flex-col items-center justify-center leading-none">
+                            <span className="text-[10px] font-semibold uppercase tracking-wide opacity-80">
+                              {classDate.toLocaleDateString(undefined, { month: 'short' })}
+                            </span>
+                            <span className="text-xl font-bold mt-0.5">{classDate.getDate()}</span>
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <p className="font-semibold text-foreground text-sm truncate pr-6">
+                              {course?.title ?? 'Class'}
+                            </p>
+                            <p className="text-muted-foreground text-xs mt-1">
+                              {classDate.toLocaleDateString(undefined, { weekday: 'long' })}
+                            </p>
+                            <p className="text-primary text-sm font-medium mt-1">{b.timeSlot}</p>
+                          </div>
                           <button
                             onClick={() => handleCancelBooking(b.id)}
                             className="absolute top-4 right-4 text-muted-foreground hover:text-destructive transition-colors"
@@ -184,15 +229,6 @@ const PortalDashboard = () => {
                           >
                             <X size={16} />
                           </button>
-                          <p className="font-semibold text-foreground text-sm pr-6">{course?.title ?? 'Class'}</p>
-                          <p className="text-muted-foreground text-sm mt-2">
-                            {new Date(`${b.classDate}T00:00:00`).toLocaleDateString(undefined, {
-                              weekday: 'long',
-                              month: 'long',
-                              day: 'numeric',
-                            })}
-                          </p>
-                          <p className="text-primary text-sm font-medium mt-1">{b.timeSlot}</p>
                         </div>
                       );
                     })}
@@ -202,7 +238,12 @@ const PortalDashboard = () => {
 
               {/* Courses */}
               <section>
-                <h2 className="text-lg font-bold text-foreground mb-4">Available Courses</h2>
+                <h2 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2.5">
+                  <span className="w-8 h-8 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0">
+                    <BookOpen size={16} />
+                  </span>
+                  Available Courses
+                </h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {courses.map((course) => (
                     <CourseCard

@@ -1,8 +1,4 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import { ReactNode } from 'react';
-import { ArrowLeft } from 'lucide-react';
-import logo from '@/assets/logo 0.2.png';
 import { DecorativeBackground } from '@/components/ui/decorative-background';
 
 interface PortalAuthLayoutProps {
@@ -19,18 +15,6 @@ const PortalAuthLayout = ({ eyebrow, title, description, children, footer }: Por
       {/* Brand panel */}
       <div className="relative hidden lg:flex flex-col justify-between bg-primary text-white p-12 overflow-hidden">
         <DecorativeBackground gridOpacity={0.05} gridSize={60} blobs={2} blobColor="secondary" />
-        <div className="relative z-10 flex items-center justify-between">
-          <Link href="/" className="inline-flex items-center gap-3">
-            <Image src={logo} alt="KELP Education" className="h-24 w-auto object-contain" />
-          </Link>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white transition-colors"
-          >
-            <ArrowLeft size={16} />
-            Back to Home
-          </Link>
-        </div>
         <div className="relative z-10 max-w-md">
           <span className="text-secondary font-semibold text-sm uppercase tracking-wider">
             English Learning Program
@@ -51,19 +35,6 @@ const PortalAuthLayout = ({ eyebrow, title, description, children, footer }: Por
       {/* Form panel */}
       <div className="flex items-center justify-center p-6 sm:p-12 bg-muted/30">
         <div className="w-full max-w-sm">
-          <div className="lg:hidden flex items-center justify-between mb-8">
-            <Link href="/" className="inline-flex items-center gap-3">
-              <Image src={logo} alt="KELP Education" className="h-16 w-auto object-contain" />
-            </Link>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-            >
-              <ArrowLeft size={16} />
-              Home
-            </Link>
-          </div>
-
           <span className="text-secondary font-semibold text-sm uppercase tracking-wider">{eyebrow}</span>
           <h2 className="text-2xl font-bold mt-2 mb-2 text-foreground">{title}</h2>
           <p className="text-muted-foreground text-sm leading-relaxed mb-8">{description}</p>

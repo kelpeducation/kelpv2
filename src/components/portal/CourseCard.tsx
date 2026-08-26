@@ -9,17 +9,17 @@ interface CourseCardProps {
 
 const CourseCard = ({ course, onBook }: CourseCardProps) => {
   return (
-    <div className="bg-card border border-border rounded-3xl p-6 flex flex-col hover:shadow-lg transition-shadow duration-300">
+    <div className="bg-card border border-border rounded-3xl p-6 flex flex-col hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
       <div className="flex items-center justify-between gap-2 mb-4">
         <span className="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">
           {course.level}
         </span>
-        <span className="text-right">
+        <span className="text-right bg-secondary/10 rounded-xl px-3 py-1.5">
           <span className="block text-primary font-bold text-sm whitespace-nowrap">
             {course.price.toLocaleString()} RWF
             <span className="text-muted-foreground font-normal"> /class</span>
           </span>
-          <span className="block text-[11px] text-muted-foreground italic">Negotiable</span>
+          <span className="block text-[11px] text-secondary italic">Negotiable</span>
         </span>
       </div>
 
