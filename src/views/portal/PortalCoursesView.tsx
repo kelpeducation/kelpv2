@@ -1,8 +1,9 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { Loader2 } from 'lucide-react';
+import { BookOpen, Loader2 } from 'lucide-react';
 import { usePortal } from '@/components/portal/PortalContext';
+import PortalPageHeader from '@/components/portal/PortalPageHeader';
 import CourseCard from '@/components/portal/CourseCard';
 import BookingDialog from '@/components/portal/BookingDialog';
 import { supabaseBrowser } from '@/lib/supabase/browser';
@@ -30,14 +31,29 @@ const PortalCoursesView = () => {
 
   return (
     <div className="px-6 md:px-10 py-10 container-custom">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-foreground mb-1">Available Courses</h1>
-        <p className="text-muted-foreground text-sm">Browse teachers and book your next English class.</p>
-      </div>
+      <PortalPageHeader
+        icon={BookOpen}
+        title="Available Courses"
+        description="Browse teachers and book your next English class."
+        action={
+          !loading && (
+            <span className="inline-flex items-center rounded-full bg-secondary/10 text-secondary text-xs font-semibold px-3 py-1.5">
+              {courses.length} {courses.length === 1 ? 'course' : 'courses'} open
+            </span>
+          )
+        }
+      />
 
       {loading ? (
         <div className="flex justify-center py-16">
           <Loader2 className="h-6 w-6 animate-spin text-primary" />
+        </div>
+      ) : courses.length === 0 ? (
+        <div className="text-center py-16 bg-card border border-border rounded-2xl">
+          <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+            <BookOpen size={22} className="text-primary" />
+          </div>
+          <p className="text-muted-foreground text-sm">No courses are open just yet. Check back soon.</p>
         </div>
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

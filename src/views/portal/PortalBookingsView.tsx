@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Loader2, X } from 'lucide-react';
+import { CalendarClock, Loader2, X } from 'lucide-react';
 import { usePortal } from '@/components/portal/PortalContext';
+import PortalPageHeader from '@/components/portal/PortalPageHeader';
 import { useToast } from '@/hooks/use-toast';
 import { supabaseBrowser } from '@/lib/supabase/browser';
 import {
@@ -79,10 +80,19 @@ const PortalBookingsView = () => {
 
   return (
     <div className="px-6 md:px-10 py-10 container-custom">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-foreground mb-1">My Classes</h1>
-        <p className="text-muted-foreground text-sm">Your upcoming booked classes.</p>
-      </div>
+      <PortalPageHeader
+        icon={CalendarClock}
+        title="My Classes"
+        description="Your upcoming booked classes."
+        action={
+          !loading &&
+          bookings.length > 0 && (
+            <span className="inline-flex items-center rounded-full bg-secondary/10 text-secondary text-xs font-semibold px-3 py-1.5">
+              {bookings.length} upcoming
+            </span>
+          )
+        }
+      />
 
       {loading ? (
         <div className="flex justify-center py-16">
@@ -90,6 +100,9 @@ const PortalBookingsView = () => {
         </div>
       ) : bookings.length === 0 ? (
         <div className="text-center py-16 bg-card border border-border rounded-2xl">
+          <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+            <CalendarClock size={22} className="text-primary" />
+          </div>
           <p className="text-muted-foreground text-sm">You haven&apos;t booked any classes yet.</p>
           <Link
             href="/portal/dashboard/courses"

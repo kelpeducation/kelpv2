@@ -3,8 +3,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Select,
@@ -42,6 +40,10 @@ import type { Subscriber } from '@/lib/newsletter/store';
 import JsonFieldEditor from '@/components/cms/JsonFieldEditor';
 import CourseManager from '@/components/cms/CourseManager';
 import AnnouncementManager from '@/components/cms/AnnouncementManager';
+import CmsLoginGate from '@/components/cms/CmsLoginGate';
+import CmsSidebar from '@/components/cms/CmsSidebar';
+
+const CMS_SESSION_KEY = 'kelp_cms_admin_key';
 
 type CmsSection = 'site-settings' | 'products' | 'chatbot-knowledge' | 'pages-content';
 type DataViewId = 'enrollments' | 'subscribers' | 'courses' | 'announcements';
@@ -120,6 +122,8 @@ const downloadCsv = (filename: string, rows: string[][]) => {
 };
 
 const CmsPage = () => {
+  const [authChecked, setAuthChecked] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
   const [view, setView] = useState<ViewId>('site-settings');
   const [cmsKey, setCmsKey] = useState('');
   const [formData, setFormData] = useState<unknown>(null);
@@ -140,6 +144,34 @@ const CmsPage = () => {
   const [subscribers, setSubscribers] = useState<Subscriber[] | null>(null);
   const [subscribersLoading, setSubscribersLoading] = useState(false);
   const [subscribersError, setSubscribersError] = useState('');
+
+  useEffect(() => {
+    const stored = window.sessionStorage.getItem(CMS_SESSION_KEY);
+    if (stored) {
+      setCmsKey(stored);
+      setAuthenticated(true);
+    }
+    setAuthChecked(true);
+  }, []);
+
+  const handleLoginSuccess = (key: string) => {
+    window.sessionStorage.setItem(CMS_SESSION_KEY, key);
+    setCmsKey(key);
+    setAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    window.sessionStorage.removeItem(CMS_SESSION_KEY);
+    setCmsKey('');
+    setAuthenticated(false);
+  };
+
+  const handleUnauthorized = () => {
+    window.sessionStorage.removeItem(CMS_SESSION_KEY);
+    setCmsKey('');
+    setAuthenticated(false);
+    setStatus({ type: 'error', message: 'Your session expired. Please log in again.' });
+  };
 
   const activeSectionMeta = useMemo(
     () => sections.find((item) => item.id === view),
@@ -213,6 +245,11 @@ const CmsPage = () => {
 
       const payload = await response.json();
 
+      if (response.status === 401) {
+        handleUnauthorized();
+        return;
+      }
+
       if (!response.ok) {
         throw new Error(payload?.error || 'Failed to save CMS content.');
       }
@@ -246,6 +283,11 @@ const CmsPage = () => {
       });
       const payload = await response.json();
 
+      if (response.status === 401) {
+        handleUnauthorized();
+        return;
+      }
+
       if (!response.ok) {
         throw new Error(payload?.error || 'Failed to load enrollments.');
       }
@@ -275,6 +317,11 @@ const CmsPage = () => {
         headers: { 'x-cms-key': cmsKey },
       });
       const payload = await response.json();
+
+      if (response.status === 401) {
+        handleUnauthorized();
+        return;
+      }
 
       if (!response.ok) {
         throw new Error(payload?.error || 'Failed to load subscribers.');
@@ -326,52 +373,50 @@ const CmsPage = () => {
     downloadCsv('kelp-newsletter-subscribers.csv', rows);
   };
 
+  if (!authChecked) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (!authenticated) {
+    return <CmsLoginGate onSuccess={handleLoginSuccess} />;
+  }
+
   return (
-    <main className="min-h-screen bg-slate-50 py-10">
-      <div className="container mx-auto max-w-6xl px-4">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-3xl font-bold text-primary">Website Content Management</CardTitle>
-            <CardDescription>
-              Edit your website-wide content, and view course enrollments and newsletter subscribers, from one place.
-              No technical knowledge needed — just fill in the fields below.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid gap-6 md:grid-cols-[2fr_1fr]">
-              <div className="space-y-2">
-                <Label htmlFor="cms-key">Admin Password</Label>
-                <Input
-                  id="cms-key"
-                  type="password"
-                  value={cmsKey}
-                  onChange={(event) => setCmsKey(event.target.value)}
-                  placeholder="Set CMS_ADMIN_PASSWORD in .env.local"
-                />
-              </div>
+    <div className="min-h-screen bg-slate-50">
+      <CmsSidebar
+        items={allTabs}
+        activeId={view}
+        onSelect={(id) => setView(id as ViewId)}
+        onLogout={handleLogout}
+      />
 
-              <div className="rounded-xl border border-slate-200 bg-white p-4">
-                <p className="text-sm font-semibold text-slate-800">How to use</p>
-                <ol className="mt-2 list-decimal pl-4 text-sm text-slate-600 space-y-1">
-                  <li>Choose a content section, or Courses / Announcements / Enrollments / Subscribers.</li>
-                  <li>Click a section title to expand it, then edit the fields.</li>
-                  <li>Save changes, or refresh / export.</li>
-                </ol>
-              </div>
-            </div>
+      <main className="lg:pl-64 py-6 lg:py-10">
+        <div className="container mx-auto max-w-6xl px-4">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-3xl font-bold text-primary">Website Content Management</CardTitle>
+              <CardDescription>
+                Edit your website-wide content, and view course enrollments and newsletter subscribers, from one
+                place. No technical knowledge needed — just fill in the fields below.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <Tabs value={view} onValueChange={(value) => setView(value as ViewId)} className="lg:hidden">
+                <TabsList className="w-full justify-start overflow-x-auto">
+                  {allTabs.map((item) => (
+                    <TabsTrigger key={item.id} value={item.id}>
+                      {'icon' in item && <item.icon size={14} className="mr-1.5" />}
+                      {item.label}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </Tabs>
 
-            <Tabs value={view} onValueChange={(value) => setView(value as ViewId)}>
-              <TabsList className="w-full justify-start overflow-x-auto">
-                {allTabs.map((item) => (
-                  <TabsTrigger key={item.id} value={item.id}>
-                    {'icon' in item && <item.icon size={14} className="mr-1.5" />}
-                    {item.label}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
-
-            {view === 'courses' ? (
+              {view === 'courses' ? (
               <CourseManager cmsKey={cmsKey} />
             ) : view === 'announcements' ? (
               <AnnouncementManager cmsKey={cmsKey} />
@@ -612,10 +657,11 @@ const CmsPage = () => {
                 </div>
               </>
             )}
-          </CardContent>
-        </Card>
-      </div>
-    </main>
+            </CardContent>
+          </Card>
+        </div>
+      </main>
+    </div>
   );
 };
 
