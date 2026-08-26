@@ -79,7 +79,7 @@ const PortalRegister = () => {
         eyebrow="English Learning Program"
         title="Check your email"
         description="One last step to activate your account."
-        image="/images/learning1.jpg"
+        image="/images/learning2.jpg"
         footer={
           <Link href="/portal/login" className="text-primary font-semibold hover:text-secondary transition-colors">
             Back to login
@@ -104,7 +104,7 @@ const PortalRegister = () => {
       eyebrow="English Learning Program"
       title="Create your account"
       description="Join the platform to book classes, meet your teachers, and stay up to date."
-      image="/images/learning1.jpg"
+      image="/images/learning2.jpg"
       footer={
         <>
           Already have an account?{' '}
