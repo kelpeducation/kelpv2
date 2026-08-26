@@ -13,21 +13,23 @@ const PortalAuthLayout = ({ eyebrow, title, description, children, footer }: Por
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
       {/* Brand panel */}
-      <div className="relative hidden lg:flex flex-col justify-between bg-primary text-white p-12 overflow-hidden">
+      <div className="relative hidden lg:flex flex-col bg-primary text-white p-12 overflow-hidden">
         <DecorativeBackground gridOpacity={0.05} gridSize={60} blobs={2} blobColor="secondary" />
-        <div className="relative z-10 max-w-md">
-          <span className="text-secondary font-semibold text-sm uppercase tracking-wider">
-            English Learning Program
-          </span>
-          <h1 className="text-3xl font-bold mt-4 mb-4 leading-tight">
-            Learn English with KELP, at your own pace.
-          </h1>
-          <p className="text-slate-300 text-sm leading-relaxed">
-            Book live classes with real teachers, track announcements, and grow your confidence —
-            every Tuesday through Saturday.
-          </p>
+        <div className="relative z-10 flex-1 flex items-center justify-center">
+          <div className="w-[26rem] aspect-square rounded-full bg-white/5 border border-white/10 backdrop-blur-sm flex flex-col items-center justify-center text-center px-12">
+            <span className="text-secondary font-semibold text-sm uppercase tracking-wider">
+              English Learning Program
+            </span>
+            <h1 className="text-3xl font-bold mt-4 mb-4 leading-tight">
+              Learn English with KELP, at your own pace.
+            </h1>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              Book live classes with real teachers, track announcements, and grow your confidence —
+              every Tuesday through Saturday.
+            </p>
+          </div>
         </div>
-        <p className="relative z-10 text-slate-400 text-xs">
+        <p className="relative z-10 text-slate-400 text-xs text-center">
           &copy; {new Date().getFullYear()} KELP Education. Kigali, Rwanda.
         </p>
       </div>
