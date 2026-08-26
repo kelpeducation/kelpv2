@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import PortalDashboard from '@/views/PortalDashboard';
+import PortalOverview from '@/views/portal/PortalOverview';
 
 export const metadata: Metadata = {
   title: 'Dashboard | KELP English Learning Program',
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <PortalDashboard />;
+  return <PortalOverview />;
 }
