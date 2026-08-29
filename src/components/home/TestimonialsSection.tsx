@@ -94,7 +94,7 @@ const TestimonialsSection = ({ content }: TestimonialsSectionProps) => {
                 <div>
                   <p className="font-bold text-background text-sm">{testimonial.author}</p>
                   <p className="text-background/60 text-xs">{testimonial.role}</p>
-                  <p className="text-primary text-xs mt-0.5">{testimonial.location}</p>
+                  <p className="text-secondary text-xs mt-0.5">{testimonial.location}</p>
                 </div>
               </div>
             ))}

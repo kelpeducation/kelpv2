@@ -19,7 +19,7 @@ interface CmsSidebarProps {
 
 const CmsSidebar = ({ items, activeId, onSelect, onLogout }: CmsSidebarProps) => {
   return (
-    <aside className="hidden lg:flex flex-col fixed left-0 top-0 h-screen w-64 flex-shrink-0 border-r border-border bg-white z-40">
+    <aside className="hidden md:flex flex-col fixed left-0 top-0 h-screen w-64 flex-shrink-0 border-r border-border bg-white z-40">
       <div className="flex items-center justify-center py-4 px-6 border-b border-border flex-shrink-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/logo-side.png" alt="KELP Education" className="h-14 w-auto object-contain" />

@@ -394,7 +394,7 @@ const CmsPage = () => {
         onLogout={handleLogout}
       />
 
-      <main className="lg:pl-64 py-6 lg:py-10">
+      <main className="md:pl-64 py-6 lg:py-10">
         <div className="container mx-auto max-w-6xl px-4">
           <Card>
             <CardHeader>
@@ -405,7 +405,7 @@ const CmsPage = () => {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-              <Tabs value={view} onValueChange={(value) => setView(value as ViewId)} className="lg:hidden">
+              <Tabs value={view} onValueChange={(value) => setView(value as ViewId)} className="md:hidden">
                 <TabsList className="w-full justify-start overflow-x-auto">
                   {allTabs.map((item) => (
                     <TabsTrigger key={item.id} value={item.id}>
@@ -619,7 +619,7 @@ const CmsPage = () => {
                     </pre>
                   ) : (
                     <div className="max-h-[600px] overflow-y-auto rounded-xl border border-slate-200 bg-white p-5">
-                      <JsonFieldEditor value={formData} onChange={setFormData} />
+                      <JsonFieldEditor value={formData} onChange={setFormData} cmsKey={cmsKey} />
                     </div>
                   )}
                 </div>

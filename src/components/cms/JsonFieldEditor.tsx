@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { ChevronDown, ChevronRight, Plus, Trash2 } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { ChevronDown, ChevronRight, Loader2, Plus, Trash2, Upload } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
@@ -53,14 +53,108 @@ const CollapsibleGroup = ({ label, defaultOpen, children }: CollapsibleGroupProp
   );
 };
 
+interface ImageFieldControlProps {
+  value: string;
+  onChange: (value: string) => void;
+  cmsKey?: string;
+}
+
+const ImageFieldControl = ({ value, onChange, cmsKey }: ImageFieldControlProps) => {
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file) return;
+
+    if (!cmsKey) {
+      setError('Log in again to upload images.');
+      return;
+    }
+
+    setUploading(true);
+    setError('');
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const response = await fetch('/api/cms/upload', {
+        method: 'POST',
+        headers: { 'x-cms-key': cmsKey },
+        body: formData,
+      });
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload?.error || 'Upload failed.');
+      }
+
+      onChange(payload.url);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Upload failed.');
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  return (
+    <div className="flex items-start gap-3">
+      {value && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={value}
+          alt=""
+          className="h-14 w-14 flex-shrink-0 rounded-lg border border-slate-200 object-cover bg-slate-100"
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).style.visibility = 'hidden';
+          }}
+        />
+      )}
+      <div className="flex-1 space-y-1.5">
+        <div className="flex gap-2">
+          <Input
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder="/images/example.jpg"
+            className="flex-1"
+          />
+          <input
+            ref={inputRef}
+            type="file"
+            accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml"
+            className="hidden"
+            onChange={handleFileSelect}
+          />
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => inputRef.current?.click()}
+            disabled={uploading}
+            className="flex-shrink-0"
+          >
+            {uploading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
+            {uploading ? 'Uploading...' : 'Upload'}
+          </Button>
+        </div>
+        {error && <p className="text-xs text-red-600">{error}</p>}
+      </div>
+    </div>
+  );
+};
+
 interface JsonFieldEditorProps {
   value: unknown;
   onChange: (value: unknown) => void;
   label?: string;
   depth?: number;
+  cmsKey?: string;
 }
 
-const JsonFieldEditor = ({ value, onChange, label, depth = 0 }: JsonFieldEditorProps) => {
+const JsonFieldEditor = ({ value, onChange, label, depth = 0, cmsKey }: JsonFieldEditorProps) => {
   // Array
   if (Array.isArray(value)) {
     const isPrimitiveArray = value.every((item) => item === null || typeof item !== 'object');
@@ -75,6 +169,7 @@ const JsonFieldEditor = ({ value, onChange, label, depth = 0 }: JsonFieldEditorP
                 <JsonFieldEditor
                   value={item}
                   depth={depth + 1}
+                  cmsKey={cmsKey}
                   onChange={(next) => {
                     const copy = [...value];
                     copy[index] = next;
@@ -104,6 +199,7 @@ const JsonFieldEditor = ({ value, onChange, label, depth = 0 }: JsonFieldEditorP
               <JsonFieldEditor
                 value={item}
                 depth={depth + 1}
+                cmsKey={cmsKey}
                 onChange={(next) => {
                   const copy = [...value];
                   copy[index] = next;
@@ -148,6 +244,7 @@ const JsonFieldEditor = ({ value, onChange, label, depth = 0 }: JsonFieldEditorP
             label={humanizeLabel(key)}
             value={val}
             depth={depth + 1}
+            cmsKey={cmsKey}
             onChange={(next) => onChange({ ...(value as Record<string, unknown>), [key]: next })}
           />
         ))}
@@ -199,31 +296,18 @@ const JsonFieldEditor = ({ value, onChange, label, depth = 0 }: JsonFieldEditorP
   return (
     <div className="space-y-1.5">
       {label && <Label className="text-sm">{label}</Label>}
-      <div className={looksLikeImage ? 'flex items-start gap-3' : ''}>
-        {looksLikeImage && strValue && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={strValue}
-            alt=""
-            className="h-14 w-14 flex-shrink-0 rounded-lg border border-slate-200 object-cover bg-slate-100"
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).style.visibility = 'hidden';
-            }}
-          />
-        )}
-        <div className="flex-1">
-          {isLong ? (
-            <textarea
-              value={strValue}
-              onChange={(e) => onChange(e.target.value)}
-              rows={Math.min(8, Math.max(2, Math.ceil(strValue.length / 55)))}
-              className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm leading-relaxed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring resize-y"
-            />
-          ) : (
-            <Input value={strValue} onChange={(e) => onChange(e.target.value)} />
-          )}
-        </div>
-      </div>
+      {looksLikeImage ? (
+        <ImageFieldControl value={strValue} onChange={onChange} cmsKey={cmsKey} />
+      ) : isLong ? (
+        <textarea
+          value={strValue}
+          onChange={(e) => onChange(e.target.value)}
+          rows={Math.min(8, Math.max(2, Math.ceil(strValue.length / 55)))}
+          className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm leading-relaxed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring resize-y"
+        />
+      ) : (
+        <Input value={strValue} onChange={(e) => onChange(e.target.value)} />
+      )}
     </div>
   );
 };

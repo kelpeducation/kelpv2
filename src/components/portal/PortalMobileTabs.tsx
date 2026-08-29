@@ -9,7 +9,7 @@ const PortalMobileTabs = () => {
   const pathname = usePathname();
 
   return (
-    <div className="lg:hidden sticky top-20 z-20 bg-white border-b border-border overflow-x-auto">
+    <div className="md:hidden sticky top-20 z-20 bg-white border-b border-border overflow-x-auto">
       <nav className="flex gap-1 px-4 py-2 min-w-max">
         {portalNavItems.map((item) => {
           const active = pathname === item.href;

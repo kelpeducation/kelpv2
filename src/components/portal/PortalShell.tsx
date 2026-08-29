@@ -29,7 +29,7 @@ const PortalShellInner = ({ children }: { children: ReactNode }) => {
   return (
     <div className="min-h-screen bg-muted/30">
       <PortalSidebar />
-      <div className="lg:pl-64">
+      <div className="md:pl-64">
         <PortalHeader />
         <PortalMobileTabs />
         <main>{children}</main>

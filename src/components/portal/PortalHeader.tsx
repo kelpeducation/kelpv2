@@ -29,7 +29,7 @@ const PortalHeader = () => {
   return (
     <header className="bg-white border-b border-border sticky top-0 z-30 shadow-sm">
       <div className="flex items-center justify-between h-20 px-6 md:px-10">
-        <Link href="/" className="flex items-center gap-3 lg:hidden">
+        <Link href="/" className="flex items-center gap-3 md:hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo-side.png" alt="KELP Education" className="h-12 w-auto object-contain" />
         </Link>
@@ -41,7 +41,7 @@ const PortalHeader = () => {
             <p className="text-sm font-semibold text-foreground leading-tight">{displayName}</p>
             <p className="text-xs text-muted-foreground">Student</p>
           </div>
-          <Button variant="outline" size="sm" onClick={handleLogout} className="ml-1 lg:hidden">
+          <Button variant="outline" size="sm" onClick={handleLogout} className="ml-1 md:hidden">
             <LogOut size={14} />
             Log Out
           </Button>
