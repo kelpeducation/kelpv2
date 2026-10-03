@@ -39,7 +39,7 @@ const PortalAuthLayout = ({ eyebrow, title, description, children, footer, image
           <div className="w-[26rem] aspect-square rounded-full bg-white/10 border border-white/20 backdrop-blur-sm flex flex-col items-center justify-center text-center px-12">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-side.png" alt="KELP Education" className="h-16 w-auto object-contain mb-4" />
-            <span className="inline-flex items-center gap-1.5 text-secondary font-semibold text-sm uppercase tracking-wider">
+            <span className="inline-flex items-center gap-1.5 text-secondary font-semibold text-sm tracking-wider">
               <Sparkles size={14} />
               English Learning Program
             </span>

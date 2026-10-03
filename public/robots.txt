@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www.kelpeducation.com/sitemap.xml
+Sitemap: https://kelpeducation.rw/sitemap.xml

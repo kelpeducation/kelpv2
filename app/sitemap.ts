@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { allProducts } from '@/data/products';
 
-const baseUrl = 'https://www.kelpeducation.com';
+const baseUrl = 'https://kelpeducation.rw';
 
 const staticRoutes = [
   '',
