@@ -13,8 +13,6 @@ const Footer = () => {
 
   return (
     <footer className="bg-footer-gradient text-background relative overflow-hidden">
-      {/* Subtle overlay texture/pattern for extra modern feel */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
       {/* Main Footer */}
       <div className="section-padding pb-12">
         <div className="container-custom">

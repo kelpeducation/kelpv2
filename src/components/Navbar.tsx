@@ -27,8 +27,8 @@ const growLinks = [
   {
     title: 'YouTube Channel',
     icon: Youtube,
-    href: 'https://youtube.com',
-    isExternal: true,
+    href: '/contact',
+    isExternal: false,
     description: 'Watch our educational content and success stories'
   },
   {

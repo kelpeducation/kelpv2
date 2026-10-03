@@ -4,7 +4,7 @@ import Providers from '@/components/Providers';
 import '@/styles/globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://kelpeducation.rw'),
+  metadataBase: new URL('http://localhost:8080'),
   title: {
     default: 'KELP Education | Literacy, Learning and Potential in Rwanda',
     template: '%s | KELP Education',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_RW',
-    url: 'https://kelpeducation.rw',
+    url: 'http://localhost:8080',
     siteName: 'KELP Education',
     title: 'KELP Education | Literacy, Learning and Potential in Rwanda',
     description:
@@ -73,10 +73,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'EducationalOrganization',
-              '@id': 'https://kelpeducation.rw/#organization',
+              '@id': 'http://localhost:8080/#organization',
               name: 'KELP Education',
-              url: 'https://kelpeducation.rw',
-              logo: 'https://kelpeducation.rw/logo-side.png',
+              url: 'http://localhost:8080',
+              logo: 'http://localhost:8080/logo-side.png',
               description:
                 'Transformative, sustainable, and equitable education for literacy and potential in Rwanda.',
               email: 'kelpeducation@gmail.com',
@@ -88,11 +88,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 addressCountry: 'RW',
               },
               areaServed: { '@type': 'Country', name: 'Rwanda' },
-              sameAs: ['https://wa.me/250795240664'],
+              sameAs: [],
             }),
           }}
         />
-        <Providers>{children}</Providers>
+        <main className="min-h-screen bg-primary text-primary-foreground flex items-center justify-center px-6 py-16">
+          <section className="w-full max-w-2xl text-center">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent">
+              KELP Education
+            </p>
+            <h1 className="text-4xl font-bold sm:text-5xl">We are temporarily offline</h1>
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-primary-foreground/80">
+              Our website is currently undergoing maintenance. Please check back later.
+            </p>
+            <p className="mt-10 text-sm text-primary-foreground/60">
+              Thank you for your patience.
+            </p>
+          </section>
+        </main>
       </body>
     </html>
   );
