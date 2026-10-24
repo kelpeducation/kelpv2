@@ -1,4 +1,6 @@
-import { getSupabaseAdmin } from '@/lib/supabase/server';
+import { promises as fs } from 'fs';
+import nodePath from 'path';
+import { isSupabaseConfigured } from '@/lib/cms/contentStore';
 
 const BUCKET = 'cms-uploads';
 const MAX_SIZE_BYTES = 5 * 1024 * 1024;
@@ -29,8 +31,18 @@ export const uploadCmsImage = async (file: File): Promise<string> => {
     throw new Error('Image is too large. Maximum size is 5MB.');
   }
 
-  const admin = getSupabaseAdmin();
   const path = `${crypto.randomUUID()}.${extensionForType(file.type)}`;
+
+  // Without Supabase (local development), save into public/uploads instead.
+  if (!isSupabaseConfigured()) {
+    const dir = nodePath.join(process.cwd(), 'public', 'uploads');
+    await fs.mkdir(dir, { recursive: true });
+    await fs.writeFile(nodePath.join(dir, path), Buffer.from(await file.arrayBuffer()));
+    return `/uploads/${path}`;
+  }
+
+  const { getSupabaseAdmin } = await import('@/lib/supabase/server');
+  const admin = getSupabaseAdmin();
 
   const { error } = await admin.storage.from(BUCKET).upload(path, file, {
     contentType: file.type,

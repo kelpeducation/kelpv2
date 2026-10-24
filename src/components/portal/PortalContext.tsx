@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 import type { Session } from '@supabase/supabase-js';
-import { supabaseBrowser } from '@/lib/supabase/browser';
+import { isSupabaseBrowserConfigured, supabaseBrowser } from '@/lib/supabase/browser';
 import { Profile, toProfile } from '@/lib/portal/types';
 
 interface PortalContextValue {
@@ -20,6 +20,12 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
   const [sessionLoading, setSessionLoading] = useState(true);
 
   useEffect(() => {
+    // Without Supabase there is no one to log in; treat everyone as logged out.
+    if (!isSupabaseBrowserConfigured) {
+      setSessionLoading(false);
+      return;
+    }
+
     supabaseBrowser.auth.getSession().then(({ data }) => {
       setSession(data.session);
       setSessionLoading(false);
